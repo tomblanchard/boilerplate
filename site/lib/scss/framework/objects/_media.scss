@@ -1,0 +1,32 @@
+@if $use-media == true {
+
+  .media {
+    @include cf;
+    display:block;
+  }
+
+    .media__fig {
+      @include push--right;
+      float:left;
+    }
+
+    .media__fig--rev {
+      @include push--left;
+      float:right;
+    }
+
+      .media__fig img,
+      .media__fig--rev img {
+        display:block;
+      }
+
+    .media__body {
+      overflow:hidden;
+    }
+
+      .media__body,
+      .media__body > :last-child {
+        @include flush--bottom;
+      }
+
+}

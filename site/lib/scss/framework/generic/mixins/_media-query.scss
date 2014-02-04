@@ -1,0 +1,34 @@
+/**********************************************************************************
+ * MIXIN: MEDIA QUERY
+ **********************************************************************************
+ *
+ * Output media query with dynamic content and query declaration, the declarations
+ * which can be used are defined in `$breakpoints` (located in `_config.scss`).
+ * This also comes with optional support for IE8 and below, set `$old-ie-support`
+ * as `true` and it will output the CSS content inside the media query in the
+ * `lt-ie-9.min.css` file stripping the media query wrapped around it.
+ *
+ * Usage:
+ *
+    .element {
+      @include media-query(L) {
+        background:red;
+      }
+    }
+ *
+ *********************************************************************************/
+
+@mixin media-query($media-query, $old-ie-support: false) {
+  @if $old-ie == false {
+    @each $name, $declaration in $breakpoints {
+      @if $media-query == $name and $declaration {
+        @media only screen and #{$declaration} {
+          @content;
+        }
+      }
+    }
+  }
+  @if $old-ie-support == true and $old-ie == true {
+    @content;
+  }
+}

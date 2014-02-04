@@ -1,0 +1,29 @@
+@if $use-flyout == true {
+
+  .flyout,
+  .flyout--alt {
+    position:relative;
+    overflow:hidden;
+  }
+
+    .flyout__content {
+      position:absolute;
+      top:100%;
+      left:-99999px;
+    }
+
+    .flyout:hover,
+    .flyout--alt:hover {
+      overflow:visible;
+    }
+
+    .flyout:hover > .flyout__content {
+      left:0;
+    }
+
+    .flyout--alt:hover > .flyout__content {
+      top:0;
+      left:100%;
+    }
+
+}

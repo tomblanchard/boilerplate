@@ -1,0 +1,126 @@
+/**********************************************************************************
+ * HELPERS
+ **********************************************************************************
+ *
+ * Helpers which can be used via a normal HTML class, Sass silent class, and / or
+ * or mixin (for use inside media queries), usage:
+ *
+    <div class="helper"></div>
+
+    .element {
+      @extend %helper;
+
+      @media (max-width:500px) {
+        @include helper;
+      }
+    }
+ *
+ *********************************************************************************/
+
+/**
+ * Accessibile alternative to `display:none`.
+ */
+@mixin accessibility {
+  border:0 !important;
+  clip:rect(0 0 0 0) !important;
+  height:1px !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  padding:0 !important;
+  position:absolute !important;
+  width:1px !important;
+}
+.accessibility, %accessibility { @include accessibility; }
+
+/**
+ * Clearfix.
+ */
+@mixin cf {
+  &:after {
+    content:'';
+    display:table;
+    clear:both;
+  }
+}
+.cf, %cf { @include cf; }
+
+/**
+ * Image replacement.
+ */
+@mixin ir {
+  text-indent:100%;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.ir, %ir { @include ir; }
+
+/**
+ * Add / remove margins.
+ */
+@mixin flush         { margin:       0; } .flush, %flush { @include flush; }
+@mixin flush--top    { margin-top:   0; } .flush--top, %flush--top { @include flush--top; }
+@mixin flush--right  { margin-right: 0; } .flush--right, %flush--right { @include flush--right; }
+@mixin flush--bottom { margin-bottom:0; } .flush--bottom, %flush--bottom { @include flush--bottom; }
+@mixin flush--left   { margin-left:  0; } .flush--left, %flush--left { @include flush--left; }
+@mixin flush--ends   { margin-top:   0; margin-bottom:0; } .flush--ends, %flush--ends { @include flush--ends; }
+@mixin flush--sides  { margin-right: 0; margin-left:  0; } .flush--sides, %flush--sides { @include flush--sides; }
+
+@mixin push         { margin:       $base-spacing-unit; } .push, %push { @include push; }
+@mixin push--top    { margin-top:   $base-spacing-unit; } .push--top, %push--top { @include push--top; }
+@mixin push--right  { margin-right: $base-spacing-unit; } .push--right, %push--right { @include push--right; }
+@mixin push--bottom { margin-bottom:$base-spacing-unit; } .push--bottom, %push--bottom { @include push--bottom; }
+@mixin push--left   { margin-left:  $base-spacing-unit; } .push--left, %push--left { @include push--left; }
+@mixin push--ends   { margin-top:   $base-spacing-unit; margin-bottom:$base-spacing-unit; } .push--ends, %push--ends { @include push--ends; }
+@mixin push--sides  { margin-right: $base-spacing-unit; margin-left:  $base-spacing-unit; } .push--sides, %push--sides { @include push--sides; }
+
+@mixin push-half         { margin:       $half-spacing-unit; } .push-half, %push-half { @include push-half; }
+@mixin push-half--top    { margin-top:   $half-spacing-unit; } .push-half--top, %push-half--top { @include push-half--top; }
+@mixin push-half--right  { margin-right: $half-spacing-unit; } .push-half--right, %push-half--right { @include push-half--right; }
+@mixin push-half--bottom { margin-bottom:$half-spacing-unit; } .push-half--bottom, %push-half--bottom { @include push-half--bottom; }
+@mixin push-half--left   { margin-left:  $half-spacing-unit; } .push-half--left, %push-half--left { @include push-half--left; }
+@mixin push-half--ends   { margin-top:   $half-spacing-unit; margin-bottom:$half-spacing-unit; } .push-half--ends, %push-half--ends { @include push-half--ends; }
+@mixin push-half--sides  { margin-right: $half-spacing-unit; margin-left:  $half-spacing-unit; } .push-half--sides, %push-half--sides { @include push-half--sides; }
+
+@mixin push-double         { margin:       $double-spacing-unit; } .push-half, %push-half { @include push-half; }
+@mixin push-double--top    { margin-top:   $double-spacing-unit; } .push-double--top, %push-double--top { @include push-double--top; }
+@mixin push-double--right  { margin-right: $double-spacing-unit; } .push-double--right, %push-double--right { @include push-double--right; }
+@mixin push-double--bottom { margin-bottom:$double-spacing-unit; } .push-double--bottom, %push-double--bottom { @include push-double--bottom; }
+@mixin push-double--left   { margin-left:  $double-spacing-unit; } .push-double--left, %push-double--left { @include push-double--left; }
+@mixin push-double--ends   { margin-top:   $double-spacing-unit; margin-bottom:$double-spacing-unit; } .push-double--ends, %push-double--ends { @include push-double--ends; }
+@mixin push-double--sides  { margin-right: $double-spacing-unit; margin-left:  $double-spacing-unit; } .push-double--sides, %push-double--sides { @include push-double--sides; }
+
+
+/**
+ * Add / remove paddings.
+ */
+@mixin hard         { padding:       0; } .hard, %hard { @include hard; }
+@mixin hard--top    { padding-top:   0; } .hard--top, %hard--top { @include hard--top; }
+@mixin hard--right  { padding-right: 0; } .hard--right, %hard--right { @include hard--right; }
+@mixin hard--bottom { padding-bottom:0; } .hard--bottom, %hard--bottom { @include hard--bottom; }
+@mixin hard--left   { padding-left:  0; } .hard--left, %hard--left { @include hard--left; }
+@mixin hard--ends   { padding-top:   0; padding-bottom:0; } .hard--ends, %hard--ends { @include hard--ends; }
+@mixin hard--sides  { padding-right: 0; padding-left:  0; } .hard--sides, %hard--sides { @include hard--sides; }
+
+@mixin soft         { padding:       $base-spacing-unit; } .soft, %soft { @include soft; }
+@mixin soft--top    { padding-top:   $base-spacing-unit; } .soft--top, %soft--top { @include soft--top; }
+@mixin soft--right  { padding-right: $base-spacing-unit; } .soft--right, %soft--right { @include soft--right; }
+@mixin soft--bottom { padding-bottom:$base-spacing-unit; } .soft--bottom, %soft--bottom { @include soft--bottom; }
+@mixin soft--left   { padding-left:  $base-spacing-unit; } .soft--left, %soft--left { @include soft--left; }
+@mixin soft--ends   { padding-top:   $base-spacing-unit; padding-bottom:$base-spacing-unit; } .soft--ends, %soft--ends { @include soft--ends; }
+@mixin soft--sides  { padding-right: $base-spacing-unit; padding-left:  $base-spacing-unit; } .soft--sides, %soft--sides { @include soft--sides; }
+
+@mixin soft-half         { padding:       $half-spacing-unit; } .soft-half, %soft-half { @include soft-half; }
+@mixin soft-half--top    { padding-top:   $half-spacing-unit; } .soft-half--top, %soft-half--top { @include soft-half--top; }
+@mixin soft-half--right  { padding-right: $half-spacing-unit; } .soft-half--right, %soft-half--right { @include soft-half--right; }
+@mixin soft-half--bottom { padding-bottom:$half-spacing-unit; } .soft-half--bottom, %soft-half--bottom { @include soft-half--bottom; }
+@mixin soft-half--left   { padding-left:  $half-spacing-unit; } .soft-half--left, %soft-half--left { @include soft-half--left; }
+@mixin soft-half--ends   { padding-top:   $half-spacing-unit; padding-bottom:$half-spacing-unit; } .soft-half--ends, %soft-half--ends { @include soft-half--ends; }
+@mixin soft-half--sides  { padding-right: $half-spacing-unit; padding-left:  $half-spacing-unit; } .soft-half--sides, %soft-half--sides { @include soft-half--sides; }
+
+@mixin soft-double         { padding:       $double-spacing-unit; } .soft-half, %soft-half { @include soft-half; }
+@mixin soft-double--top    { padding-top:   $double-spacing-unit; } .soft-double--top, %soft-double--top { @include soft-double--top; }
+@mixin soft-double--right  { padding-right: $double-spacing-unit; } .soft-double--right, %soft-double--right { @include soft-double--right; }
+@mixin soft-double--bottom { padding-bottom:$double-spacing-unit; } .soft-double--bottom, %soft-double--bottom { @include soft-double--bottom; }
+@mixin soft-double--left   { padding-left:  $double-spacing-unit; } .soft-double--left, %soft-double--left { @include soft-double--left; }
+@mixin soft-double--ends   { padding-top:   $double-spacing-unit; padding-bottom:$double-spacing-unit; } .soft-double--ends, %soft-double--ends { @include soft-double--ends; }
+@mixin soft-double--sides  { padding-right: $double-spacing-unit; padding-left:  $double-spacing-unit; } .soft-double--sides, %soft-double--sides { @include soft-double--sides; }

@@ -1,0 +1,44 @@
+/**********************************************************************************
+ * MIXIN: BEM (BLOCK, ELEMENT, MODIFIER)
+ **********************************************************************************
+ *
+ * Nest elements using the BEM syntax.
+ *
+ * Usage:
+ *
+    .block {
+      content:'This is a block.';
+
+      @include e(element) {
+        content:'This is a block element.';
+
+        @include e(sub-element, true) {
+          content:'This is a block sub-element.';
+        }
+      }
+
+      @include m(modifier) {
+        content:'This is a block modifier.';
+      }
+    }
+ *
+ *********************************************************************************/
+
+@mixin e($name, $sub-element: false) {
+  @if $sub-element == false {
+    @at-root #{&}__#{$name} {
+      @content;
+    }
+  }
+  @else if $sub-element == true {
+    @at-root #{&}-#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin m($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}

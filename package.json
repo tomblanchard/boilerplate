@@ -1,0 +1,17 @@
+{
+  "name": "boilerplate",
+  "author": "Tom Blanchard",
+  "version": "0.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "load-grunt-tasks": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-autoprefixer": "~0.6.4",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-sass": "~0.6.0",
+    "connect-livereload": "~0.3.2",
+    "grunt-includes": "~0.4.0",
+    "grunt-contrib-clean": "~0.5.0"
+  }
+}

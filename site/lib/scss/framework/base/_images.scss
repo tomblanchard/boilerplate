@@ -1,0 +1,33 @@
+/**********************************************************************************
+ * IMAGES
+ *********************************************************************************/
+
+img {
+  max-width:100%;
+}
+
+img[width],
+img[height] {
+  max-width:none;
+}
+
+.img--right {
+  @include push--left;
+  @include push--bottom;
+  float:right;
+}
+.img--left {
+  @include push--right;
+  @include push--bottom;
+  float:left;
+}
+.img--center {
+  @include push--bottom;
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+figure > img {
+  display:block;
+}

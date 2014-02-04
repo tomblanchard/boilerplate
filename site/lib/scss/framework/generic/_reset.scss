@@ -1,0 +1,78 @@
+/**********************************************************************************
+ * RESET
+ **********************************************************************************
+ *
+ * A more considered reset (csswizardry.com/2011/10/reset-restarted).
+ *
+ *********************************************************************************/
+
+@if $global-border-box == true {
+  * {
+    &,
+    &:before,
+    &:after {
+      box-sizing:border-box;
+    }
+  }
+}
+
+h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,
+dl,dd,ol,ul,
+form,fieldset,legend,
+table,th,td,caption,
+hr {
+  margin:0;
+  padding:0;
+}
+
+abbr[title],dfn[title] {
+  cursor:help;
+}
+
+u, ins {
+  text-decoration:none;
+}
+
+ins {
+  border-bottom:1px solid;
+}
+
+img {
+  font-style:italic;
+}
+
+label,
+input,
+textarea,
+button,
+select,
+option {
+  cursor:pointer;
+}
+
+  textarea:active,
+  textarea:focus {
+    cursor:text;
+    outline:none;
+  }
+
+label,
+.label {
+  display:block;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,hgroup,
+ul,ol,dl,
+blockquote,p,address,
+table,
+fieldset,figure,
+pre,
+hr,
+.media {
+  @extend %push--bottom;
+}
+
+ul,ol,dd {
+  @extend %push-double--left;
+}

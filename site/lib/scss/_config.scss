@@ -1,0 +1,137 @@
+/**********************************************************************************
+ * BORDER BOX
+ *********************************************************************************/
+
+$global-border-box: true;
+
+
+
+
+
+/**********************************************************************************
+ * BASE
+ *********************************************************************************/
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+$base-font-family: sans-serif;
+
+$base-spacing-unit: $base-line-height;
+$half-spacing-unit: $base-spacing-unit / 2;
+$double-spacing-unit: $base-spacing-unit * 2;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+
+
+
+
+/**********************************************************************************
+ * FONT SIZES
+ *********************************************************************************/
+
+$giga-size: 96px;
+$mega-size: 72px;
+$kilo-size: 48px;
+
+$h1-size: 36px;
+$h2-size: 30px;
+$h3-size: 24px;
+$h4-size: 20px;
+$h5-size: 16px;
+$h6-size: 14px;
+
+
+
+
+
+/**********************************************************************************
+ * OBJECTS
+ *********************************************************************************/
+
+$use-grid: false;
+$use-flyout: false;
+$use-media: false;
+$use-nav: false;
+$use-split: false;
+$use-sprite: true;
+
+
+
+
+
+/**********************************************************************************
+ * RESPONSIVE
+ *********************************************************************************/
+
+$mobile-first: true;
+
+$S:  480px;
+$M:  768px;
+$L:  1024px;
+$XL: 1140px;
+
+$S-down:  $S - 1px;
+$M-down:  $M - 1px;
+$L-down:  $L - 1px;
+$XL-down: $XL - 1px;
+
+$breakpoints: (
+  'S-up':    '(min-width: #{$S})', // S and higher
+  'S-down':  '(max-width: #{$S-down})', // Below S
+  'S':       '(min-width: #{$S}) and (max-width: #{$M-down})', // Just S
+
+  'M-up':    '(min-width: #{$M})', // M and higher
+  'M-down':  '(max-width: #{$M-down})', // Below M
+  'M':       '(min-width: #{$M}) and (max-width: #{$L-down})', // Just M
+
+  'L-up':    '(min-width: #{$L})', // L and higher
+  'L-down':  '(max-width: #{$L-down})', // Below L
+  'L':       '(min-width: #{$L}) and (max-width: #{$XL-down})', // Just L
+
+  'XL-up':   '(min-width: #{$XL})', // XL and higher
+  'XL-down': '(max-width: #{$XL-down})' // Below XL
+);
+
+
+
+
+
+/**********************************************************************************
+ * GRID
+ **********************************************************************************
+ *
+ * Use `$custom-grid-widths` to define custom grid widths (ones not already defined
+ * in `generic/_grid-width-builder.scss`), usage:
+ *
+ * $custom-grid-widths: (
+ *   'width-class': '200px'
+ * );
+ *
+ * Use `$grid-widths-to-output` to output grid width classes (breakpoint specific
+ * classes too) in the CSS, usage:
+ *
+ * $grid-widths: (
+ *   'width-class',
+ *   'XL-up--width-class'
+ * );
+ *
+ *********************************************************************************/
+
+$grid-gutter: 24px;
+
+$custom-grid-widths: (
+);
+
+$grid-widths-to-output: (
+);
+
+
+
+
+
+/**********************************************************************************
+ * CUSTOM
+ *********************************************************************************/
+
+// $custom-variable: true

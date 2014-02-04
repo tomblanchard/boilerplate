@@ -1,0 +1,15 @@
+@if $use-split == true {
+
+  .split {
+    margin-left:0;
+    text-align:right;
+    list-style:none;
+  }
+
+    .split__title {
+      text-align:left;
+      float:left;
+      clear:left;
+    }
+
+}

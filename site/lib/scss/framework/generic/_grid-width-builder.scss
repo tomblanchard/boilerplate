@@ -1,0 +1,165 @@
+/**********************************************************************************
+ * GRID WIDTH BUILDER
+ **********************************************************************************
+ *
+ * Generate width classes (mostly used with the `grid` object).
+ *
+ *********************************************************************************/
+
+/**
+ * Define all placeholder width classes which can be prefixed with a dynamic
+ * string.
+ */
+@mixin grid-width-gen($namespace: "") {
+
+  /**
+   * Whole
+   */
+  %#{$namespace}one-whole { width:100%; }
+
+  /**
+   * Halves
+   */
+  %#{$namespace}one-half { width:50%; }
+
+  /**
+   * Thirds
+   */
+  %#{$namespace}one-third  { width:33.333%; }
+  %#{$namespace}two-thirds { width:66.666%; }
+
+  /**
+   * Quarters
+   */
+  %#{$namespace}one-quarter    { width:25%; }
+  %#{$namespace}two-quarters   { @extend %#{$namespace}one-half; }
+  %#{$namespace}three-quarters { width:75%; }
+
+  /**
+   * Fifths
+   */
+  %#{$namespace}one-fifth    { width:20%; }
+  %#{$namespace}two-fifths   { width:40%; }
+  %#{$namespace}three-fifths { width:60%; }
+  %#{$namespace}four-fifths  { width:80%; }
+
+  /**
+   * Sixths
+   */
+  %#{$namespace}one-sixth    { width:16.666%; }
+  %#{$namespace}two-sixths   { @extend %#{$namespace}one-third; }
+  %#{$namespace}three-sixths { @extend %#{$namespace}one-half; }
+  %#{$namespace}four-sixths  { @extend %#{$namespace}two-thirds; }
+  %#{$namespace}five-sixths  { width:83.333%; }
+
+  /**
+   * Sevenths
+   */
+  %#{$namespace}one-seventh    { width:14.285%; }
+  %#{$namespace}two-sevenths   { width:28.57%; }
+  %#{$namespace}three-sevenths { width:42.855%; }
+  %#{$namespace}four-sevenths  { width:57.14%; }
+  %#{$namespace}five-sevenths  { width:71.425%; }
+  %#{$namespace}six-sevenths   { width:85.71%; }
+
+  /**
+   * Eighths
+   */
+  %#{$namespace}one-eighth    { width:12.5%; }
+  %#{$namespace}two-eighths   { @extend %#{$namespace}one-quarter; }
+  %#{$namespace}three-eighths { width:37.5%; }
+  %#{$namespace}four-eighths  { @extend %#{$namespace}one-half; }
+  %#{$namespace}five-eighths  { width:62.5%; }
+  %#{$namespace}six-eighths   { @extend %#{$namespace}three-quarters; }
+  %#{$namespace}seven-eighths { width:87.5%; }
+
+  /**
+   * Ninths
+   */
+  %#{$namespace}one-ninth    { width:11.111%; }
+  %#{$namespace}two-ninths   { width:22.222%; }
+  %#{$namespace}three-ninths { @extend %#{$namespace}one-third; }
+  %#{$namespace}four-ninths  { width:44.444%; }
+  %#{$namespace}five-ninths  { width:55.555%; }
+  %#{$namespace}six-ninths   { @extend %#{$namespace}two-thirds; }
+  %#{$namespace}seven-ninths { width:77.777%; }
+  %#{$namespace}eight-ninths { width:88.888%; }
+
+  /**
+   * Tenths
+   */
+  %#{$namespace}one-tenth    { width:10%; }
+  %#{$namespace}two-tenths   { @extend %#{$namespace}one-fifth; }
+  %#{$namespace}three-tenths { width:30%; }
+  %#{$namespace}four-tenths  { @extend %#{$namespace}two-fifths; }
+  %#{$namespace}five-tenths  { @extend %#{$namespace}one-half; }
+  %#{$namespace}six-tenths   { @extend %#{$namespace}three-fifths; }
+  %#{$namespace}seven-tenths { width:70%; }
+  %#{$namespace}eight-tenths { @extend %#{$namespace}four-fifths; }
+  %#{$namespace}nine-tenths  { width:90%; }
+
+  /**
+   * Elevenths
+   */
+  %#{$namespace}one-eleventh    { width:9.090%; }
+  %#{$namespace}two-elevenths   { width:18.18%; }
+  %#{$namespace}three-elevenths { width:27.27%; }
+  %#{$namespace}four-elevenths  { width:36.36%; }
+  %#{$namespace}five-elevenths  { width:45.45%; }
+  %#{$namespace}six-elevenths   { width:54.54%; }
+  %#{$namespace}seven-elevenths { width:63.63%; }
+  %#{$namespace}eight-elevenths { width:72.72%; }
+  %#{$namespace}nine-elevenths  { width:81.81%; }
+  %#{$namespace}ten-elevenths   { width:90.9%; }
+
+  /**
+   * Twelfths
+   */
+  %#{$namespace}one-twelfth     { width:8.333%; }
+  %#{$namespace}two-twelfths    { @extend %#{$namespace}one-sixth; }
+  %#{$namespace}three-twelfths  { @extend %#{$namespace}one-quarter; }
+  %#{$namespace}four-twelfths   { @extend %#{$namespace}one-third; }
+  %#{$namespace}five-twelfths   { width:41.666% }
+  %#{$namespace}six-twelfths    { @extend %#{$namespace}one-half; }
+  %#{$namespace}seven-twelfths  { width:58.333%; }
+  %#{$namespace}eight-twelfths  { @extend %#{$namespace}two-thirds; }
+  %#{$namespace}nine-twelfths   { @extend %#{$namespace}three-quarters; }
+  %#{$namespace}ten-twelfths    { @extend %#{$namespace}five-sixths; }
+  %#{$namespace}eleven-twelfths { width:91.666%; }
+
+  /**
+   * Custom classes / widths defined in `$custom-grid-widths` (located in `_config.scss`).
+   */
+  @each $class, $size in $custom-grid-widths {
+    %#{$namespace}#{$class} { width:#{$size}; }
+  }
+
+}
+
+/**
+ * Make all regular non-prefixed placeholder width classes available to use.
+ */
+@include grid-width-gen();
+
+/**
+ * Grab each name of every breakpoint and generate all placeholder width classes
+ * again, but prefix each set of classes with their coresponding breakpoint name
+ * then wrap each set of classes in their correct media query.
+ */
+@each $name, $declaration in $breakpoints {
+  @include media-query($name, true) {
+    @include grid-width-gen('#{$name}--');
+  }
+}
+
+/**
+ * We don't want to output every width class (and the breakpoint specific ones)
+ * in the CSS because we'd never need to use them all so we only generate an actual
+ * CSS class for every placeholder class defined in the `$grid-widths-to-output`
+ * (located in `_config.scss`) list.
+ */
+@each $class in $grid-widths-to-output {
+  .#{$class} {
+    @extend %#{$class};
+  }
+}

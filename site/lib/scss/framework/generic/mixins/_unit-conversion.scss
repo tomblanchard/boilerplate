@@ -1,0 +1,55 @@
+/**********************************************************************************
+ * MIXIN: UNIT CONVERSION
+ **********************************************************************************
+ *
+ * `@function rem`: Convert `px` to `rem`.
+ *
+ * `@function em`: Convert `px` to `em` with dynamic base `font-size`.
+ *
+ * `@mixin rem`: Convert `px` to `rem` with a dynamic property with a `px`
+ * fallback.
+ *
+ * Usage:
+ *
+    .element {
+      width:rem(20px);
+      height:em(20px, 10px);
+      @include rem(margin, 20px);
+    }
+ *
+ *********************************************************************************/
+
+@function rem($size) {
+  @return #{$size/$base-font-size}rem;
+}
+
+@function em($size, $base: $base-font-size) {
+  @return ($size / $base) * 1em;
+}
+
+@mixin rem($property, $values) {
+  $font-size: $base-font-size;
+  $px-values: ();
+  $rem-values: ();
+  @each $value in $values {
+    @if $value == 0 or $value == 0px {
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      $new-rem-value: $value / $font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == "%") {
+      $px-values: join($px-values, #{$value});
+      $rem-values: join($rem-values, #{$value});
+    } @else if $value == auto {
+      $px-values: join($px-values, auto);
+      $rem-values: join($rem-values, auto);
+    } @else {
+      $px-values: join($px-values, round($value * $font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
