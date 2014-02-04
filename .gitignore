@@ -3,3 +3,5 @@
 node_modules
 _grunt.bat
 /site/*.html
+/site/lib/js/main.min.js
+/site/lib/css/*.css
