@@ -1,5 +1,5 @@
-.sass-cache
-.git
+.*
+!/.gitignore
 node_modules
 _grunt.bat
 /site/*.html
