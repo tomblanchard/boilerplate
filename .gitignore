@@ -1,5 +1,6 @@
 .*
 !/.gitignore
+!/.emptydir
 node_modules
 _grunt.bat
 /site/*.html
