@@ -5,8 +5,7 @@ This is the starting point for all of my web projects and a combination of vario
 ## Installation
 
 1. [Download](https://github.com/tomblanchard/boilerplate/archive/master.zip) or [clone](https://github.com/tomblanchard/boilerplate.git) the repo
-2. Open a shell window and `cd` to the project directory
-3. Run `npm install` to install all Grunt dependencies
+2. Execute the `grunt-dev.command` file, this installs any Grunt dependencies if it needs to then runs the default `grunt` task
 
 ## Credits
 
