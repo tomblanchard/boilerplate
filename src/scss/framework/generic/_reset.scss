@@ -70,9 +70,9 @@ fieldset,figure,
 pre,
 hr,
 .media {
-  @extend %push--bottom;
+  @include push--bottom;
 }
 
 ul,ol,dd {
-  @extend %push-double--left;
+  @include push-double--left;
 }

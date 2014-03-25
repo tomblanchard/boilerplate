@@ -7,9 +7,6 @@ module.exports = function(grunt) {
 
 
 
-    /**
-     * Start server.
-     */
     connect: {
       server: {
         options: {
@@ -27,9 +24,6 @@ module.exports = function(grunt) {
     },
 
 
-    /**
-     * Compile Sass from `src/scss` to `src/css`.
-     */
     sass: {
       dist: {
         options: {
@@ -37,7 +31,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'site/lib/scss/framework',
+          cwd: 'src/scss/framework',
           src: ['**/*.scss'],
           dest: 'site/lib/css',
           ext: '.min.css'
@@ -46,9 +40,6 @@ module.exports = function(grunt) {
     },
 
 
-    /**
-     * Autoprefix compiled CSS.
-     */
     autoprefixer: {
       options: {
         browsers: [
@@ -71,52 +62,37 @@ module.exports = function(grunt) {
     },
 
 
-    /**
-     * Uglify (minify) `src/js/main.js` to `src/js/main.min.js`.
-     */
     uglify: {
       dist: {
         files: {
-          'site/lib/js/main.min.js': 'site/lib/js/main.js'
+          'site/lib/js/main.min.js': 'src/js/main.js'
         }
       }
     },
 
 
-    /**
-     * Delete all `.html` files from `site`.
-     */
     clean: {
-      html: { src: ['site/**/*.html', '!site/lib/**/*.html'] }
+      html: { src: ['site/**/*.html'] }
     },
 
 
-    /**
-     * Compile site `.html` files (excluding includes) from `templates` to `site`.
-     */
     includes: {
       dist: {
-        cwd: 'site/lib/templates',
+        cwd: 'src/templates',
         src: ['**/*.html', '!includes/**/*'],
         dest: 'site',
         options: {
           flatten: true,
           includeRegexp: /^(\s*){% include\s+"(\S+)" %}\s*$/,
-          includePath: 'site/lib/templates/includes'
+          includePath: 'src/templates/includes'
         }
       }
     },
 
 
-    /**
-     * Runs tasks against changed watched files.
-     */
     watch: {
-      /**
-       * Watch `.html` files: delete all `.html` files from `site` then re-compile site .
-       */
       html: {
-        files: 'site/lib/templates/**/*.html',
+        files: 'src/templates/**/*.html',
         tasks: ['clean:html', 'includes:dist'],
         options: {
           spawn: false,
@@ -124,11 +100,8 @@ module.exports = function(grunt) {
         }
       },
 
-      /**
-       * Watch Sass files: re-compile them to CSS then re-autoprefix the CSS.
-       */
       sass: {
-        files: 'site/lib/scss/**/*.scss',
+        files: 'src/scss/**/*.scss',
         tasks: ['sass:dist', 'autoprefixer:dist'],
         options: {
           spawn: false,
@@ -136,11 +109,8 @@ module.exports = function(grunt) {
         }
       },
 
-      /**
-       * Watch JavaScript files: re-uglify them.
-       */
       uglify: {
-        files: 'site/lib/js/main.js',
+        files: 'src/js/main.js',
         tasks: ['uglify'],
         options: {
           spawn: false,
