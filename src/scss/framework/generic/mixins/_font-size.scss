@@ -1,17 +1,17 @@
-/**********************************************************************************
- * MIXIN: FONT SIZE
- **********************************************************************************
- *
- * Create a fully formed type style (sizing and vertical rhythm) by passing in a
- * single value.
- *
- * Usage:
- *
-    .element {
-      @include font-size(10px);
-    }
- *
- *********************************************************************************/
+/***********************************************************************************
+  MIXIN: FONT SIZE
+ ***********************************************************************************
+
+  Create a fully formed type style (sizing and vertical rhythm) by passing in a
+  single value.
+
+  Usage:
+
+  .element {
+    @include font-size(10px);
+  }
+
+ **********************************************************************************/
 
 @mixin font-size($font-size, $line-height: true){
   font-size:$font-size;

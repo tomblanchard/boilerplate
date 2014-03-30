@@ -1,23 +1,23 @@
-/**********************************************************************************
- * MIXIN: UNIT CONVERSION
- **********************************************************************************
- *
- * `@function rem`: Convert `px` to `rem`.
- *
- * `@function em`: Convert `px` to `em` with dynamic base `font-size`.
- *
- * `@mixin rem`: Convert `px` to `rem` with a dynamic property with a `px`
- * fallback.
- *
- * Usage:
- *
-    .element {
-      width:rem(20px);
-      height:em(20px, 10px);
-      @include rem(margin, 20px);
-    }
- *
- *********************************************************************************/
+/***********************************************************************************
+  MIXIN: UNIT CONVERSION
+ ***********************************************************************************
+
+  `@function rem`: Convert `px` to `rem`.
+
+  `@function em`: Convert `px` to `em` with dynamic base `font-size`.
+
+  `@mixin rem`: Convert `px` to `rem` with a dynamic property with a `px`
+  fallback.
+
+  Usage:
+
+  .element {
+    width:rem(20px);
+    height:em(20px, 10px);
+    @include rem(margin, 20px);
+  }
+
+ **********************************************************************************/
 
 @function rem($size) {
   @return #{$size/$base-font-size}rem;

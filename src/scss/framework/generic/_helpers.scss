@@ -1,24 +1,24 @@
-/**********************************************************************************
- * HELPERS
- **********************************************************************************
- *
- * Helpers which can be used via a normal HTML class, Sass silent class, and / or
- * mixin (enable use inside of media queries), usage:
- *
-    <div class="helper"></div>
+/***********************************************************************************
+  HELPERS
+ ***********************************************************************************
 
-    .element {
-      @extend %helper;
+  Helpers which can be used via a normal HTML class, Sass silent class, and / or
+  mixin (enable use inside of media queries), usage:
 
-      @media (max-width:500px) {
-        @include helper;
-      }
+  <div class="helper"></div>
+
+  .element {
+    @extend %helper;
+
+    @media (max-width:500px) {
+      @include helper;
     }
- *
- *********************************************************************************/
+  }
+
+ **********************************************************************************/
 
 /**
- * Accessibile alternative to `display:none`.
+  Accessibile alternative to `display:none`.
  */
 @mixin accessibility {
   border:0 !important;
@@ -33,7 +33,7 @@
 .accessibility, %accessibility { @include accessibility; }
 
 /**
- * Clearfix.
+  Clearfix.
  */
 @mixin cf {
   &:after {
@@ -45,7 +45,7 @@
 .cf, %cf { @include cf; }
 
 /**
- * Image replacement.
+  Image replacement.
  */
 @mixin ir {
   text-indent:100%;
@@ -55,7 +55,7 @@
 .ir, %ir { @include ir; }
 
 /**
- * Add / remove margins.
+  Add / remove margin.
  */
 @mixin flush         { margin:       0; } .flush, %flush { @include flush; }
 @mixin flush--top    { margin-top:   0; } .flush--top, %flush--top { @include flush--top; }
@@ -91,7 +91,7 @@
 
 
 /**
- * Add / remove paddings.
+  Add / remove padding.
  */
 @mixin hard         { padding:       0; } .hard, %hard { @include hard; }
 @mixin hard--top    { padding-top:   0; } .hard--top, %hard--top { @include hard--top; }

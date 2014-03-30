@@ -1,42 +1,42 @@
-/**********************************************************************************
- * GRID WIDTH BUILDER
- **********************************************************************************
- *
- * Generate width classes (mostly used with the `grid` object).
- *
- *********************************************************************************/
+/***********************************************************************************
+  GRID WIDTH BUILDER
+ ***********************************************************************************
+
+  Generate width classes (mostly used with the `grid` object).
+
+ **********************************************************************************/
 
 /**
- * Define all placeholder width classes which can be prefixed with a dynamic
- * string.
+  Define all placeholder width classes which can be prefixed with a dynamic
+  string.
  */
 @mixin grid-width-gen($namespace: "") {
 
   /**
-   * Whole
+    Whole
    */
   %#{$namespace}one-whole { width:100%; }
 
   /**
-   * Halves
+    Halves
    */
   %#{$namespace}one-half { width:50%; }
 
   /**
-   * Thirds
+    Thirds
    */
   %#{$namespace}one-third  { width:33.333%; }
   %#{$namespace}two-thirds { width:66.666%; }
 
   /**
-   * Quarters
+    Quarters
    */
   %#{$namespace}one-quarter    { width:25%; }
   %#{$namespace}two-quarters   { @extend %#{$namespace}one-half; }
   %#{$namespace}three-quarters { width:75%; }
 
   /**
-   * Fifths
+    Fifths
    */
   %#{$namespace}one-fifth    { width:20%; }
   %#{$namespace}two-fifths   { width:40%; }
@@ -44,7 +44,7 @@
   %#{$namespace}four-fifths  { width:80%; }
 
   /**
-   * Sixths
+    Sixths
    */
   %#{$namespace}one-sixth    { width:16.666%; }
   %#{$namespace}two-sixths   { @extend %#{$namespace}one-third; }
@@ -53,7 +53,7 @@
   %#{$namespace}five-sixths  { width:83.333%; }
 
   /**
-   * Sevenths
+    Sevenths
    */
   %#{$namespace}one-seventh    { width:14.285%; }
   %#{$namespace}two-sevenths   { width:28.57%; }
@@ -63,7 +63,7 @@
   %#{$namespace}six-sevenths   { width:85.71%; }
 
   /**
-   * Eighths
+    Eighths
    */
   %#{$namespace}one-eighth    { width:12.5%; }
   %#{$namespace}two-eighths   { @extend %#{$namespace}one-quarter; }
@@ -74,7 +74,7 @@
   %#{$namespace}seven-eighths { width:87.5%; }
 
   /**
-   * Ninths
+    Ninths
    */
   %#{$namespace}one-ninth    { width:11.111%; }
   %#{$namespace}two-ninths   { width:22.222%; }
@@ -86,7 +86,7 @@
   %#{$namespace}eight-ninths { width:88.888%; }
 
   /**
-   * Tenths
+    Tenths
    */
   %#{$namespace}one-tenth    { width:10%; }
   %#{$namespace}two-tenths   { @extend %#{$namespace}one-fifth; }
@@ -99,7 +99,7 @@
   %#{$namespace}nine-tenths  { width:90%; }
 
   /**
-   * Elevenths
+    Elevenths
    */
   %#{$namespace}one-eleventh    { width:9.090%; }
   %#{$namespace}two-elevenths   { width:18.18%; }
@@ -113,7 +113,7 @@
   %#{$namespace}ten-elevenths   { width:90.9%; }
 
   /**
-   * Twelfths
+    Twelfths
    */
   %#{$namespace}one-twelfth     { width:8.333%; }
   %#{$namespace}two-twelfths    { @extend %#{$namespace}one-sixth; }
@@ -128,7 +128,7 @@
   %#{$namespace}eleven-twelfths { width:91.666%; }
 
   /**
-   * Custom classes / widths defined in `$custom-grid-widths` (located in `_config.scss`).
+    Custom classes / widths defined in `$custom-grid-widths` (located in `_config.scss`).
    */
   @each $class, $size in $custom-grid-widths {
     %#{$namespace}#{$class} { width:#{$size}; }
@@ -137,14 +137,14 @@
 }
 
 /**
- * Make all regular non-prefixed placeholder width classes available to use.
+  Make all regular non-prefixed placeholder width classes available to use.
  */
 @include grid-width-gen();
 
 /**
- * Grab each name of every breakpoint and generate all placeholder width classes
- * again, but prefix each set of classes with their coresponding breakpoint name
- * then wrap each set of classes in their correct media query.
+  Grab each name of every breakpoint and generate all placeholder width classes
+  again, but prefix each set of classes with their coresponding breakpoint name
+  then wrap each set of classes in their correct media query.
  */
 @each $name, $declaration in $breakpoints {
   @include media-query($name, true) {
@@ -153,10 +153,10 @@
 }
 
 /**
- * We don't want to output every width class (and the breakpoint specific ones)
- * in the CSS because we'd never need to use them all so we only generate an actual
- * CSS class for every placeholder class defined in the `$grid-widths-to-output`
- * (located in `_config.scss`) list.
+  We don't want to output every width class (and the breakpoint specific ones)
+  in the CSS because we'd never need to use them all so we only generate an actual
+  CSS class for every placeholder class defined in the `$grid-widths-to-output`
+  (located in `_config.scss`) list.
  */
 @each $class in $grid-widths-to-output {
   .#{$class} {
