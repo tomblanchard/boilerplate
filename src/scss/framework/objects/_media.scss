@@ -1,32 +1,42 @@
-@if $use-media == true {
+@mixin media {
+  @include cf;
+  display:block;
+}
 
-  .media {
-    @include cf;
-    display:block;
+  @mixin media__fig {
+    @include push--right;
+    float:left;
+
+    img {
+      display:block;
+    }
   }
 
-    .media__fig {
-      @include push--right;
-      float:left;
+  @mixin media__body {
+    overflow:hidden;
+
+    &,
+    > :last-child {
+      @include flush--bottom;
     }
+  }
 
-    .media__fig--rev {
-      @include push--left;
-      float:right;
-    }
+@mixin media--rev {
+  > .media__fig {
+    @include push--left;
+    @include flush--right;
+    float:right;
+  }
+}
 
-      .media__fig img,
-      .media__fig--rev img {
-        display:block;
-      }
+@if $use-media == true {
 
-    .media__body {
-      overflow:hidden;
-    }
+  .media { @include media; }
 
-      .media__body,
-      .media__body > :last-child {
-        @include flush--bottom;
-      }
+    .media__fig { @include media__fig; }
+
+    .media__body { @include media__body; }
+
+  .media--rev { @include media--rev; }
 
 }

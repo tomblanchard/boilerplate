@@ -1,81 +1,110 @@
+@mixin grid {
+  list-style:none;
+  margin:0;
+  padding:0;
+  margin-left:-$grid-gutter;
+  margin-bottom:-$grid-gutter;
+}
+
+  @mixin grid__item {
+    display:inline-block;
+    padding-left:$grid-gutter;
+    padding-bottom:$grid-gutter;
+    vertical-align:top;
+
+    @if $mobile-first == true {
+      width:100%;
+    }
+  }
+
+@mixin grid--rev {
+  direction:rtl;
+  text-align:left;
+
+  > .grid__item {
+    direction:ltr;
+    text-align:left;
+  }
+}
+
+@mixin grid--full {
+  margin-left:0;
+  margin-bottom:0;
+
+  > .grid__item {
+    padding-left:0;
+    padding-bottom:0;
+  }
+}
+
+@mixin grid--narrow {
+  margin-left:-($grid-gutter / 2);
+  margin-bottom:-($grid-gutter / 2);
+
+  > .grid__item {
+    padding-left:($grid-gutter / 2);
+    padding-bottom:($grid-gutter / 2);
+  }
+}
+
+@mixin grid--wide {
+  margin-left:-($grid-gutter * 2);
+  margin-bottom:-($grid-gutter * 2);
+
+  > .grid__item {
+    padding-left:($grid-gutter * 2);
+    padding-bottom:($grid-gutter * 2);
+  }
+}
+
+@mixin grid--right {
+  text-align:right;
+
+  > .grid__item {
+    text-align:left;
+  }
+}
+
+@mixin grid--center {
+  text-align:center;
+
+  > .grid__item {
+    text-align:left;
+  }
+}
+
+@mixin grid--middle {
+  > .grid__item {
+    vertical-align:middle;
+  }
+}
+
+@mixin grid--bottom {
+  > .grid__item {
+    vertical-align:bottom;
+  }
+}
+
 @if $use-grid == true {
 
-  .grid {
-    list-style:none;
-    margin:0;
-    padding:0;
-    margin-left:-$grid-gutter;
-  }
+  .grid { @include grid; }
 
-    .grid__item {
-      display:inline-block;
-      padding-left:$grid-gutter;
-      vertical-align:top;
-      @if $mobile-first == true {
-        width:100%;
-      }
-    }
+    .grid__item { @include grid__item; }
 
-  .grid--rev {
-    direction:rtl;
-    text-align:left;
+  .grid--rev { @include grid--rev; }
 
-    > .grid__item {
-      direction:ltr;
-      text-align:left;
-    }
-  }
+  .grid--full { @include grid--full; }
 
-  .grid--full {
-    margin-left:0;
+  .grid--narrow { @include grid--narrow; }
 
-    > .grid__item {
-      padding-left:0;
-    }
-  }
+  .grid--wide { @include grid--wide; }
 
-  .grid--right {
-    text-align:right;
+  .grid--right { @include grid--right; }
 
-    > .grid__item {
-      text-align:left;
-    }
-  }
+  .grid--center { @include grid--center; }
 
-  .grid--center {
-    text-align:center;
+  .grid--middle { @include grid--middle; }
 
-    > .grid__item {
-      text-align:left;
-    }
-  }
-
-  .grid--middle {
-    > .grid__item {
-      vertical-align:middle;
-    }
-  }
-
-  .grid--bottom {
-    > .grid__item {
-      vertical-align:bottom;
-    }
-  }
-
-  .grid--narrow {
-    margin-left:-($grid-gutter / 2);
-
-    > .grid__item {
-      padding-left:$grid-gutter / 2;
-    }
-  }
-
-  .grid--wide {
-    margin-left:-($grid-gutter * 2);
-
-    > .grid__item {
-      padding-left:$grid-gutter * 2;
-    }
-  }
+  .grid--bottom { @include grid--bottom; }
 
 }

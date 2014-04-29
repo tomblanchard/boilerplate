@@ -1,32 +1,32 @@
+@mixin nav {
+  margin-left:0;
+  margin-bottom:0;
+  list-style:none;
+
+  > li {
+    &,
+    > a {
+      display:inline-block;
+       *display:inline;
+      zoom:1;
+    }
+  }
+}
+
+@mixin nav--stacked {
+  > li {
+    display:list-item;
+
+    > a {
+      display:block;
+    }
+  }
+}
+
 @if $use-nav == true  {
 
-  .nav {
-    margin-left:0;
-    margin-bottom:0;
-    list-style:none;
+  .nav { @include nav; }
 
-    > li {
-      &,
-      > a {
-        display:inline-block;
-         *display:inline;
-        zoom:1;
-      }
-    }
-  }
-
-  .nav--stacked {
-    > li {
-      display:list-item;
-
-      > a {
-        display:block;
-      }
-    }
-  }
-
-  .nav--banner {
-    text-align:center;
-  }
+  .nav--stacked { @include nav--stacked; }
 
 }
