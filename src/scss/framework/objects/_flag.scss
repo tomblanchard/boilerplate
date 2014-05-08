@@ -1,0 +1,66 @@
+
+@mixin flag {
+  display:table;
+  width:100%;
+}
+
+  @mixin flag__fig {
+    display:table-cell;
+    vertical-align:middle;
+    padding-right:$base-spacing-unit;;
+
+    > img {
+      display:block;
+      max-width:none;
+    }
+  }
+
+  @mixin flag__body {
+    display:table-cell;
+    vertical-align:middle;
+    width:100%;
+  }
+
+@mixin flag--rev($prefix: '') {
+  direction:rtl;
+
+  > .#{$prefix}flag__fig,
+  > .#{$prefix}flag__body {
+    direction:ltr;
+  }
+
+  > .#{$prefix}flag__fig {
+    padding-right:0;
+    padding-left:$base-spacing-unit;;
+  }
+}
+
+@mixin flag--top($prefix: '') {
+  .#{$prefix}flag__fig,
+  .#{$prefix}flag__body {
+    vertical-align:top;
+  }
+}
+
+@mixin flag--bottom($prefix: '') {
+  .#{$prefix}flag__fig,
+  .#{$prefix}flag__body {
+    vertical-align:bottom;
+  }
+}
+
+@if $use-flag == true {
+
+  .flag { @include flag; }
+
+    .flag__fig { @include flag__fig; }
+
+    .flag__body { @include flag__body; }
+
+  .flag--rev { @include flag--rev; }
+
+  .flag--top { @include flag--top; }
+
+  .flag--bottom { @include flag--bottom; }
+
+}
