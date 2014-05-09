@@ -20,30 +20,30 @@
     width:100%;
   }
 
-@mixin flag--rev($prefix: '') {
+@mixin flag--rev($flag__fig: flag__fig, $flag__body: flag__body) {
   direction:rtl;
 
-  > .#{$prefix}flag__fig,
-  > .#{$prefix}flag__body {
+  > .#{$flag__fig},
+  > .#{$flag__body} {
     direction:ltr;
   }
 
-  > .#{$prefix}flag__fig {
+  > .#{$flag__fig} {
     padding-right:0;
     padding-left:$base-spacing-unit;;
   }
 }
 
-@mixin flag--top($prefix: '') {
-  .#{$prefix}flag__fig,
-  .#{$prefix}flag__body {
+@mixin flag--top($flag__fig: flag__fig, $flag__body: flag__body) {
+  .#{$flag__fig},
+  .#{$flag__body} {
     vertical-align:top;
   }
 }
 
-@mixin flag--bottom($prefix: '') {
-  .#{$prefix}flag__fig,
-  .#{$prefix}flag__body {
+@mixin flag--bottom($flag__fig: flag__fig, $flag__body: flag__body) {
+  .#{$flag__fig},
+  .#{$flag__body} {
     vertical-align:bottom;
   }
 }

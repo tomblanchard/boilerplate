@@ -21,8 +21,8 @@
     }
   }
 
-@mixin media--rev($prefix: '') {
-  > .#{$prefix}media__fig {
+@mixin media--rev($media__fig: media__fig) {
+  > .#{$media__fig} {
     @include push--left;
     @include flush--right;
     float:right;

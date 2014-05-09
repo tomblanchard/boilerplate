@@ -1,11 +1,11 @@
-@mixin flyout($prefix: '') {
+@mixin flyout($flyout__content: flyout__content) {
   position:relative;
   overflow:hidden;
 
   &:hover {
     overflow:visible;
 
-    > .#{$prefix}flyout__content {
+    > .#{$flyout__content} {
       left:0;
     }
   }
@@ -17,9 +17,9 @@
     left:-99999px;
   }
 
-@mixin flyout--alt($prefix: '') {
+@mixin flyout--alt($flyout__content: flyout__content) {
   &:hover {
-    .#{$prefix}flyout__content {
+    .#{$flyout__content} {
       top:0;
       left:100%;
     }
