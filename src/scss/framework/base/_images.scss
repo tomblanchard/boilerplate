@@ -11,18 +11,21 @@ img[height] {
   max-width:none;
 }
 
+.img--right,
+.img--left,
+.img--center {
+  margin-bottom:$base-spacing-unit;
+}
+
 .img--right {
-  @include push--left;
-  @include push--bottom;
+  margin-left:$base-spacing-unit;
   float:right;
 }
 .img--left {
-  @include push--right;
-  @include push--bottom;
+  margin-right:$base-spacing-unit;
   float:left;
 }
 .img--center {
-  @include push--bottom;
   display:block;
   margin-right:auto;
   margin-left:auto;

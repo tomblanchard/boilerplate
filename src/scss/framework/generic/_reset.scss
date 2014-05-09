@@ -68,11 +68,10 @@ blockquote,p,address,
 table,
 fieldset,figure,
 pre,
-hr,
-.media {
-  @include push--bottom;
+hr {
+  margin-bottom:$base-spacing-unit;
 }
 
 ul,ol,dd {
-  @include push-double--left;
+  margin-left:($base-spacing-unit * 2);
 }

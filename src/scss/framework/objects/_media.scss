@@ -1,10 +1,15 @@
 @mixin media {
-  @include cf;
   display:block;
+
+  &:after {
+    content:'';
+    display:table;
+    clear:both;
+  }
 }
 
   @mixin media__fig {
-    @include push--right;
+    margin-right:$base-spacing-unit;
     float:left;
 
     img {
@@ -17,14 +22,14 @@
 
     &,
     > :last-child {
-      @include flush--bottom;
+      margin-bottom:0;
     }
   }
 
 @mixin media--rev($media__fig: media__fig) {
   > .#{$media__fig} {
-    @include push--left;
-    @include flush--right;
+    margin-right:0;
+    margin-left:$base-spacing-unit;
     float:right;
   }
 }
