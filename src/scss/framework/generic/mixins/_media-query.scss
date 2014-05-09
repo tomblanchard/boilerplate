@@ -4,7 +4,7 @@
 
   Output media query with dynamic content and query declaration, the declarations
   which can be used are defined in `$breakpoints` (located in `_config.scss`).
-  This also comes with optional support for IE8 and below, set `$old-ie-support`
+  This also comes with optional support for IE8 and below, set `$lt-ie-9-support`
   as `true` and it will output the CSS content inside the media query in the
   `lt-ie-9.min.css` file stripping the media query wrapped around it.
 
@@ -18,8 +18,8 @@
 
  **********************************************************************************/
 
-@mixin media-query($media-query, $old-ie-support: false) {
-  @if $old-ie == false {
+@mixin media-query($media-query, $lt-ie-9-support: false) {
+  @if $is-lt-ie-9-stylesheet == false {
     @each $name, $declaration in $breakpoints {
       @if $media-query == $name and $declaration {
         @media only screen and #{$declaration} {
@@ -28,7 +28,7 @@
       }
     }
   }
-  @if $old-ie-support == true and $old-ie == true {
+  @if $lt-ie-9-support == true and $is-lt-ie-9-stylesheet == true {
     @content;
   }
 }
