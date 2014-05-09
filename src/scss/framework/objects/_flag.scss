@@ -48,7 +48,7 @@
   }
 }
 
-@if $use-flag == true {
+@if map-get( $objects, flag ) == true {
 
   .flag { @include flag; }
 

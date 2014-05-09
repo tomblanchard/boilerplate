@@ -23,7 +23,7 @@
   }
 }
 
-@if $use-nav == true  {
+@if map-get( $objects, nav ) == true {
 
   .nav { @include nav; }
 

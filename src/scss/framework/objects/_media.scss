@@ -34,7 +34,7 @@
   }
 }
 
-@if $use-media == true {
+@if map-get( $objects, media ) == true {
 
   .media { @include media; }
 

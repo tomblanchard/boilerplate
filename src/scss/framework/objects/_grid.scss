@@ -85,7 +85,7 @@
   }
 }
 
-@if $use-grid == true {
+@if map-get( $objects, grid ) == true {
 
   .grid { @include grid; }
 

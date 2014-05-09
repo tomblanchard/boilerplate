@@ -9,7 +9,7 @@
   height:16px;
 }
 
-@if $use-sprite == true {
+@if map-get( $objects, sprite ) == true {
 
   .sprite { @include sprite; }
 

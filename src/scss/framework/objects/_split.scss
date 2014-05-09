@@ -10,7 +10,7 @@
     clear:left;
   }
 
-@if $use-split == true {
+@if map-get( $objects, split ) == true {
 
   .split { @include split; }
 

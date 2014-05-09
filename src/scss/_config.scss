@@ -47,14 +47,16 @@ $h6-size: 14px;
   OBJECTS
  **********************************************************************************/
 
-$use-grid: false;
-$use-flyout: false;
-$use-media: false;
-$use-flag: false;
-$use-nav: false;
-$use-bare-list: false;
-$use-split: false;
-$use-sprite: false;
+$objects: (
+  grid: false,
+  flyout: false,
+  media: false,
+  flag: false,
+  nav: false,
+  bare-list: false,
+  split: false,
+  sprite: false
+);
 
 
 
@@ -66,31 +68,31 @@ $use-sprite: false;
 
 $mobile-first: true;
 
-$S:  480px;
-$M:  768px;
-$L:  1024px;
-$XL: 1140px;
+$breakpoint--S:  480px;
+$breakpoint--M:  768px;
+$breakpoint--L:  1024px;
+$breakpoint--XL: 1140px;
 
-$S-down:  $S - 1px;
-$M-down:  $M - 1px;
-$L-down:  $L - 1px;
-$XL-down: $XL - 1px;
+$breakpoint--S-down:  $breakpoint--S - 1px;
+$breakpoint--M-down:  $breakpoint--M - 1px;
+$breakpoint--L-down:  $breakpoint--L - 1px;
+$breakpoint--XL-down: $breakpoint--XL - 1px;
 
 $breakpoints: (
-  'S-up':    '(min-width: #{$S})', // S and higher
-  'S-down':  '(max-width: #{$S-down})', // Below S
-  'S':       '(min-width: #{$S}) and (max-width: #{$M-down})', // Just S
+  'S-up':    '(min-width: #{$breakpoint--S})', // S and higher
+  'S-down':  '(max-width: #{$breakpoint--S-down})', // Below S
+  'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M-down})', // Just S
 
-  'M-up':    '(min-width: #{$M})', // M and higher
-  'M-down':  '(max-width: #{$M-down})', // Below M
-  'M':       '(min-width: #{$M}) and (max-width: #{$L-down})', // Just M
+  'M-up':    '(min-width: #{$breakpoint--M})', // M and higher
+  'M-down':  '(max-width: #{$breakpoint--M-down})', // Below M
+  'M':       '(min-width: #{$breakpoint--M}) and (max-width: #{$breakpoint--L-down})', // Just M
 
-  'L-up':    '(min-width: #{$L})', // L and higher
-  'L-down':  '(max-width: #{$L-down})', // Below L
-  'L':       '(min-width: #{$L}) and (max-width: #{$XL-down})', // Just L
+  'L-up':    '(min-width: #{$breakpoint--L})', // L and higher
+  'L-down':  '(max-width: #{$breakpoint--L-down})', // Below L
+  'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL-down})', // Just L
 
-  'XL-up':   '(min-width: #{$XL})', // XL and higher
-  'XL-down': '(max-width: #{$XL-down})' // Below XL
+  'XL-up':   '(min-width: #{$breakpoint--XL})', // XL and higher
+  'XL-down': '(max-width: #{$breakpoint--XL-down})' // Below XL
 );
 
 
