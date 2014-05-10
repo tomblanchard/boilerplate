@@ -1,0 +1,14 @@
+@function multi-map-get($map, $keys) {
+  $key: nth($keys, 1);
+  $length: length($keys);
+  $value: map-get($map, $key);
+  @if ($length > 1 and $value) {
+    $rest: ();
+    @for $i from 2 through $length {
+      $rest: append($rest, nth($keys, $i))
+    }
+    @return multi-map-get($value, $rest)
+  } @else {
+    @return $value;
+  }
+}

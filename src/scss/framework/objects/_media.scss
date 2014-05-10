@@ -26,6 +26,38 @@
     }
   }
 
+@mixin media--small($media__fig: media__fig, $media--rev: media--rev) {
+  > .#{$media__fig} {
+    margin-right:$base-spacing-unit / 2;
+  }
+
+  @if multi-map-get( $objects, media rev ) == true or $media--rev {
+    &.#{$media--rev} {
+
+      > .#{$media__fig} {
+        margin-right:0;
+        margin-left:$base-spacing-unit / 2;
+      }
+    }
+  }
+}
+
+@mixin media--large($media__fig: media__fig, $media--rev: media--rev) {
+  > .#{$media__fig} {
+    margin-right:$base-spacing-unit * 2;
+  }
+
+  @if multi-map-get( $objects, media rev ) == true or $media--rev {
+    &.#{$media--rev} {
+
+      > .#{$media__fig} {
+        margin-right:0;
+        margin-left:$base-spacing-unit * 2;
+      }
+    }
+  }
+}
+
 @mixin media--rev($media__fig: media__fig) {
   > .#{$media__fig} {
     margin-right:0;
@@ -34,7 +66,14 @@
   }
 }
 
-@if map-get( $objects, media ) == true {
+@mixin media--flush($media__fig: media__fig) {
+  > .#{$media__fig} {
+    margin-right:0;
+    margin-left:0;
+  }
+}
+
+@if multi-map-get( $objects, media regular ) == true {
 
   .media { @include media; }
 
@@ -42,6 +81,28 @@
 
     .media__body { @include media__body; }
 
+}
+
+@if multi-map-get( $objects, media small ) == true {
+
+  .media--small { @include media--small; }
+
+}
+
+@if multi-map-get( $objects, media large ) == true {
+
+  .media--large { @include media--large; }
+
+}
+
+@if multi-map-get( $objects, media rev ) == true {
+
   .media--rev { @include media--rev; }
+
+}
+
+@if multi-map-get( $objects, media flush ) == true {
+
+  .media--flush { @include media--flush; }
 
 }

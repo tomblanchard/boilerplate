@@ -7,7 +7,7 @@
     &,
     > a {
       display:inline-block;
-       *display:inline;
+      *display:inline;
       zoom:1;
     }
   }
@@ -23,9 +23,13 @@
   }
 }
 
-@if map-get( $objects, nav ) == true {
+@if multi-map-get( $objects, nav regular ) == true {
 
   .nav { @include nav; }
+
+}
+
+@if multi-map-get( $objects, nav stacked ) == true {
 
   .nav--stacked { @include nav--stacked; }
 

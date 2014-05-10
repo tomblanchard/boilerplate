@@ -11,11 +11,28 @@
     padding-left:$grid-gutter;
     padding-bottom:$grid-gutter;
     vertical-align:top;
-
-    @if $mobile-first == true {
-      width:100%;
-    }
+    width:100%;
   }
+
+@mixin grid--small($grid__item: grid__item) {
+  margin-left:-($grid-gutter / 2);
+  margin-bottom:-($grid-gutter / 2);
+
+  > .#{$grid__item} {
+    padding-left:($grid-gutter / 2);
+    padding-bottom:($grid-gutter / 2);
+  }
+}
+
+@mixin grid--large($grid__item: grid__item) {
+  margin-left:-($grid-gutter * 2);
+  margin-bottom:-($grid-gutter * 2);
+
+  > .#{$grid__item} {
+    padding-left:($grid-gutter * 2);
+    padding-bottom:($grid-gutter * 2);
+  }
+}
 
 @mixin grid--rev($grid__item: grid__item) {
   direction:rtl;
@@ -27,7 +44,7 @@
   }
 }
 
-@mixin grid--full($grid__item: grid__item) {
+@mixin grid--flush($grid__item: grid__item) {
   margin-left:0;
   margin-bottom:0;
 
@@ -37,23 +54,15 @@
   }
 }
 
-@mixin grid--narrow($grid__item: grid__item) {
-  margin-left:-($grid-gutter / 2);
-  margin-bottom:-($grid-gutter / 2);
-
+@mixin grid--middle($grid__item: grid__item) {
   > .#{$grid__item} {
-    padding-left:($grid-gutter / 2);
-    padding-bottom:($grid-gutter / 2);
+    vertical-align:middle;
   }
 }
 
-@mixin grid--wide($grid__item: grid__item) {
-  margin-left:-($grid-gutter * 2);
-  margin-bottom:-($grid-gutter * 2);
-
+@mixin grid--bottom($grid__item: grid__item) {
   > .#{$grid__item} {
-    padding-left:($grid-gutter * 2);
-    padding-bottom:($grid-gutter * 2);
+    vertical-align:bottom;
   }
 }
 
@@ -73,38 +82,58 @@
   }
 }
 
-@mixin grid--middle($grid__item: grid__item) {
-  > .#{$grid__item} {
-    vertical-align:middle;
-  }
-}
-
-@mixin grid--bottom($grid__item: grid__item) {
-  > .#{$grid__item} {
-    vertical-align:bottom;
-  }
-}
-
-@if map-get( $objects, grid ) == true {
+@if multi-map-get( $objects, grid regular ) == true {
 
   .grid { @include grid; }
 
     .grid__item { @include grid__item; }
 
+}
+
+@if multi-map-get( $objects, grid small ) == true {
+
+  .grid--small { @include grid--small; }
+
+}
+
+@if multi-map-get( $objects, grid large ) == true {
+
+  .grid--large { @include grid--large; }
+
+}
+
+@if multi-map-get( $objects, grid rev ) == true {
+
   .grid--rev { @include grid--rev; }
 
-  .grid--full { @include grid--full; }
+}
 
-  .grid--narrow { @include grid--narrow; }
+@if multi-map-get( $objects, grid flush ) == true {
 
-  .grid--wide { @include grid--wide; }
+  .grid--flush { @include grid--flush; }
 
-  .grid--right { @include grid--right; }
+}
 
-  .grid--center { @include grid--center; }
+@if multi-map-get( $objects, grid middle ) == true {
 
   .grid--middle { @include grid--middle; }
 
+}
+
+@if multi-map-get( $objects, grid bottom ) == true {
+
   .grid--bottom { @include grid--bottom; }
+
+}
+
+@if multi-map-get( $objects, grid right ) == true {
+
+  .grid--right { @include grid--right; }
+
+}
+
+@if multi-map-get( $objects, grid center ) == true {
+
+  .grid--center { @include grid--center; }
 
 }

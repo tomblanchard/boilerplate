@@ -45,16 +45,57 @@ $h6-size: 14px;
 
 /***********************************************************************************
   OBJECTS
+ ***********************************************************************************
+
+  Select which objects and object variations to enable.
+
  **********************************************************************************/
 
 $objects: (
-  grid: false,
-  flyout: false,
-  media: false,
-  flag: false,
-  nav: false,
+  grid: (
+    regular: false,
+    small:   false,
+    large:   false,
+    rev:     false,
+    flush:   false,
+    middle:  false,
+    bottom:  false,
+    right:   false,
+    center:  false
+  ),
+
+  flyout: (
+    regular: false,
+    alt:     false
+  ),
+
+  media: (
+    regular: false,
+    small:   false,
+    large:   false,
+    rev:     false,
+    flush:   false
+  ),
+
+  flag: (
+    regular: false,
+    small:   false,
+    large:   false,
+    rev:     false,
+    flush:   false,
+    top:     false,
+    bottom:  false
+  ),
+
+  nav: (
+    regular: false,
+    stacked: false
+  ),
+
   bare-list: false,
+
   split: false,
+
   sprite: false
 );
 
@@ -65,8 +106,6 @@ $objects: (
 /***********************************************************************************
   RESPONSIVE
  **********************************************************************************/
-
-$mobile-first: true;
 
 $breakpoint--S:  480px;
 $breakpoint--M:  768px;
@@ -141,27 +180,35 @@ $grid-widths-to-output: (
  **********************************************************************************/
 
 $spacing: (
-  margins:                 false,
-  margins--tiny:           false,
-  margins--small:          false,
-  margins--large:          false,
-  margins--huge:           false,
+  margins: (
+    positive: (
+      regular: false,
+      tiny:    false,
+      small:   false,
+      large:   false,
+      huge:    false
+    ),
 
-  margins--negative:       false,
-  margins--negative-tiny:  false,
-  margins--negative-small: false,
-  margins--negative-large: false,
-  margins--negative-huge:  false,
+    negative: (
+      regular: false,
+      tiny:    false,
+      small:   false,
+      large:   false,
+      huge:    false
+    ),
 
-  margins--none:           false,
+    none: false
+  ),
 
-  paddings:                false,
-  paddings--tiny:          false,
-  paddings--small:         false,
-  paddings--large:         false,
-  paddings--huge:          false,
+  paddings: (
+    regular: false,
+    tiny:    false,
+    small:   false,
+    large:   false,
+    huge:    false,
 
-  paddings--none:          false
+    none:    false
+  )
 );
 
 

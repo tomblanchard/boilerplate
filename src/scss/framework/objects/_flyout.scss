@@ -26,11 +26,15 @@
   }
 }
 
-@if map-get( $objects, flyout ) == true {
+@if multi-map-get( $objects, flyout regular ) == true {
 
   .flyout { @include flyout; }
 
     .flyout__content { @include flyout__content; }
+
+}
+
+@if multi-map-get( $objects, flyout alt ) == true {
 
   .flyout--alt { @include flyout--alt; }
 

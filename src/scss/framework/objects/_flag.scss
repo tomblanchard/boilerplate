@@ -6,7 +6,7 @@
   @mixin flag__fig {
     display:table-cell;
     vertical-align:middle;
-    padding-right:$base-spacing-unit;;
+    padding-right:$base-spacing-unit;
 
     > img {
       display:block;
@@ -20,6 +20,36 @@
     width:100%;
   }
 
+@mixin flag--small($flag__fig: flag__fig, $flag--rev: flag--rev) {
+  > .#{$flag__fig} {
+    padding-right:$base-spacing-unit / 2;
+  }
+
+  @if multi-map-get( $objects, flag rev ) == true or $flag--rev {
+    &.#{$flag__rev} {
+      > .#{$flag__fig} {
+        padding-right:0;
+        padding-left:$base-spacing-unit / 2;
+      }
+    }
+  }
+}
+
+@mixin flag--large($flag__fig: flag__fig, $flag--rev: flag--rev) {
+  > .#{$flag__fig} {
+    padding-right:$base-spacing-unit * 2;
+  }
+
+  @if multi-map-get( $objects, flag rev ) == true or $flag--rev {
+    &.#{$flag__rev} {
+      > .#{$flag__fig} {
+        padding-right:0;
+        padding-left:$base-spacing-unit * 2;
+      }
+    }
+  }
+}
+
 @mixin flag--rev($flag__fig: flag__fig, $flag__body: flag__body) {
   direction:rtl;
 
@@ -30,7 +60,14 @@
 
   > .#{$flag__fig} {
     padding-right:0;
-    padding-left:$base-spacing-unit;;
+    padding-left:$base-spacing-unit;
+  }
+}
+
+@mixin flag--flush($flag__fig: flag__fig) {
+  > .#{$flag__fig} {
+    padding-right:0;
+    padding-left:0;
   }
 }
 
@@ -48,7 +85,7 @@
   }
 }
 
-@if map-get( $objects, flag ) == true {
+@if multi-map-get( $objects, flag regular ) == true {
 
   .flag { @include flag; }
 
@@ -56,9 +93,39 @@
 
     .flag__body { @include flag__body; }
 
+}
+
+@if multi-map-get( $objects, flag small ) == true {
+
+  .flag--small { @include flag--small; }
+
+}
+
+@if multi-map-get( $objects, flag large ) == true {
+
+  .flag--large { @include flag--large; }
+
+}
+
+@if multi-map-get( $objects, flag rev ) == true {
+
   .flag--rev { @include flag--rev; }
 
+}
+
+@if multi-map-get( $objects, flag flush ) == true {
+
+  .flag--flush { @include flag--flush; }
+
+}
+
+@if multi-map-get( $objects, flag top ) == true {
+
   .flag--top { @include flag--top; }
+
+}
+
+@if multi-map-get( $objects, flag bottom ) == true {
 
   .flag--bottom { @include flag--bottom; }
 
