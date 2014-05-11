@@ -110,26 +110,21 @@ $breakpoint--M:  768px;
 $breakpoint--L:  1024px;
 $breakpoint--XL: 1140px;
 
-$breakpoint--S-down:  $breakpoint--S - 1px;
-$breakpoint--M-down:  $breakpoint--M - 1px;
-$breakpoint--L-down:  $breakpoint--L - 1px;
-$breakpoint--XL-down: $breakpoint--XL - 1px;
-
 $breakpoints: (
   'S-up':    '(min-width: #{$breakpoint--S})', // S and higher
-  'S-down':  '(max-width: #{$breakpoint--S-down})', // Below S
-  'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M-down})', // Just S
+  'S-down':  '(max-width: #{$breakpoint--S - 1px})', // Below S
+  'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M - 1px})', // Just S
 
   'M-up':    '(min-width: #{$breakpoint--M})', // M and higher
-  'M-down':  '(max-width: #{$breakpoint--M-down})', // Below M
-  'M':       '(min-width: #{$breakpoint--M}) and (max-width: #{$breakpoint--L-down})', // Just M
+  'M-down':  '(max-width: #{$breakpoint--M - 1px})', // Below M
+  'M':       '(min-width: #{$breakpoint--M}) and (max-width: #{$breakpoint--L - 1px})', // Just M
 
   'L-up':    '(min-width: #{$breakpoint--L})', // L and higher
-  'L-down':  '(max-width: #{$breakpoint--L-down})', // Below L
-  'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL-down})', // Just L
+  'L-down':  '(max-width: #{$breakpoint--L - 1px})', // Below L
+  'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL - 1px})', // Just L
 
   'XL-up':   '(min-width: #{$breakpoint--XL})', // XL and higher
-  'XL-down': '(max-width: #{$breakpoint--XL-down})' // Below XL
+  'XL-down': '(max-width: #{$breakpoint--XL - 1px})' // Below XL
 );
 
 
