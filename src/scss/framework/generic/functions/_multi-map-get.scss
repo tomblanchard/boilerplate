@@ -1,3 +1,23 @@
+/***********************************************************************************
+  FUNCTION: MULTI MAP GET
+ ***********************************************************************************
+
+  Like `map-get` but can handle multi-dimensional maps.
+
+  Usage:
+
+  $colors: (
+    element: (
+      primary: red
+    )
+  );
+
+  .element {
+    color:multi-map-get( $colors, element primary );
+  }
+
+ **********************************************************************************/
+
 @function multi-map-get($map, $keys) {
   $key: nth($keys, 1);
   $length: length($keys);
