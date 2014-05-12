@@ -19,16 +19,19 @@
  **********************************************************************************/
 
 @mixin media-query($media-query, $lt-ie-9-support: false) {
-  @if $is-lt-ie-9-stylesheet == false {
-    @each $name, $declaration in $breakpoints {
-      @if $media-query == $name and $declaration {
-        @media only screen and #{$declaration} {
-          @content;
-        }
+  @if map-has-key($breakpoints, $media-query) {
+    @if $is-lt-ie-9-stylesheet == false {
+      @media #{map-get($breakpoints, $media-query)} {
+        @content;
+      }
+    }
+    @else {
+      @if $lt-ie-9-support {
+        @content;
       }
     }
   }
-  @if $lt-ie-9-support == true and $is-lt-ie-9-stylesheet == true {
-    @content;
+  @else {
+    @warn "Couldn't find a breakpoint named `#{$media-query}`.";
   }
 }
