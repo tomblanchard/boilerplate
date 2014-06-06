@@ -48,7 +48,7 @@ Where all the default boilerplate's framework Sass lives.
 
 ##### `framework/base/`
 
-Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the variables set in `_config.scss`.
+Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the variables set in `_config.scss`. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
 
 ##### `framework/generic/`
 
