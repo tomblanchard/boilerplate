@@ -94,8 +94,8 @@ Output media query with dynamic content and query declaration, the declarations 
 
 ```scss
 .element {
-  @include media-query(L, true) {
-    background:red;
+  @include media-query( L, true ) {
+    background: red;
   }
 }
 ```
@@ -115,9 +115,9 @@ Usage:
 
 ```scss
 .element {
-  width:rem(20px);
-  height:em(20px, 10px);
-  @include rem(margin, 20px);
+  width: rem( 20px );
+  height: em( 20px, 10px );
+  @include rem( margin, 20px );
 }
 ```
 
@@ -137,7 +137,7 @@ Helpers which can be used via a normal HTML class, Sass `@extend`, and / or mixi
 .element {
   @extend .helper;
 
-  @media (max-width:500px) {
+  @media ( max-width: 500px ) {
     @include helper;
   }
 }
@@ -167,7 +167,7 @@ I explain this in much more details later on, when I talk about the `$spacing` c
 .element {
   @extend .m;
 
-  @media (max-width:500px) {
+  @media ( max-width: 500px ) {
     @include m;
   }
 }
@@ -179,9 +179,9 @@ Where all the default objects live. The way I author my CSS objects is a little 
 
 ```scss
 @mixin bare-list {
-  margin:0;
-  padding:0;
-  list-style:none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 @if map-get( $objects, bare-list ) == true {
@@ -201,7 +201,7 @@ If the object is enabled I can use this object like so:
 .element {
   @extend .bare-list;
 
-  @media (max-width: 500px) {
+  @media ( max-width: 500px ) {
     @include bare-list;
   }
 }
@@ -211,28 +211,28 @@ This approach gets a little more complicated when it comes to more complex objec
 
 ```scss
 @mixin grid {
-  list-style:none;
-  margin:0;
-  padding:0;
-  margin-left:-$grid-gutter;
-  margin-bottom:-$grid-gutter;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -$grid-gutter;
+  margin-bottom: -$grid-gutter;
 }
 
   @mixin grid__item {
-    display:inline-block;
-    padding-left:$grid-gutter;
-    padding-bottom:$grid-gutter;
-    vertical-align:top;
-    width:100%;
+    display: inline-block;
+    padding-left: $grid-gutter;
+    padding-bottom: $grid-gutter;
+    vertical-align: top;
+    width: 100%;
   }
 
 @mixin grid--small {
-  margin-left:-($grid-gutter / 2);
-  margin-bottom:-($grid-gutter / 2);
+  margin-left: -($grid-gutter / 2);
+  margin-bottom: -($grid-gutter / 2);
 
   > .grid__item {
-    padding-left:($grid-gutter / 2);
-    padding-bottom:($grid-gutter / 2);
+    padding-left: ($grid-gutter / 2);
+    padding-bottom: ($grid-gutter / 2);
   }
 }
 
@@ -304,28 +304,28 @@ My work around is to author the object like so:
 
 ```scss
 @mixin grid {
-  list-style:none;
-  margin:0;
-  padding:0;
-  margin-left:-$grid-gutter;
-  margin-bottom:-$grid-gutter;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -$grid-gutter;
+  margin-bottom: -$grid-gutter;
 }
 
   @mixin grid__item {
-    display:inline-block;
-    padding-left:$grid-gutter;
-    padding-bottom:$grid-gutter;
-    vertical-align:top;
-    width:100%;
+    display: inline-block;
+    padding-left: $grid-gutter;
+    padding-bottom: $grid-gutter;
+    vertical-align: top;
+    width: 100%;
   }
 
-@mixin grid--small( $grid__item: grid__item ) {
-  margin-left:-($grid-gutter / 2);
-  margin-bottom:-($grid-gutter / 2);
+@mixin grid--small( $grid__item:  grid__item ) {
+  margin-left: -($grid-gutter / 2);
+  margin-bottom: -($grid-gutter / 2);
 
   > .#{$grid__item} {
-    padding-left:($grid-gutter / 2);
-    padding-bottom:($grid-gutter / 2);
+    padding-left: ($grid-gutter / 2);
+    padding-bottom: ($grid-gutter / 2);
   }
 }
 
@@ -349,7 +349,7 @@ Then when I want to `@include` the object I do it like so:
 ```scss
 .content { @include grid; }
 
-.content--alt { @include grid--small($grid__item: content__col); }
+.content--alt { @include grid--small( $grid__item: content__col ); }
 
   .content__col { @include grid__item; }
 ```
@@ -464,22 +464,22 @@ This outputs the following:
 
 ```css
 .one-third {
-  width:33.333%;
+  width: 33.333%;
 }
 
 .width-class {
-  width:200px;
+  width: 200px;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media ( min-width: 768px ) and ( max-width: 1023px ) {
   .M--one-half {
-    width:50%;
+    width: 50%;
   }
 }
 
-@media (min-width: 1140px) {
+@media ( min-width: 1140px ) {
   .XL-up--width-class {
-    width:200px;
+    width: 200px;
   }
 }
 ```
