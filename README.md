@@ -84,7 +84,7 @@ Create a fully formed type style (sizing and vertical rhythm) by passing in a si
 
 ```scss
 .element {
-  @include font-size(10px);
+  @include font-size( 10px );
 }
 ```
 
