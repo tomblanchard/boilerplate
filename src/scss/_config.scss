@@ -145,7 +145,7 @@ $breakpoints: (
   Use `$grid-widths-to-output` to output grid width classes (breakpoint specific
   classes too) in the CSS, usage:
 
-  $grid-widths: (
+  $grid-widths-to-output: (
     width-class,
     XL-up--width-class
   );
