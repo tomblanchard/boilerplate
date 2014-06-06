@@ -88,6 +88,16 @@ Create a fully formed type style (sizing and vertical rhythm) by passing in a si
 }
 ```
 
+This outputs:
+
+```css
+.element {
+  font-size: 10px;
+  font-size: 0.625rem;
+  line-height: 2.4;
+}
+```
+
 ##### `framework/generic/mixins/_media-query.scss`
 
 Output media query with dynamic content and query declaration, the declarations which can be used are defined in `$breakpoints` (located in `_config.scss`). This also comes with optional support for IE8 and below, set `$lt-ie-9-support` as `true` and it will output the CSS content inside the media query in the `lt-ie-9.min.css` file stripping the media query wrapped around it. Usage:
@@ -97,6 +107,24 @@ Output media query with dynamic content and query declaration, the declarations 
   @include media-query( L, true ) {
     background: red;
   }
+}
+```
+
+In the compiled `site/lib/css/style.min.css`, this outputs:
+
+```css
+@media ( min-width: 1024px ) and ( max-width: 1139px ) {
+  .element {
+    background: red;
+  }
+}
+```
+
+In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
+
+```css
+.element {
+  background: red;
 }
 ```
 
@@ -121,6 +149,17 @@ Usage:
 }
 ```
 
+This outputs:
+
+```css
+.element {
+  width: 0.83333rem;
+  height: 2em;
+  margin: 20px;
+  margin: 0.83333rem;
+}
+```
+
 ##### `framework/generic/_grid-width-builder.scss`
 
 Generate width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-grid-widths` / `$grid-widths-to-output` config variables.
@@ -139,6 +178,21 @@ Helpers which can be used via a normal HTML class, Sass `@extend`, and / or mixi
 
   @media ( max-width: 500px ) {
     @include helper;
+  }
+}
+```
+
+This would output:
+
+```css
+.helper,
+.element {
+  content: 'Helper styles here.';
+}
+
+@media ( max-width: 500px ) {
+  .element {
+    content: 'Helper styles here.';
   }
 }
 ```
@@ -169,6 +223,21 @@ I explain this in much more details later on, when I talk about the `$spacing` c
 
   @media ( max-width: 500px ) {
     @include m;
+  }
+}
+```
+
+This outputs:
+
+```css
+.m,
+.element {
+  margin: 24px;
+}
+
+@media ( max-width: 500px ) {
+  .element {
+    margin: 24px;
   }
 }
 ```
@@ -210,6 +279,9 @@ If the object is enabled I can use this object like so:
 This approach gets a little more complicated when it comes to more complex objects which contain modifier variations. I'll use parts of the `grid` object to illustrate the problem and my workaround. So with a few parts of the object taken out to save space this is what the `grid` object is like before my workaround:
 
 ```scss
+/**
+  Regular `grid` object.
+ */
 @mixin grid {
   list-style: none;
   margin: 0;
@@ -226,6 +298,9 @@ This approach gets a little more complicated when it comes to more complex objec
     width: 100%;
   }
 
+/**
+  `grid--small` modifier, extends the `grid` object, with a smaller gutter.
+ */
 @mixin grid--small {
   margin-left: -($grid-gutter / 2);
   margin-bottom: -($grid-gutter / 2);
@@ -236,6 +311,10 @@ This approach gets a little more complicated when it comes to more complex objec
   }
 }
 
+/**
+  If the `regular` version of the `grid` object is enabled then output the
+  necessary CSS.
+ */
 @if multi-map-get( $objects, grid regular ) == true {
 
   .grid { @include grid; }
@@ -244,6 +323,10 @@ This approach gets a little more complicated when it comes to more complex objec
 
 }
 
+/**
+  If the `small` version of the `grid` object is enabled then output the
+  necessary CSS.
+ */
 @if multi-map-get( $objects, grid small ) == true {
 
   .grid--small { @include grid--small; }
@@ -251,7 +334,7 @@ This approach gets a little more complicated when it comes to more complex objec
 }
 ```
 
-This is fine if I `@extend` the object or the normal `.grid` classes, the problem arises when I want to `@include` the object into custom class names. Lets say I wanted to use the `grid` mixins, I'd do it like:
+This is fine if I `@extend` the object or use the normal `.grid` classes in my HTML, the problem arises when I want to `@include` the object into custom class names. Lets say I wanted to use the `grid` mixins, I'd do it like:
 
 ```scss
 .content { @include grid; }
@@ -268,8 +351,8 @@ This outputs:
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -$grid-gutter;
-  margin-bottom: -$grid-gutter;
+  margin-left: -24px;
+  margin-bottom: -24px;
 }
 
 .content--alt {
@@ -283,8 +366,8 @@ This outputs:
 
 .content__col {
   display: inline-block;
-  padding-left: $grid-gutter;
-  padding-bottom: $grid-gutter;
+  padding-left: 24px;
+  padding-bottom: 24px;
   vertical-align: top;
   width: 100%;
 }
@@ -319,6 +402,10 @@ My work around is to author the object like so:
     width: 100%;
   }
 
+/**
+  Now the `grid__item` element name is able to be changed via the `grid--small`
+  mixin parameter `$grid__item`.
+ */
 @mixin grid--small( $grid__item:  grid__item ) {
   margin-left: -($grid-gutter / 2);
   margin-bottom: -($grid-gutter / 2);
@@ -396,13 +483,13 @@ The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `fa
 
 ##### `ui/`
 
-All of your project Ssass should live here, nicely organised into lots of modular partials.
+All of your project Sass should live here, nicely organised into lots of modular partials.
 
 ##### `_config.scss`
 
 Where all of your settings live, this is basically one massive file of variables, some variables I won't need to explain to due their simplicity, for example `$global-border-box` resets every element's box model to `box-sizing: border-box`, `$base-*` variables control such things as font-sizes, spacing units etc.
 
-It starts to get more complicated when you hit the `$objects` variable which is actually a Sass map which controls which default objects should get outputted into the compiled CSS (this boilerplate comes with some default objects such as a grids etc, there's no point in outputting every object if they're not going to be used). Most default objects do have various modifiers / variations which you can enable / disable as you please, for example if I wanted the `grid` object and the object variation `large` (which adds a wider gutter to the grid), the `$objects` variable would look like so:
+It starts to get more complicated when you hit the `$objects` variable which is actually a Sass map which controls which default objects should get outputted into the compiled CSS (this boilerplate comes with some default objects such as a grids etc, there's no point in outputting every object if they're not going to be used, no-one likes code bloat). Most default objects do have various modifiers / variations which you can enable / disable as you please, for example if I wanted the `grid` object and the object variation `large` (which adds a wider gutter to the grid), the `$objects` variable would look like so:
 
 ```scss
 $objects: (
@@ -420,7 +507,7 @@ $objects: (
 ...
 ```
 
-Next up on the settings files is the part which handles the responsive stuff. The `$breakpoints` variable contains a Sass map (this is used in a few different parts of the boilerplate, I'll touch in this later) which should contain all the projects responsive breakpoints. By default I have a few breakpoints set up:
+Next up on the settings file is the part which handles the responsive stuff. The `$breakpoints` variable contains a Sass map (this is used in a few different parts of the boilerplate) which should contain all the projects responsive breakpoints. By default I have a few breakpoints set up:
 
 ```scss
 $breakpoint--S:  480px;
@@ -429,9 +516,9 @@ $breakpoint--L:  1024px;
 $breakpoint--XL: 1140px;
 ```
 
-Then I reference these variables in the `$breakpoints` map, I have a `S / M / L / XL` naming convention to my breakpoints. For example, the `L` breakpoint is a media query of `(min-width: 1024px) and (max-width: 1139px)`, the `L-down` breakpoint is a media query of `(max-width: 1023px)` and the `L-up` breakpoint is a media query of `(min-width: 1024px)`.
+Then I reference these variables in the `$breakpoints` map, I have a `S / M / L / XL` naming convention to my breakpoints. For example, the `L` breakpoint is a media query of `( min-width: 1024px ) and ( max-width: 1139px )`, the `L-down` breakpoint is a media query of `( max-width: 1023px )` and the `L-up` breakpoint is a media query of `( min-width: 1024px )`.
 
-After the responsive stuff, comes the `grid` object settings, these consist of three variables:
+After the responsive stuff, comes the `grid` object width settings (on responsive grid-heavy sites there will be a lot of grid widths at specific media queries, this allows for much better organisation), these consist of three variables:
 
 `$grid-gutter`:
 
@@ -439,7 +526,7 @@ Spacing between grid items, defaults to the value of `$base-spacing-unit`.
 
 `$custom-grid-widths`:
 
-The boilerplate comes with loads of grid widths already defined in `framework/generic/_grid-width-builder.scss`, these widths are fractions going from `one-whole` to `eleven-twelfths`, all in all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
+The boilerplate comes with loads of grid widths already defined in `framework/generic/_grid-width-builder.scss`, these widths are fractions going from `one-whole` to `eleven-twelfths`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
 
 ```scss
 $custom-grid-widths: (
@@ -449,7 +536,7 @@ $custom-grid-widths: (
 
 `$grid-widths-to-output`:
 
-Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls media query specific grid item widths, it uses the names of the media queries defined in the `$breakpoints` map, so I use it like so:
+Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so:
 
 ```scss
 $grid-widths-to-output: (
@@ -460,7 +547,7 @@ $grid-widths-to-output: (
 );
 ```
 
-This outputs the following:
+This outputs:
 
 ```css
 .one-third {
@@ -494,7 +581,7 @@ Import all of your project Sass partials from `ui/`.
 
 ### Any other assets
 
-Place any other asstes (images, fonts etc) in their own directories in `site/lib/`.
+Place any other asstes (images, fonts etc) in their own directories in `site/lib/`, there are a couple of directories setup by default.
 
 ## Installation
 
