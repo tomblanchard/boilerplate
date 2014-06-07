@@ -2,6 +2,7 @@
 !.gitignore
 !.emptydir
 node_modules
+docs
 /site/*.html
 /site/lib/js/main.min.js
 /site/lib/css/*.css
