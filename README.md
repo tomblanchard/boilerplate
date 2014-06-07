@@ -244,7 +244,7 @@ This outputs:
 
 ##### `framework/objects/`
 
-All objects are throughly explain [here](http://tomblanchard.github.io/boilerplate).
+All objects are throughly explained [here](http://tomblanchard.github.io/boilerplate).
 
 Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `framework/objects/_bare-list.scss` object looks like:
 
