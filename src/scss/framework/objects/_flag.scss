@@ -27,6 +27,10 @@
     display:table-cell;
     vertical-align:middle;
     width:100%;
+
+    > :last-child {
+      margin-bottom:0;
+    }
   }
 
 @mixin flag--small($flag__fig: flag__fig, $flag--rev: flag--rev) {

@@ -244,6 +244,8 @@ This outputs:
 
 ##### `framework/objects/`
 
+All objects are throughly explain [here](http://tomblanchard.github.io/boilerplate).
+
 Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `framework/objects/_bare-list.scss` object looks like:
 
 ```scss
@@ -443,31 +445,31 @@ Then when I want to `@include` the object I do it like so:
 
 ##### `framework/objects/_bare-list.scss`
 
-Removes indents and bullet points from lists.
+Removes indents and bullet points from lists. See [here](http://tomblanchard.github.io/boilerplate/#bare-list) for usage / notes examples etc.
 
 ##### `framework/objects/_flag.scss`
 
-Very similar to the media object, however it give us control over the vertical alignments of the text and image.
+Very similar to the media object, however it give us control over the vertical alignments of the text and image. See [here](http://tomblanchard.github.io/boilerplate/#flag) for usage / notes examples etc.
 
 ##### `framework/objects/_flyout.scss`
 
-Content that flys out of a parent when said parent is hovered. They typically appear bottom-left of the parent.
+Content that flys out of a parent when said parent is hovered. They typically appear bottom-left of the parent. See [here](http://tomblanchard.github.io/boilerplate/#flyout) for usage / notes examples etc.
 
 ##### `framework/objects/_grid.scss`
 
-Simple, fluid, nestable, flexible grid system.
+Simple, fluid, nestable, flexible grid system. See [here](http://tomblanchard.github.io/boilerplate/#grid) for usage / notes examples etc.
 
 ##### `framework/objects/_media.scss`
 
-Place image and text-like content side-by-side.
+Place image and text-like content side-by-side. See [here](http://tomblanchard.github.io/boilerplate/#media) for usage / notes examples etc.
 
 ##### `framework/objects/_nav.scss`
 
-Turn a list into a horizontal row of list items, mostly for use in navigation menus.
+Turn a list into a horizontal row of list items, mostly for use in navigation menus. See [here](http://tomblanchard.github.io/boilerplate/#nav) for usage / notes examples etc.
 
 ##### `framework/objects/_sprite.scss`
 
-Turn elements into icons with a background image and no text.
+Turn elements into icons with a background image and no text. See [here](http://tomblanchard.github.io/boilerplate/#sprite) for usage / notes examples etc.
 
 ##### `framework/_base.scss`
 
