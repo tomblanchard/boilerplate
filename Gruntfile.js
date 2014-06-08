@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  require('load-grunt-tasks')(grunt);
+  require('load-grunt-tasks')(grunt, {pattern: ['grunt-*', 'assemble']});
 
   grunt.initConfig({
 
@@ -76,16 +76,22 @@ module.exports = function(grunt) {
     },
 
 
-    includes: {
-      dist: {
-        cwd: 'src/templates',
-        src: ['**/*.html', '!includes/**/*'],
-        dest: 'site',
-        options: {
-          flatten: true,
-          includeRegexp: /^(\s*){% include\s+"(\S+)" %}\s*$/,
-          includePath: 'src/templates/includes'
-        }
+    assemble: {
+      options: {
+        partials: 'src/templates/includes/**/*.html',
+        layoutdir: 'src/templates/layouts',
+        layout: 'default.html',
+        data: 'src/templates/data/**/*.{json,yml}',
+        flatten: true
+      },
+      pages: {
+        src: [
+          'src/templates/**/*.html',
+          '!src/templates/includes/**/*',
+          '!src/templates/layouts/**/*',
+          '!src/templates/data/**/*'
+        ],
+        dest: 'site'
       }
     },
 
@@ -93,7 +99,7 @@ module.exports = function(grunt) {
     watch: {
       html: {
         files: 'src/templates/**/*.html',
-        tasks: ['clean:html', 'includes:dist'],
+        tasks: ['clean:html', 'assemble:pages'],
         options: {
           spawn: false,
           livereload: true
@@ -129,7 +135,8 @@ module.exports = function(grunt) {
     'sass:dist',
     'autoprefixer:dist',
     'uglify:dist',
-    'includes:dist',
+    'clean:html',
+    'assemble:pages',
     'watch'
   ]);
 

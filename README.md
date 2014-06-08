@@ -8,19 +8,25 @@ This is the starting point for all of my web projects and a combination of vario
 
 All automation is powered by [Grunt](http://gruntjs.com), it has one task `default`, when run the following happens:
 
-- A server is started at `http://localhost:9999`, using `site/` as the base.
-- Sass files located in `src/scss/framework/` are compiled to `site/lib/css/`
+- A local server is started at `http://localhost:9999`, using `site/` as the base, so you can view the project web pages / files as if you were on a live server.
+- Sass files located in `src/scss/framework/` are compiled to `site/lib/css/`, if you're not familiar with Sass, think CSS on steroids
 - The CSS compiled to `site/lib/css/` are then run through [Autoprefixer](https://github.com/ai/autoprefixer), this will automatically add browser prefixes to unsupported CSS properties
-- The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`
-- Any `.html` files located in `site/` get deleted
-- Any `.html` files located in `src/templates/` get compiled to `site/`
-- Files get watched for changes, if changed their task gets run again
+- The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`, this minifies and squashes the outputted JS file as much as possible
+- Any `.html` files located in `site/` get deleted, so we start from a fresh set of pages each time the Grunt task is run
+- All  files located in `src/templates/` get run through [assemble](https://github.com/assemble/assemble) and compiled to `site/`, I use this for HTML partials, layouts etc. It allows me to carve my HTML up into reusable fragments: partials, includes, sections, snippets...
+- Files get watched for changes, if changed their specific task will run again, if your browser is on the local server, it will auto-refresh the pages too, so you can see the changes without having to manually refresh every time
 
 ### HTML
 
-When working with the HTML only ever change / add / remove files in `src/templates/`. These templates can have other HTML files included into them from `src/templates/includes/`, for example if you were to use `{% include "_some-file.html" %}` this would include the file contents of `src/templates/includes/_some-file.html` into the current file you were working in.
+When working with the HTML only ever change / add / remove files in `src/templates/`, I use [assemble](https://github.com/assemble/assemble) for templating, assemble uses [Handlebars.js](https://github.com/wycats/handlebars.js) as it's default template library, so try and get familar with the syntax.
 
-By default there is one page set up `index.html`, which has a few `include`s in there for a header, sidebar and footer, this can be changed however you want. Using `include`s just makes it easier to build static sites with common modules without repeating code.
+These templates can have other HTML files included into them from `src/templates/includes/`, for example if you were to use `{{> _some-file.html }}` in any template this would include the file contents of `src/templates/includes/_some-file.html` into the current file you were working in. By default there is one page set up `index.html`, which has a few includes in there for a header, sidebar and footer, this can be changed however you want. Using includes just makes it easier to build static sites with common modules without repeating code.
+
+These templates can have other custom layouts they work from, these layouts are located in `src/templates/layouts/`. There is one default layout setup `default.html`, I use it to setup the HTML page skeleton (`<!DOCTYPE html>`, `<head />`, `<script />s` etc). The `default.html` layout will be used by every page by default, if you want to create and use another layout then create it `src/templates/layouts/custom-layout.html` and add `layout: custom-layout.html` to the page's [YAML front matter](http://assemble.io/docs/YAML-front-matter.html).
+
+You might also notice the `src/templates/data/` directory and wonder what that is for, you can create JSON data objects here and use assemble to pull in data from it. For example if I were to setup the file `src/templates/data/me.json` with the file contents of `{ "name": "Tom Blanchard" }` I can output this data anywhere in my templates with `{{ me.name }}`.
+
+You can find all the assemble documentation on the official [repo](https://github.com/assemble/assemble).
 
 ### Javascript
 
