@@ -60,7 +60,7 @@ You can include other files using partials, the example below would include the 
 
 #### If statements
 
-You can if variables exist like so:
+You can check if variables exist like so:
 
 ```html
 {{# if custom-variable }}
