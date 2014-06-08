@@ -1,6 +1,5 @@
 cd "$(dirname "$0")"
-rm –Rf .gitignore README.md
-find . -name "*.emptydir" -delete
+\rm -rf .gitignore README.md .emptydir
 if [ ! -d node_modules ];then
   sudo npm install
 fi
