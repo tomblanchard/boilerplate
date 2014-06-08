@@ -4,7 +4,7 @@ This is the starting point for all of my web projects and a combination of vario
 
 ## Requirements
 
-- Node (Download and run the installer from [nodejs.org](http://nodejs.org))
+- Node.js (Download and run the installer from [nodejs.org](http://nodejs.org))
 - Grunt's command line interface (`sudo npm install -g grunt-cli`)
 - Ruby (Download and run the installer from [ruby-lang.org](https://www.ruby-lang.org/en/downloads))
 - Sass (`sudo gem install sass`)
