@@ -2,6 +2,18 @@
 
 This is the starting point for all of my web projects and a combination of various front-end frameworks, the CSS side is loosely based on the popular framework [inuit.css](https://github.com/csswizardry/inuit.css) by [Harry Roberts](https://twitter.com/csswizardry).
 
+## Requirements
+
+- Node (Download and run the installer from [nodejs.org](http://nodejs.org))
+- Grunt's command line interface (`sudo npm install -g grunt-cli`)
+- Ruby (Download and run the installer from [ruby-lang.org](https://www.ruby-lang.org/en/downloads))
+- Sass (`sudo gem install sass`)
+
+## Installation
+
+1. [Download](https://github.com/tomblanchard/boilerplate/archive/master.zip) or [clone](https://github.com/tomblanchard/boilerplate.git) the repo
+2. Execute the `grunt-dev.command` file, this installs any Grunt dependencies if it needs to then runs the default `grunt` task
+
 ## Contents
 
 ### Automation
@@ -590,11 +602,6 @@ Import all of your project Sass partials from `ui/`.
 ### Any other assets
 
 Place any other asstes (images, fonts etc) in their own directories in `site/lib/`, there are a couple of directories setup by default.
-
-## Installation
-
-1. [Download](https://github.com/tomblanchard/boilerplate/archive/master.zip) or [clone](https://github.com/tomblanchard/boilerplate.git) the repo
-2. Execute the `grunt-dev.command` file, this installs any Grunt dependencies if it needs to then runs the default `grunt` task
 
 ## Credits
 
