@@ -11,8 +11,8 @@ This is the starting point for all of my web projects and a combination of vario
 
 ## Installation
 
-1. [Download](https://github.com/tomblanchard/boilerplate/archive/master.zip) or [clone](https://github.com/tomblanchard/boilerplate.git) the repo
-2. Execute the `grunt-dev.command` file, this installs any Grunt dependencies if it needs to then runs the default `grunt` task
+1. [Download](https://github.com/tomblanchard/boilerplate/archive/master.zip) or [clone](https://github.com/tomblanchard/boilerplate.git) the repo.
+2. Execute the `grunt-dev.command` file, this deletes unneeded files and installs any Grunt dependencies if it needs to, then runs the default `grunt` task.
 
 ## Contents
 
@@ -607,8 +607,8 @@ Place any other asstes (images, fonts etc) in their own directories in `site/lib
 
 The only reason my boilerplate exists is because I'm constantly learning and checkout out other open-source projects and seeing what parts of it could added to this project, without the following people this boilerplate wouldn't exist:
 
-- [Harry Roberts](https://twitter.com/csswizardry) for his amazing work on [inuit.css](https://github.com/csswizardry/inuit.css)
-- [Todd Motto](https://twitter.com/toddmotto), learning from his Grunt setup on [FireShell](https://github.com/toddmotto/fireshell) has made my automation a breeze
-- [Nicolas Gallagher](https://twitter.com/necolas) for the holy trinity which is [normalize.css](https://github.com/necolas/normalize.css/)
+- [Harry Roberts](https://twitter.com/csswizardry) for his amazing work on [inuit.css](https://github.com/csswizardry/inuit.css).
+- [Todd Motto](https://twitter.com/toddmotto), learning from his Grunt setup on [FireShell](https://github.com/toddmotto/fireshell) has made my automation a breeze.
+- [Nicolas Gallagher](https://twitter.com/necolas) for the holy trinity which is [normalize.css](https://github.com/necolas/normalize.css/).
 
 You guys are awesome.
