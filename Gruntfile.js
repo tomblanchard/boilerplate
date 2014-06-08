@@ -80,7 +80,8 @@ module.exports = function(grunt) {
       options: {
         partials: 'src/templates/includes/**/*.html',
         layoutdir: 'src/templates/layouts',
-        layout: 'default.html',
+        layoutext: '.html',
+        layout: 'default',
         data: 'src/templates/data/**/*.{json,yml}',
         flatten: true
       },
