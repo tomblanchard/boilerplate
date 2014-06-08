@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/scss/framework',
-          src: ['**/*.scss'],
+          src: '**/*.scss',
           dest: 'site/lib/css',
           ext: '.min.css'
         }]
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'site/lib/css',
-          src: ['**/*.css'],
+          src: '**/*.css',
           dest: 'site/lib/css'
         }]
       }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
 
     clean: {
-      html: { src: ['site/**/*.html'] }
+      html: { src: 'site/**/*.html' }
     },
 
 
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 
       uglify: {
         files: 'src/js/main.js',
-        tasks: ['uglify'],
+        tasks: 'uglify',
         options: {
           spawn: false,
           livereload: true
