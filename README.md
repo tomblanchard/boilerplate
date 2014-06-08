@@ -48,23 +48,23 @@ The CSS side of this boilerplate is by far the most complicated part, I'll copy 
 
 Below I'll walk you through what each file and directory is for:
 
-##### `framework/`
+#### `framework/`
 
 Where all the default boilerplate's framework Sass lives.
 
-##### `framework/base/`
+#### `framework/base/`
 
 Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the variables set in `_config.scss`. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
 
-##### `framework/generic/`
+#### `framework/generic/`
 
 Where stuff such as resets and normalize.css live.
 
-##### `framework/generic/functions/`
+#### `framework/generic/functions/`
 
 Custom Sass functions.
 
-##### `framework/generic/functions/multi-map-get.scss`
+#### `framework/generic/functions/multi-map-get.scss`
 
 Like `map-get` but can handle multi-dimensional maps. Usage:
 
@@ -80,11 +80,11 @@ $colors: (
 }
 ```
 
-##### `framework/generic/mixins/`
+#### `framework/generic/mixins/`
 
 Custom mixins.
 
-##### `framework/generic/mixins/_font-size.scss`
+#### `framework/generic/mixins/_font-size.scss`
 
 Create a fully formed type style (sizing and vertical rhythm) by passing in a single value. Usage:
 
@@ -104,7 +104,7 @@ This outputs:
 }
 ```
 
-##### `framework/generic/mixins/_media-query.scss`
+#### `framework/generic/mixins/_media-query.scss`
 
 Output media query with dynamic content and query declaration, the declarations which can be used are defined in `$breakpoints` (located in `_config.scss`). This also comes with optional support for IE8 and below, set `$lt-ie-9-support` as `true` and it will output the CSS content inside the media query in the `lt-ie-9.min.css` file stripping the media query wrapped around it. Usage:
 
@@ -134,7 +134,7 @@ In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
 }
 ```
 
-##### `framework/generic/mixins/_unit-conversion.scss`
+#### `framework/generic/mixins/_unit-conversion.scss`
 
 Convert units to other units.
 
@@ -166,11 +166,11 @@ This outputs:
 }
 ```
 
-##### `framework/generic/_grid-width-builder.scss`
+#### `framework/generic/_grid-width-builder.scss`
 
 Generate width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-grid-widths` / `$grid-widths-to-output` config variables.
 
-##### `framework/generic/_helpers.scss`
+#### `framework/generic/_helpers.scss`
 
 Helpers which can be used via a normal HTML class, Sass `@extend`, and / or mixin (enable use inside of media queries), usage:
 
@@ -203,15 +203,15 @@ This would output:
 }
 ```
 
-##### `framework/generic/_normalize.scss`
+#### `framework/generic/_normalize.scss`
 
 [Nicolas Gallagher](https://twitter.com/necolas)'s [normalize.css](https://github.com/necolas/normalize.css/).
 
-##### `framework/generic/_reset.scss`
+#### `framework/generic/_reset.scss`
 
 A more considered reset ([csswizardry.com/2011/10/reset-restarted](http://csswizardry.com/2011/10/reset-restarted)).
 
-##### `framework/generic/_spacing.scss`
+#### `framework/generic/_spacing.scss`
 
 Margin and padding helper classes in the format of:
 
@@ -248,7 +248,7 @@ This outputs:
 }
 ```
 
-##### `framework/objects/`
+#### `framework/objects/`
 
 All objects are throughly explained [here](http://tomblanchard.github.io/boilerplate).
 
@@ -449,51 +449,51 @@ Then when I want to `@include` the object I do it like so:
   .content__col { @include grid__item; }
 ```
 
-##### `framework/objects/_bare-list.scss`
+#### `framework/objects/_bare-list.scss`
 
 Removes indents and bullet points from lists. See [here](http://tomblanchard.github.io/boilerplate/#bare-list) for usage / notes examples etc.
 
-##### `framework/objects/_flag.scss`
+#### `framework/objects/_flag.scss`
 
 Very similar to the media object, however it give us control over the vertical alignments of the text and image. See [here](http://tomblanchard.github.io/boilerplate/#flag) for usage / notes examples etc.
 
-##### `framework/objects/_flyout.scss`
+#### `framework/objects/_flyout.scss`
 
 Content that flys out of a parent when said parent is hovered. They typically appear bottom-left of the parent. See [here](http://tomblanchard.github.io/boilerplate/#flyout) for usage / notes examples etc.
 
-##### `framework/objects/_grid.scss`
+#### `framework/objects/_grid.scss`
 
 Simple, fluid, nestable, flexible grid system. See [here](http://tomblanchard.github.io/boilerplate/#grid) for usage / notes examples etc.
 
-##### `framework/objects/_media.scss`
+#### `framework/objects/_media.scss`
 
 Place image and text-like content side-by-side. See [here](http://tomblanchard.github.io/boilerplate/#media) for usage / notes examples etc.
 
-##### `framework/objects/_nav.scss`
+#### `framework/objects/_nav.scss`
 
 Turn a list into a horizontal row of list items, mostly for use in navigation menus. See [here](http://tomblanchard.github.io/boilerplate/#nav) for usage / notes examples etc.
 
-##### `framework/objects/_sprite.scss`
+#### `framework/objects/_sprite.scss`
 
 Turn elements into icons with a background image and no text. See [here](http://tomblanchard.github.io/boilerplate/#sprite) for usage / notes examples etc.
 
-##### `framework/_base.scss`
+#### `framework/_base.scss`
 
 Every partial gets imported into this file, starting with `_config.scss`, followed by custom functions, mixins, stuff in `framework/generic/`, stuff in `framework/base/`, stuff in `framework/objects/` then finally your custom project Sass located in `_style.scss`.
 
-##### `framework/lt-ie-9.scss`
+#### `framework/lt-ie-9.scss`
 
 The lower than IE 9 Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `true` (so any time you use `@if $is-lt-ie-9-stylesheet == true { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/lt-ie-9.min.css`.
 
-##### `framework/style.scss`
+#### `framework/style.scss`
 
 The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet != true { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/style.css`.
 
-##### `ui/`
+#### `ui/`
 
 All of your project Sass should live here, nicely organised into lots of modular partials.
 
-##### `_config.scss`
+#### `_config.scss`
 
 Where all of your settings live, this is basically one massive file of variables, some variables I won't need to explain to due their simplicity, for example `$global-border-box` resets every element's box model to `box-sizing: border-box`, `$base-*` variables control such things as font-sizes, spacing units etc.
 
@@ -583,7 +583,7 @@ The last default variable in the settings file is `$spacing` which is map very s
 
 After all the default variables you can go ahead and state any custom project variables such as colours, font stacks etc.
 
-##### `_style.scss`
+#### `_style.scss`
 
 Import all of your project Sass partials from `ui/`.
 
