@@ -22,7 +22,7 @@ All automation is powered by [Grunt](http://gruntjs.com), it has one task `defau
 
 - A local server is started at `http://localhost:9999`, using `site/` as the base, so you can view the project web pages / files as if you were on a live server.
 - Sass files located in `src/scss/framework/` are compiled to `site/lib/css/`, if you're not familiar with Sass, think CSS on steroids.
-- The CSS compiled to `site/lib/css/` are then run through [Autoprefixer](https://github.com/ai/autoprefixer), this will automatically add browser prefixes to unsupported CSS properties.
+- The CSS files compiled to `site/lib/css/` are then run through [Autoprefixer](https://github.com/ai/autoprefixer), this will automatically add browser prefixes to unsupported CSS properties.
 - The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`, this minifies and squashes the outputted JS file as much as possible.
 - Any `.html` files located in `site/` get deleted, so we start from a fresh set of pages each time the Grunt task is run.
 - All  files located in `src/templates/` get run through [assemble](https://github.com/assemble/assemble) and compiled to `site/`, I use this for HTML partials, layouts etc. It allows me to carve my HTML up into reusable fragments: partials, includes, sections, snippets...
@@ -30,7 +30,45 @@ All automation is powered by [Grunt](http://gruntjs.com), it has one task `defau
 
 ### HTML
 
-When working with the HTML only ever change / add / remove files in `src/templates/`, I use [assemble](https://github.com/assemble/assemble) for templating, assemble uses [Handlebars.js](https://github.com/wycats/handlebars.js) as it's default template library, so try and get familar with the syntax.
+When working with the HTML only ever change / add / remove files in `src/templates/`, I use [assemble](https://github.com/assemble/assemble) for templating, assemble uses [Handlebars.js](https://github.com/wycats/handlebars.js) as it's default template library, so get familiar with the syntax:
+
+#### [YAML front matter](http://assemble.io/docs/YAML-front-matter.html)
+
+Each page needs a YAML front matter at the top of the file, there is only one necessary variable `title`, this gets used by the `src/templates/layouts/default.html` layout to output whatever is in each pages `title` variable in it's `<title />` element.
+
+```html
+---
+title: Home
+custom-variable: Custom variable
+---
+
+<div>
+  <!--
+    Outputs `Custom variable`.
+    -->
+  {{ custom-variable }}
+</div>
+```
+
+#### Partials
+
+You can include other files using partials, the example below would include the files contents from `src/templates/includes/_some-file.html`:
+
+```html
+{{> _some-file }}
+```
+
+#### If statements
+
+You can if variables exist like so:
+
+```html
+{{# if custom-variable }}
+  The `custom-variable` is defined.
+{{else}}
+  The `custom-variable` is not defined.
+{{/ if }}
+```
 
 These templates can have other HTML files included into them from `src/templates/includes/`, for example if you were to use `{{> _some-file.html }}` in any template this would include the file contents of `src/templates/includes/_some-file.html` into the current file you were working in. By default there is one page set up `index.html`, which has a few includes in there for a header, sidebar and footer, this can be changed however you want. Using includes just makes it easier to build static sites with common modules without repeating code.
 
