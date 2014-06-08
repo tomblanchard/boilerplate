@@ -47,21 +47,11 @@
 
 
 /***********************************************************************************
-  GENERIC
+  BASE
  **********************************************************************************/
 
 @import "generic/normalize";
 @import "generic/reset";
-@import "generic/helpers";
-@import "generic/spacing";
-
-
-
-
-
-/***********************************************************************************
-  BASE
- **********************************************************************************/
 
 @import "base/main";
 @import "base/headings";
@@ -87,6 +77,9 @@
 @import "objects/flyout";
 @import "objects/sprite";
 @import "objects/bare-list";
+
+@import "generic/helpers";
+@import "generic/spacing";
 
 
 
