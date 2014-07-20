@@ -7,7 +7,7 @@
   <div class="m"></div>
 
   .element {
-    @extend .m;
+    @extend %m;
 
     @media (max-width:500px) {
       @include m;
@@ -24,6 +24,14 @@
   .ml { @include ml };
   .mh { @include mh };
   .mv { @include mv };
+} @else {
+  %m { @include m };
+  %mt { @include mt };
+  %mr { @include mr };
+  %mb { @include mb };
+  %ml { @include ml };
+  %mh { @include mh };
+  %mv { @include mv };
 }
 
 @if multi-map-get( $spacing, margins positive tiny ) == true {
@@ -34,6 +42,14 @@
   .ml-- { @include ml-- };
   .mh-- { @include mh-- };
   .mv-- { @include mv-- };
+} @else {
+  %m-- { @include m-- };
+  %mt-- { @include mt-- };
+  %mr-- { @include mr-- };
+  %mb-- { @include mb-- };
+  %ml-- { @include ml-- };
+  %mh-- { @include mh-- };
+  %mv-- { @include mv-- };
 }
 
 @if multi-map-get( $spacing, margins positive small ) == true {
@@ -44,6 +60,14 @@
   .ml- { @include ml- };
   .mh- { @include mh- };
   .mv- { @include mv- };
+} @else {
+  %m- { @include m- };
+  %mt- { @include mt- };
+  %mr- { @include mr- };
+  %mb- { @include mb- };
+  %ml- { @include ml- };
+  %mh- { @include mh- };
+  %mv- { @include mv- };
 }
 
 @if multi-map-get( $spacing, margins positive large ) == true {
@@ -54,6 +78,14 @@
   .ml\+ { @include ml\+ };
   .mh\+ { @include mh\+ };
   .mv\+ { @include mv\+ };
+} @else {
+  %m\+ { @include m\+ };
+  %mt\+ { @include mt\+ };
+  %mr\+ { @include mr\+ };
+  %mb\+ { @include mb\+ };
+  %ml\+ { @include ml\+ };
+  %mh\+ { @include mh\+ };
+  %mv\+ { @include mv\+ };
 }
 
 @if multi-map-get( $spacing, margins positive huge ) == true {
@@ -64,6 +96,14 @@
   .ml\+\+ { @include ml\+\+ };
   .mh\+\+ { @include mh\+\+ };
   .mv\+\+ { @include mv\+\+ };
+} @else {
+  %m\+\+ { @include m\+\+ };
+  %mt\+\+ { @include mt\+\+ };
+  %mr\+\+ { @include mr\+\+ };
+  %mb\+\+ { @include mb\+\+ };
+  %ml\+\+ { @include ml\+\+ };
+  %mh\+\+ { @include mh\+\+ };
+  %mv\+\+ { @include mv\+\+ };
 }
 
 @if multi-map-get( $spacing, margins negative regular ) == true {
@@ -74,6 +114,14 @@
   .-ml { @include -ml };
   .-mh { @include -mh };
   .-mv { @include -mv };
+} @else {
+  %-m { @include -m };
+  %-mt { @include -mt };
+  %-mr { @include -mr };
+  %-mb { @include -mb };
+  %-ml { @include -ml };
+  %-mh { @include -mh };
+  %-mv { @include -mv };
 }
 
 @if multi-map-get( $spacing, margins negative tiny ) == true {
@@ -84,6 +132,14 @@
   .-ml-- { @include -ml-- };
   .-mh-- { @include -mh-- };
   .-mv-- { @include -mv-- };
+} @else {
+  %-m-- { @include -m-- };
+  %-mt-- { @include -mt-- };
+  %-mr-- { @include -mr-- };
+  %-mb-- { @include -mb-- };
+  %-ml-- { @include -ml-- };
+  %-mh-- { @include -mh-- };
+  %-mv-- { @include -mv-- };
 }
 
 @if multi-map-get( $spacing, margins negative small ) == true {
@@ -94,6 +150,14 @@
   .-ml- { @include -ml- };
   .-mh- { @include -mh- };
   .-mv- { @include -mv- };
+} @else {
+  %-m- { @include -m- };
+  %-mt- { @include -mt- };
+  %-mr- { @include -mr- };
+  %-mb- { @include -mb- };
+  %-ml- { @include -ml- };
+  %-mh- { @include -mh- };
+  %-mv- { @include -mv- };
 }
 
 @if multi-map-get( $spacing, margins negative large ) == true {
@@ -104,6 +168,14 @@
   .-ml\+ { @include -ml\+ };
   .-mh\+ { @include -mh\+ };
   .-mv\+ { @include -mv\+ };
+} @else {
+  %-m\+ { @include -m\+ };
+  %-mt\+ { @include -mt\+ };
+  %-mr\+ { @include -mr\+ };
+  %-mb\+ { @include -mb\+ };
+  %-ml\+ { @include -ml\+ };
+  %-mh\+ { @include -mh\+ };
+  %-mv\+ { @include -mv\+ };
 }
 
 @if multi-map-get( $spacing, margins negative huge ) == true {
@@ -114,6 +186,14 @@
   .-ml\+\+ { @include -ml\+\+ };
   .-mh\+\+ { @include -mh\+\+ };
   .-mv\+\+ { @include -mv\+\+ };
+} @else {
+  %-m\+\+ { @include -m\+\+ };
+  %-mt\+\+ { @include -mt\+\+ };
+  %-mr\+\+ { @include -mr\+\+ };
+  %-mb\+\+ { @include -mb\+\+ };
+  %-ml\+\+ { @include -ml\+\+ };
+  %-mh\+\+ { @include -mh\+\+ };
+  %-mv\+\+ { @include -mv\+\+ };
 }
 
 @if multi-map-get( $spacing, margins none ) == true {
@@ -124,6 +204,14 @@
   .ml0 { @include ml0 };
   .mh0 { @include mh0 };
   .mv0 { @include mv0 };
+} @else {
+  %m0 { @include m0 };
+  %mt0 { @include mt0 };
+  %mr0 { @include mr0 };
+  %mb0 { @include mb0 };
+  %ml0 { @include ml0 };
+  %mh0 { @include mh0 };
+  %mv0 { @include mv0 };
 }
 
 @if multi-map-get( $spacing, paddings regular ) == true {
@@ -134,6 +222,14 @@
   .pl { @include pl };
   .ph { @include ph };
   .pv { @include pv };
+} @else {
+  %p { @include p };
+  %pt { @include pt };
+  %pr { @include pr };
+  %pb { @include pb };
+  %pl { @include pl };
+  %ph { @include ph };
+  %pv { @include pv };
 }
 
 @if multi-map-get( $spacing, paddings tiny ) == true {
@@ -144,6 +240,14 @@
   .pl-- { @include pl-- };
   .ph-- { @include ph-- };
   .pv-- { @include pv-- };
+} @else {
+  %p-- { @include p-- };
+  %pt-- { @include pt-- };
+  %pr-- { @include pr-- };
+  %pb-- { @include pb-- };
+  %pl-- { @include pl-- };
+  %ph-- { @include ph-- };
+  %pv-- { @include pv-- };
 }
 
 @if multi-map-get( $spacing, paddings small ) == true {
@@ -154,6 +258,14 @@
   .pl- { @include pl- };
   .ph- { @include ph- };
   .pv- { @include pv- };
+} @else {
+  %p- { @include p- };
+  %pt- { @include pt- };
+  %pr- { @include pr- };
+  %pb- { @include pb- };
+  %pl- { @include pl- };
+  %ph- { @include ph- };
+  %pv- { @include pv- };
 }
 
 @if multi-map-get( $spacing, paddings large ) == true {
@@ -164,6 +276,14 @@
   .pl\+ { @include pl\+ };
   .ph\+ { @include ph\+ };
   .pv\+ { @include pv\+ };
+} @else {
+  %p\+ { @include p\+ };
+  %pt\+ { @include pt\+ };
+  %pr\+ { @include pr\+ };
+  %pb\+ { @include pb\+ };
+  %pl\+ { @include pl\+ };
+  %ph\+ { @include ph\+ };
+  %pv\+ { @include pv\+ };
 }
 
 @if multi-map-get( $spacing, paddings huge ) == true {
@@ -174,6 +294,14 @@
   .pl\+\+ { @include pl\+\+ };
   .ph\+\+ { @include ph\+\+ };
   .pv\+\+ { @include pv\+\+ };
+} @else {
+  %p\+\+ { @include p\+\+ };
+  %pt\+\+ { @include pt\+\+ };
+  %pr\+\+ { @include pr\+\+ };
+  %pb\+\+ { @include pb\+\+ };
+  %pl\+\+ { @include pl\+\+ };
+  %ph\+\+ { @include ph\+\+ };
+  %pv\+\+ { @include pv\+\+ };
 }
 
 @if multi-map-get( $spacing, paddings none ) == true {
@@ -184,4 +312,12 @@
   .pl0 { @include pl0 };
   .ph0 { @include ph0 };
   .pv0 { @include pv0 };
+} @else {
+  %p0 { @include p0 };
+  %pt0 { @include pt0 };
+  %pr0 { @include pr0 };
+  %pb0 { @include pb0 };
+  %pl0 { @include pl0 };
+  %ph0 { @include ph0 };
+  %pv0 { @include pv0 };
 }
