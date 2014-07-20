@@ -104,11 +104,11 @@ Where all the default boilerplate's framework Sass lives.
 
 #### `framework/base/`
 
-Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the variables set in `_config.scss`. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
+Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the `$h[1-6]-size` variables set in `_config.scss`. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
 
 #### `framework/generic/`
 
-Where stuff such as resets and normalize.css lives.
+Element reset, normalize.css, box sizing etc.
 
 #### `framework/generic/_box-sizing.scss`
 
@@ -145,17 +145,39 @@ Where all the default objects live. The way I author my CSS objects is a little 
 If the object is enabled I can use this object like so:
 
 ```html
-<ul class="bare-list"></ul>
+<ul class="bare-list">
+  <li>List Item</li>
+</ul>
 ```
+
+Or like this:
 
 ```scss
 .element {
   @extend .bare-list;
+}
+```
 
+```html
+<ul class="element">
+  <li>List Item</li>
+</ul>
+```
+
+Or like this:
+
+```scss
+.element {
   @media ( max-width: 500px ) {
     @include bare-list;
   }
 }
+```
+
+```html
+<ul class="element">
+  <li>List Item</li>
+</ul>
 ```
 
 This approach gets a little more complicated when it comes to more complex objects which contain modifier variations. I'll use parts of the `grid` object to illustrate the problem and my workaround. So with a few parts of the object taken out to save space this is what the `grid` object is like before my workaround:
@@ -221,9 +243,9 @@ This is fine if I `@extend` the object or use the normal `.grid` classes in my H
 ```scss
 .content { @include grid; }
 
-.content--alt { @include grid--small; }
-
   .content__col { @include grid__item; }
+
+.content--alt { @include grid--small; }
 ```
 
 This outputs:
@@ -237,6 +259,14 @@ This outputs:
   margin-bottom: -24px;
 }
 
+.content__col {
+  display: inline-block;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  vertical-align: top;
+  width: 100%;
+}
+
 .content--alt {
   margin-left: -12px;
   margin-bottom: -12px;
@@ -245,23 +275,15 @@ This outputs:
   padding-left: 12px;
   padding-bottom: 12px;
 }
-
-.content__col {
-  display: inline-block;
-  padding-left: 24px;
-  padding-bottom: 24px;
-  vertical-align: top;
-  width: 100%;
-}
 ```
 
 You see the `.content--alt > .grid__item` part? That's the problem, it should output to `.content--alt > .content__col`, it doesn't match what the DOM structure will look like, it's targeting the wrong child element. The HTML looks like this:
 
 ```html
 <div class="content content--alt">
-  <div class="content__col">Blah, blah, blah.</div>
-  <div class="content__col">Blah, blah, blah.</div>
-  <div class="content__col">Blah, blah, blah.</div>
+  <div class="content__col">Blah, blah, blah.</div><!--
+  --><div class="content__col">Blah, blah, blah.</div><!--
+  --><div class="content__col">Blah, blah, blah.</div>
 </div>
 ```
 
@@ -499,7 +521,7 @@ The lower than IE 9 Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to 
 
 #### `framework/style.scss`
 
-The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet != true { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/style.css`.
+The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet == false { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/style.css`.
 
 #### `ui/`
 
@@ -605,7 +627,7 @@ Place any other asstes (images, fonts etc) in their own directories in `site/lib
 
 ## Credits
 
-The only reason my boilerplate exists is because I'm constantly learning and checkout out other open-source projects and seeing what parts of it could added to this project, without the following people this boilerplate wouldn't exist:
+The only reason my boilerplate exists is because I'm constantly learning and checking out other open-source projects and seeing what parts of it could added to this project, without the following people this boilerplate wouldn't exist:
 
 - [Harry Roberts](https://twitter.com/csswizardry) for his amazing work on [inuit.css](https://github.com/csswizardry/inuit.css).
 - [Todd Motto](https://twitter.com/toddmotto), learning from his Grunt setup on [FireShell](https://github.com/toddmotto/fireshell) has made my automation a breeze.
