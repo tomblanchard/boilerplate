@@ -1,0 +1,187 @@
+/***********************************************************************************
+  TRUMP CLASSES: SPACING
+ ***********************************************************************************
+
+  Margin and padding helper classes, usage:
+
+  <div class="m"></div>
+
+  .element {
+    @extend .m;
+
+    @media (max-width:500px) {
+      @include m;
+    }
+  }
+
+ **********************************************************************************/
+
+@if multi-map-get( $spacing, margins positive regular ) == true {
+  .m { @include m };
+  .mt { @include mt };
+  .mr { @include mr };
+  .mb { @include mb };
+  .ml { @include ml };
+  .mh { @include mh };
+  .mv { @include mv };
+}
+
+@if multi-map-get( $spacing, margins positive tiny ) == true {
+  .m-- { @include m-- };
+  .mt-- { @include mt-- };
+  .mr-- { @include mr-- };
+  .mb-- { @include mb-- };
+  .ml-- { @include ml-- };
+  .mh-- { @include mh-- };
+  .mv-- { @include mv-- };
+}
+
+@if multi-map-get( $spacing, margins positive small ) == true {
+  .m- { @include m- };
+  .mt- { @include mt- };
+  .mr- { @include mr- };
+  .mb- { @include mb- };
+  .ml- { @include ml- };
+  .mh- { @include mh- };
+  .mv- { @include mv- };
+}
+
+@if multi-map-get( $spacing, margins positive large ) == true {
+  .m\+ { @include m\+ };
+  .mt\+ { @include mt\+ };
+  .mr\+ { @include mr\+ };
+  .mb\+ { @include mb\+ };
+  .ml\+ { @include ml\+ };
+  .mh\+ { @include mh\+ };
+  .mv\+ { @include mv\+ };
+}
+
+@if multi-map-get( $spacing, margins positive huge ) == true {
+  .m\+\+ { @include m\+\+ };
+  .mt\+\+ { @include mt\+\+ };
+  .mr\+\+ { @include mr\+\+ };
+  .mb\+\+ { @include mb\+\+ };
+  .ml\+\+ { @include ml\+\+ };
+  .mh\+\+ { @include mh\+\+ };
+  .mv\+\+ { @include mv\+\+ };
+}
+
+@if multi-map-get( $spacing, margins negative regular ) == true {
+  .-m { @include -m };
+  .-mt { @include -mt };
+  .-mr { @include -mr };
+  .-mb { @include -mb };
+  .-ml { @include -ml };
+  .-mh { @include -mh };
+  .-mv { @include -mv };
+}
+
+@if multi-map-get( $spacing, margins negative tiny ) == true {
+  .-m-- { @include -m-- };
+  .-mt-- { @include -mt-- };
+  .-mr-- { @include -mr-- };
+  .-mb-- { @include -mb-- };
+  .-ml-- { @include -ml-- };
+  .-mh-- { @include -mh-- };
+  .-mv-- { @include -mv-- };
+}
+
+@if multi-map-get( $spacing, margins negative small ) == true {
+  .-m- { @include -m- };
+  .-mt- { @include -mt- };
+  .-mr- { @include -mr- };
+  .-mb- { @include -mb- };
+  .-ml- { @include -ml- };
+  .-mh- { @include -mh- };
+  .-mv- { @include -mv- };
+}
+
+@if multi-map-get( $spacing, margins negative large ) == true {
+  .-m\+ { @include -m\+ };
+  .-mt\+ { @include -mt\+ };
+  .-mr\+ { @include -mr\+ };
+  .-mb\+ { @include -mb\+ };
+  .-ml\+ { @include -ml\+ };
+  .-mh\+ { @include -mh\+ };
+  .-mv\+ { @include -mv\+ };
+}
+
+@if multi-map-get( $spacing, margins negative huge ) == true {
+  .-m\+\+ { @include -m\+\+ };
+  .-mt\+\+ { @include -mt\+\+ };
+  .-mr\+\+ { @include -mr\+\+ };
+  .-mb\+\+ { @include -mb\+\+ };
+  .-ml\+\+ { @include -ml\+\+ };
+  .-mh\+\+ { @include -mh\+\+ };
+  .-mv\+\+ { @include -mv\+\+ };
+}
+
+@if multi-map-get( $spacing, margins none ) == true {
+  .m0 { @include m0 };
+  .mt0 { @include mt0 };
+  .mr0 { @include mr0 };
+  .mb0 { @include mb0 };
+  .ml0 { @include ml0 };
+  .mh0 { @include mh0 };
+  .mv0 { @include mv0 };
+}
+
+@if multi-map-get( $spacing, paddings regular ) == true {
+  .p { @include p };
+  .pt { @include pt };
+  .pr { @include pr };
+  .pb { @include pb };
+  .pl { @include pl };
+  .ph { @include ph };
+  .pv { @include pv };
+}
+
+@if multi-map-get( $spacing, paddings tiny ) == true {
+  .p-- { @include p-- };
+  .pt-- { @include pt-- };
+  .pr-- { @include pr-- };
+  .pb-- { @include pb-- };
+  .pl-- { @include pl-- };
+  .ph-- { @include ph-- };
+  .pv-- { @include pv-- };
+}
+
+@if multi-map-get( $spacing, paddings small ) == true {
+  .p- { @include p- };
+  .pt- { @include pt- };
+  .pr- { @include pr- };
+  .pb- { @include pb- };
+  .pl- { @include pl- };
+  .ph- { @include ph- };
+  .pv- { @include pv- };
+}
+
+@if multi-map-get( $spacing, paddings large ) == true {
+  .p\+ { @include p\+ };
+  .pt\+ { @include pt\+ };
+  .pr\+ { @include pr\+ };
+  .pb\+ { @include pb\+ };
+  .pl\+ { @include pl\+ };
+  .ph\+ { @include ph\+ };
+  .pv\+ { @include pv\+ };
+}
+
+@if multi-map-get( $spacing, paddings huge ) == true {
+  .p\+\+ { @include p\+\+ };
+  .pt\+\+ { @include pt\+\+ };
+  .pr\+\+ { @include pr\+\+ };
+  .pb\+\+ { @include pb\+\+ };
+  .pl\+\+ { @include pl\+\+ };
+  .ph\+\+ { @include ph\+\+ };
+  .pv\+\+ { @include pv\+\+ };
+}
+
+@if multi-map-get( $spacing, paddings none ) == true {
+  .p0 { @include p0 };
+  .pt0 { @include pt0 };
+  .pr0 { @include pr0 };
+  .pb0 { @include pb0 };
+  .pl0 { @include pl0 };
+  .ph0 { @include ph0 };
+  .pv0 { @include pv0 };
+}

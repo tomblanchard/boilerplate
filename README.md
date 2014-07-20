@@ -26,7 +26,7 @@ All automation is powered by [Grunt](http://gruntjs.com), it has one task `defau
 - The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`, this minifies and squashes the outputted JS file as much as possible.
 - Any `.html` files located in `site/` get deleted, so we start from a fresh set of pages each time the Grunt task is run.
 - All  files located in `src/templates/` get run through [assemble](https://github.com/assemble/assemble) and compiled to `site/`, I use this for HTML partials, layouts etc. It allows me to carve my HTML up into reusable fragments: partials, includes, sections, snippets...
-- Files get watched for changes, if changed their specific task will run again, if your browser is on the local server, it will auto-refresh the pages too, so you can see the changes without having to manually refresh every time.
+- Files get watched for changes, if changed their corresponding task will run again, if your browser is on the local server, it will auto-refresh the pages too, so you can see the changes without having to manually refresh every time.
 
 ### HTML
 
@@ -108,195 +108,19 @@ Default base stuff such as minimal styling of elements like `<code>`, `<tables>`
 
 #### `framework/generic/`
 
-Where stuff such as resets and normalize.css live.
+Where stuff such as resets and normalize.css lives.
 
-#### `framework/generic/functions/`
+#### `framework/generic/_box-sizing.scss`
 
-Custom Sass functions.
-
-#### `framework/generic/functions/multi-map-get.scss`
-
-Like `map-get` but can handle multi-dimensional maps. Usage:
-
-```scss
-$colors: (
-  element: (
-    primary: red
-  )
-);
-
-.element {
-  color: multi-map-get( $colors, element primary );
-}
-```
-
-#### `framework/generic/mixins/`
-
-Custom mixins.
-
-#### `framework/generic/mixins/_font-size.scss`
-
-Create a fully formed type style (sizing and vertical rhythm) by passing in a single value. Usage:
-
-```scss
-.element {
-  @include font-size( 10px );
-}
-```
-
-This outputs:
-
-```css
-.element {
-  font-size: 10px;
-  font-size: 0.625rem;
-  line-height: 2.4;
-}
-```
-
-#### `framework/generic/mixins/_media-query.scss`
-
-Output media query with dynamic content and query declaration, the declarations which can be used are defined in `$breakpoints` (located in `_config.scss`). This also comes with optional support for IE8 and below, set `$lt-ie-9-support` as `true` and it will output the CSS content inside the media query in the `lt-ie-9.min.css` file stripping the media query wrapped around it. Usage:
-
-```scss
-.element {
-  @include media-query( L, true ) {
-    background: red;
-  }
-}
-```
-
-In the compiled `site/lib/css/style.min.css`, this outputs:
-
-```css
-@media ( min-width: 1024px ) and ( max-width: 1139px ) {
-  .element {
-    background: red;
-  }
-}
-```
-
-In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
-
-```css
-.element {
-  background: red;
-}
-```
-
-#### `framework/generic/mixins/_unit-conversion.scss`
-
-Convert units to other units.
-
-`@function rem`: Convert `px` to `rem`.
-
-`@function em`: Convert `px` to `em` with dynamic base `font-size`.
-
-`@mixin rem`: Convert `px` to `rem` with a dynamic property with a `px`
-fallback.
-
-Usage:
-
-```scss
-.element {
-  width: rem( 20px );
-  height: em( 20px, 10px );
-  @include rem( margin, 20px );
-}
-```
-
-This outputs:
-
-```css
-.element {
-  width: 0.83333rem;
-  height: 2em;
-  margin: 20px;
-  margin: 0.83333rem;
-}
-```
-
-#### `framework/generic/_grid-width-builder.scss`
-
-Generate width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-grid-widths` / `$grid-widths-to-output` config variables.
-
-#### `framework/generic/_helpers.scss`
-
-Helpers which can be used via a normal HTML class, Sass `@extend`, and / or mixin (enable use inside of media queries), usage:
-
-```html
-<div class="helper"></div>
-```
-
-```scss
-.element {
-  @extend .helper;
-
-  @media ( max-width: 500px ) {
-    @include helper;
-  }
-}
-```
-
-This would output:
-
-```css
-.helper,
-.element {
-  content: 'Helper styles here.';
-}
-
-@media ( max-width: 500px ) {
-  .element {
-    content: 'Helper styles here.';
-  }
-}
-```
+Sets all element's `box-sizing` state to `border-box` if the `$global-border-box` config variable is set to true (which it is by default).
 
 #### `framework/generic/_normalize.scss`
 
-[Nicolas Gallagher](https://twitter.com/necolas)'s [normalize.css](https://github.com/necolas/normalize.css/).
+[Nicolas Gallagher](https://twitter.com/necolas)'s [normalize.css v3.0.1](https://github.com/necolas/normalize.css/).
 
 #### `framework/generic/_reset.scss`
 
 A more considered reset ([csswizardry.com/2011/10/reset-restarted](http://csswizardry.com/2011/10/reset-restarted)).
-
-#### `framework/generic/_spacing.scss`
-
-Margin and padding helper classes in the format of:
-
-`.(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none.
-
-I explain this in much more details later on, when I talk about the `$spacing` config variables. , usage:
-
-```html
-<div class="m"></div>
-```
-
-```scss
-.element {
-  @extend .m;
-
-  @media ( max-width: 500px ) {
-    @include m;
-  }
-}
-```
-
-This outputs:
-
-```css
-.m,
-.element {
-  margin: 24px;
-}
-
-@media ( max-width: 500px ) {
-  .element {
-    margin: 24px;
-  }
-}
-```
 
 #### `framework/objects/`
 
@@ -527,9 +351,147 @@ Turn a list into a horizontal row of list items, mostly for use in navigation me
 
 Turn elements into icons with a background image and no text. See [here](http://tomblanchard.github.io/boilerplate/#sprite) for usage / notes examples etc.
 
+#### `framework/tools/`
+
+Custom Sass functions and mixins live here.
+
+#### `framework/tools/functions/`
+
+Custom Sass functions.
+
+#### `framework/tools/functions/multi-map-get.scss`
+
+Like `map-get` but can handle multi-dimensional maps. Usage:
+
+```scss
+$colors: (
+  element: (
+    primary: red
+  )
+);
+
+.element {
+  color: multi-map-get( $colors, element primary );
+}
+```
+
+#### `framework/tools/mixins/`
+
+Custom mixins.
+
+#### `framework/tools/mixins/_font-size.scss`
+
+Create a fully formed type style (sizing and vertical rhythm) by passing in a single value. Usage:
+
+```scss
+.element {
+  @include font-size( 10px );
+}
+```
+
+This outputs:
+
+```css
+.element {
+  font-size: 10px;
+  font-size: 0.625rem;
+  line-height: 2.4;
+}
+```
+
+#### `framework/tools/mixins/_helpers.scss`
+
+Simple helper mixins such as a clearfix solution, image replacement etc.
+
+#### `framework/tools/mixins/_media-query.scss`
+
+Output media query with dynamic content and query declaration, the declarations which can be used are defined in `$breakpoints` (located in `_config.scss`). This also comes with optional support for IE8 and below, set `$lt-ie-9-support` as `true` and it will output the CSS content inside the media query in the `lt-ie-9.min.css` file stripping the media query wrapped around it. Usage:
+
+```scss
+.element {
+  @include media-query( L, true ) {
+    background: red;
+  }
+}
+```
+
+In the compiled `site/lib/css/style.min.css`, this outputs:
+
+```css
+@media ( min-width: 1024px ) and ( max-width: 1139px ) {
+  .element {
+    background: red;
+  }
+}
+```
+
+In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
+
+```css
+.element {
+  background: red;
+}
+```
+
+#### `framework/tools/mixins/_spacing.scss`
+
+Margin and padding helper mixins in the format of:
+
+`.(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none.
+
+I explain this in much more details later on, when I talk about the `$spacing` config variables.
+
+#### `framework/tools/mixins/_unit-conversion.scss`
+
+Convert units to other units.
+
+`@function rem`: Convert `px` to `rem`.
+
+`@function em`: Convert `px` to `em` with dynamic base `font-size`.
+
+`@mixin rem`: Convert `px` to `rem` with a dynamic property with a `px`
+fallback.
+
+Usage:
+
+```scss
+.element {
+  width: rem( 20px );
+  height: em( 20px, 10px );
+  @include rem( margin, 20px );
+}
+```
+
+This outputs:
+
+```css
+.element {
+  width: 0.83333rem;
+  height: 2em;
+  margin: 20px;
+  margin: 0.83333rem;
+}
+```
+
+#### `framework/trumps/`
+
+High-specificity, very explicit selectors, the styles here are for overrides and helper classes.
+
+#### `framework/trumps/_helpers.scss`
+
+Outputs the helpers mixins defined in `framework/tools/mixins/_helpers.scss` to actual classes.
+
+#### `framework/trumps/_spacing.scss`
+
+Outputs the spacing mixins defined in `framework/tools/mixins/_spacing.scss` to actual classes, depending on which spacing variants are enabled in the `$spacing` config variable.
+
+#### `framework/trumps/_widths.scss`
+
+Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-grid-widths` / `$grid-widths-to-output` config variables.
+
 #### `framework/_base.scss`
 
-Every partial gets imported into this file, starting with `_config.scss`, followed by custom functions, mixins, stuff in `framework/generic/`, stuff in `framework/base/`, stuff in `framework/objects/` then finally your custom project Sass located in `_style.scss`.
+Every partial gets imported into this file, starting with `_config.scss`, followed by custom functions, mixins, stuff in `framework/generic/`, stuff in `framework/base/`, stuff in `framework/objects/`, your custom project Sass located in `_style.scss` then finally stuff in `framework/trumps/`.
 
 #### `framework/lt-ie-9.scss`
 
@@ -584,7 +546,7 @@ Spacing between grid items, defaults to the value of `$base-spacing-unit`.
 
 `$custom-grid-widths`:
 
-The boilerplate comes with loads of grid widths already defined in `framework/generic/_grid-width-builder.scss`, these widths are fractions going from `one-whole` to `eleven-twelfths`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
+The boilerplate comes with loads of grid widths already defined in `framework/trumps/_widths.scss`, these widths are fractions going from `one-whole` to `eleven-twelfths`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
 
 ```scss
 $custom-grid-widths: (
@@ -629,7 +591,7 @@ This outputs:
 }
 ```
 
-The last default variable in the settings file is `$spacing` which is map very similar to the `$objects` map. The `$spacing` map controls which spacing helper classes (located at `framework/generic/_spacing.scss`) get outputted into the compiled CSS.
+The last default variable in the settings file is `$spacing` which is a map very similar to the `$objects` map. The `$spacing` map controls which spacing helper classes (located at `framework/trumps/_spacing.scss`) get outputted into the compiled CSS.
 
 After all the default variables you can go ahead and state any custom project variables such as colours, font stacks etc.
 

@@ -28,7 +28,7 @@
   FUNCTIONS
  **********************************************************************************/
 
-@import "generic/functions/multi-map-get";
+@import "tools/functions/multi-map-get";
 
 
 
@@ -38,9 +38,24 @@
   MIXINS
  **********************************************************************************/
 
-@import "generic/mixins/font-size";
-@import "generic/mixins/unit-conversion";
-@import "generic/mixins/media-query";
+@import "tools/mixins/font-size";
+@import "tools/mixins/unit-conversion";
+@import "tools/mixins/media-query";
+
+@import "tools/mixins/helpers";
+@import "tools/mixins/spacing";
+
+
+
+
+
+/***********************************************************************************
+  GENERIC
+ **********************************************************************************/
+
+@import "generic/normalize";
+@import "generic/reset";
+@import "generic/box-sizing";
 
 
 
@@ -49,9 +64,6 @@
 /***********************************************************************************
   BASE
  **********************************************************************************/
-
-@import "generic/normalize";
-@import "generic/reset";
 
 @import "base/main";
 @import "base/headings";
@@ -70,16 +82,12 @@
  **********************************************************************************/
 
 @import "objects/grid";
-@import "generic/grid-width-builder";
 @import "objects/nav";
 @import "objects/media";
 @import "objects/flag";
 @import "objects/flyout";
 @import "objects/sprite";
 @import "objects/bare-list";
-
-@import "generic/helpers";
-@import "generic/spacing";
 
 
 
@@ -90,3 +98,15 @@
  **********************************************************************************/
 
 @import "../style";
+
+
+
+
+
+/***********************************************************************************
+  TRUMPS
+ **********************************************************************************/
+
+@import "trumps/helpers";
+@import "trumps/widths";
+@import "trumps/spacing";

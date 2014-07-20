@@ -1,19 +1,8 @@
 /***********************************************************************************
-  HELPERS
+  MIXINS: HELPERS
  ***********************************************************************************
 
-  Helpers which can be used via a normal HTML class, Sass silent class, and / or
-  mixin (enable use inside of media queries), usage:
-
-  <div class="helper"></div>
-
-  .element {
-    @extend %helper;
-
-    @media (max-width:500px) {
-      @include helper;
-    }
-  }
+  Helper mixins.
 
  **********************************************************************************/
 
@@ -30,34 +19,30 @@
   position:absolute !important;
   width:1px !important;
 }
-.accessibility { @include accessibility; }
 
 /**
   Disable pointer events.
  */
 @mixin inaccessible {
-  pointer-events:none;
+  pointer-events:none !important;
 }
-.inaccessible { @include inaccessible; }
 
 /**
   Clearfix.
  */
 @mixin cf {
   &:after {
-    content:'';
-    display:table;
-    clear:both;
+    content:'' !important;
+    display:table !important;
+    clear:both !important;
   }
 }
-.cf { @include cf; }
 
 /**
   Image replacement.
  */
 @mixin ir {
-  text-indent:100%;
-  white-space:nowrap;
-  overflow:hidden;
+  text-indent:100% !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
 }
-.ir { @include ir; }

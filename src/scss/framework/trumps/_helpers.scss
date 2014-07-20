@@ -1,0 +1,37 @@
+/***********************************************************************************
+  TRUMP CLASSES: HELPERS
+ ***********************************************************************************
+
+  Helper classes, usage:
+
+  <div class="helper"></div>
+
+  .element {
+    @extend .helper;
+
+    @media (max-width:500px) {
+      @include helper;
+    }
+  }
+
+ **********************************************************************************/
+
+/**
+  Accessible alternative to `display:none`.
+ */
+.accessibility { @include accessibility; }
+
+/**
+  Disable pointer events.
+ */
+.inaccessible { @include inaccessible; }
+
+/**
+  Clearfix.
+ */
+.cf { @include cf; }
+
+/**
+  Image replacement.
+ */
+.ir { @include ir; }

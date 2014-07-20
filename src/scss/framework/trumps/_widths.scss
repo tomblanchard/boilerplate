@@ -1,5 +1,5 @@
 /***********************************************************************************
-  GRID WIDTH BUILDER
+  TRUMP CLASSES: WIDTHS
  ***********************************************************************************
 
   Generate width classes (mostly used with the `grid` object).
@@ -143,7 +143,7 @@
 
 /**
   Grab each name of every breakpoint and generate all placeholder width classes
-  again, but prefix each set of classes with their coresponding breakpoint name
+  again, but prefix each set of classes with their corresponding breakpoint name
   then wrap each set of classes in their correct media query.
  */
 @each $name, $declaration in $breakpoints {

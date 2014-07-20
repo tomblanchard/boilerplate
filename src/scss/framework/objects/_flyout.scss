@@ -9,11 +9,8 @@
 
 @mixin flyout($flyout__content: flyout__content) {
   position:relative;
-  overflow:hidden;
 
   &:hover {
-    overflow:visible;
-
     > .#{$flyout__content} {
       left:0;
     }
