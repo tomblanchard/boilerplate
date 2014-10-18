@@ -7,17 +7,17 @@
  **********************************************************************************/
 
 @mixin sprite {
-  text-indent:100%;
-  white-space:nowrap;
-  overflow:hidden;
-  display:inline-block;
-  line-height:1;
-  vertical-align:middle;
-  width:16px;
-  height:16px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
 }
 
-@if map-get( $objects, sprite ) == true {
+@if ( map-get( $objects, sprite ) ) {
 
   .sprite { @include sprite; }
 

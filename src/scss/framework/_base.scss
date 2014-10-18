@@ -4,11 +4,11 @@
 
 @charset "UTF-8";
 
-@-webkit-viewport { width:device-width; }
-@-moz-viewport { width:device-width; }
-@-ms-viewport { width:device-width; }
-@-o-viewport { width:device-width; }
-@viewport { width:device-width; }
+@-webkit-viewport { width: device-width; }
+@-moz-viewport    { width: device-width; }
+@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }
 
 
 
@@ -87,7 +87,6 @@
 @import "objects/flag";
 @import "objects/flyout";
 @import "objects/sprite";
-@import "objects/bare-list";
 
 
 

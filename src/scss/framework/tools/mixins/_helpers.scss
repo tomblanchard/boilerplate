@@ -7,42 +7,115 @@
  **********************************************************************************/
 
 /**
-  Accessible alternative to `display:none`.
+  Accessible alternative to `display: none`.
  */
-@mixin accessibility {
-  border:0 !important;
-  clip:rect(0 0 0 0) !important;
-  height:1px !important;
-  margin:-1px !important;
-  overflow:hidden !important;
-  padding:0 !important;
-  position:absolute !important;
-  width:1px !important;
+
+@mixin accessibility ( $important: false ) {
+
+  @if ( $important ) {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+  }
+
+  @else {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
 }
+
 
 /**
   Disable pointer events.
  */
-@mixin inaccessible {
-  pointer-events:none !important;
+
+@mixin inaccessible ( $important: false ) {
+
+  @if ( $important ) {
+    pointer-events: none !important;
+  }
+
+  @else {
+    pointer-events: none;
+  }
+
 }
+
 
 /**
   Clearfix.
  */
-@mixin cf {
-  &:after {
-    content:'' !important;
-    display:table !important;
-    clear:both !important;
+
+@mixin cf ( $important: false ) {
+
+  @if ( $important ) {
+    &:after {
+      content: '' !important;
+      display: table !important;
+      clear: both !important;
+    }
   }
+
+  @else {
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
 }
+
 
 /**
   Image replacement.
  */
-@mixin ir {
-  text-indent:100% !important;
-  white-space:nowrap !important;
-  overflow:hidden !important;
+
+@mixin ir ( $important: false ) {
+
+  @if ( $important ) {
+    text-indent: 100% !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+
+  @else {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+}
+
+
+/**
+  Removes indents and bullet points from lists.
+ */
+
+@mixin bare-list ( $important: false ) {
+
+  @if ( $important ) {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  @else {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
 }

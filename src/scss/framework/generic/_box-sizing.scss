@@ -6,14 +6,16 @@
 
  **********************************************************************************/
 
-@if $global-border-box == true {
+@if ( $global-border-box ) {
 
   * {
+
     &,
     &:before,
     &:after {
       box-sizing:border-box;
     }
+
   }
 
 }

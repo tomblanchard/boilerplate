@@ -3,15 +3,18 @@
  **********************************************************************************/
 
 pre {
-  overflow-x:scroll;
-  white-space:pre;
+  overflow-x: scroll;
+  white-space: pre;
 }
 
+
 code {
-  overflow:auto;
-  font-family:monospace, monospace;
+
+  overflow: auto;
+  font-family: monospace, monospace;
 
   :not(pre) > & {
-    white-space:nowrap;
+    white-space: nowrap;
   }
+
 }

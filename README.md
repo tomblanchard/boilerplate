@@ -126,18 +126,23 @@ A more considered reset ([csswizardry.com/2011/10/reset-restarted](http://csswiz
 
 All objects are throughly explained [here](http://tomblanchard.github.io/boilerplate).
 
-Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `framework/objects/_bare-list.scss` object looks like:
+Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `framework/objects/_sprite.scss` object looks like:
 
 ```scss
-@mixin bare-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+@mixin sprite {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
 }
 
-@if map-get( $objects, bare-list ) == true {
+@if ( map-get( $objects, sprite ) ) {
 
-  .bare-list { @include bare-list; }
+  .sprite { @include sprite; }
 
 }
 ```
@@ -145,16 +150,14 @@ Where all the default objects live. The way I author my CSS objects is a little 
 If the object is enabled I can use this object like so:
 
 ```html
-<ul class="bare-list">
-  <li>List Item</li>
-</ul>
+<span class="sprite"></span>
 ```
 
 Or like this:
 
 ```scss
 .element {
-  @extend .bare-list;
+  @extend .sprite;
 }
 ```
 
@@ -169,7 +172,7 @@ Or like this:
 ```scss
 .element {
   @media ( max-width: 500px ) {
-    @include bare-list;
+    @include sprite;
   }
 }
 ```
@@ -344,10 +347,6 @@ Then when I want to `@include` the object I do it like so:
 
   .content__col { @include grid__item; }
 ```
-
-#### `framework/objects/_bare-list.scss`
-
-Removes indents and bullet points from lists. See [here](http://tomblanchard.github.io/boilerplate/#bare-list) for usage / notes examples etc.
 
 #### `framework/objects/_flag.scss`
 

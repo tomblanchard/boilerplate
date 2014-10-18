@@ -18,7 +18,7 @@ $base-line-height: 24px;
 $base-font-family: sans-serif;
 
 $base-spacing-unit: $base-line-height;
-$line-height-ratio: $base-line-height / $base-font-size;
+$line-height-ratio: ( $base-line-height / $base-font-size );
 
 
 
@@ -52,6 +52,7 @@ $h6-size: 14px;
  **********************************************************************************/
 
 $objects: (
+
   grid: (
     regular: false,
     small:   false,
@@ -92,9 +93,8 @@ $objects: (
     stacked: false
   ),
 
-  bare-list: false,
+  sprite: false,
 
-  sprite: false
 );
 
 
@@ -111,6 +111,7 @@ $breakpoint--L:  1024px;
 $breakpoint--XL: 1140px;
 
 $breakpoints: (
+
   'S-up':    '(min-width: #{$breakpoint--S})', // S and higher
   'S-down':  '(max-width: #{$breakpoint--S - 1px})', // Below S
   'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M - 1px})', // Just S
@@ -124,7 +125,8 @@ $breakpoints: (
   'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL - 1px})', // Just L
 
   'XL-up':   '(min-width: #{$breakpoint--XL})', // XL and higher
-  'XL-down': '(max-width: #{$breakpoint--XL - 1px})' // Below XL
+  'XL-down': '(max-width: #{$breakpoint--XL - 1px})', // Below XL
+
 );
 
 
@@ -139,15 +141,19 @@ $breakpoints: (
   in `generic/_grid-width-builder.scss`), usage:
 
   $custom-grid-widths: (
-    width-class: 200px
+
+    width-class: 200px,
+
   );
 
   Use `$grid-widths-to-output` to output grid width classes (breakpoint specific
   classes too) in the CSS, usage:
 
   $grid-widths-to-output: (
+
     width-class,
-    XL-up--width-class
+    XL-up--width-class,
+
   );
 
  **********************************************************************************/
@@ -173,13 +179,14 @@ $grid-widths-to-output: (
  **********************************************************************************/
 
 $spacing: (
+
   margins: (
     positive: (
       regular: false,
       tiny:    false,
       small:   false,
       large:   false,
-      huge:    false
+      huge:    false,
     ),
 
     negative: (
@@ -187,10 +194,10 @@ $spacing: (
       tiny:    false,
       small:   false,
       large:   false,
-      huge:    false
+      huge:    false,
     ),
 
-    none: false
+    none: false,
   ),
 
   paddings: (
@@ -200,8 +207,9 @@ $spacing: (
     large:   false,
     huge:    false,
 
-    none:    false
-  )
+    none:    false,
+  ),
+
 );
 
 

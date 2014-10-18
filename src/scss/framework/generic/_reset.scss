@@ -12,24 +12,24 @@ dl,dd,ol,ul,
 form,fieldset,legend,
 table,th,td,caption,
 hr {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 abbr[title],dfn[title] {
-  cursor:help;
+  cursor: help;
 }
 
 u, ins {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 ins {
-  border-bottom:1px solid;
+  border-bottom: 1px solid;
 }
 
 img {
-  font-style:italic;
+  font-style: italic;
 }
 
 label,
@@ -38,18 +38,18 @@ textarea,
 button,
 select,
 option {
-  cursor:pointer;
+  cursor: pointer;
 }
 
   textarea:active,
   textarea:focus {
-    cursor:text;
-    outline:none;
+    cursor: text;
+    outline: none;
   }
 
 label,
 .label {
-  display:block;
+  display: block;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,hgroup,
@@ -59,9 +59,9 @@ table,
 fieldset,figure,
 pre,
 hr {
-  margin-bottom:$base-spacing-unit;
+  margin-bottom: $base-spacing-unit;
 }
 
 ul,ol,dd {
-  margin-left:($base-spacing-unit * 2);
+  margin-left: ($base-spacing-unit * 2);
 }

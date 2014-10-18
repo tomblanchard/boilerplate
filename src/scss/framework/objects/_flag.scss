@@ -8,97 +8,122 @@
  **********************************************************************************/
 
 @mixin flag {
-  display:table;
-  width:100%;
+  display: table;
+  width: 100%;
 }
+
 
   @mixin flag__fig {
-    display:table-cell;
-    vertical-align:middle;
-    padding-right:$base-spacing-unit;
+
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: $base-spacing-unit;
 
     > img {
-      display:block;
-      max-width:none;
+      display: block;
+      max-width: none;
     }
+
   }
+
 
   @mixin flag__body {
-    display:table-cell;
-    vertical-align:middle;
-    width:100%;
+
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
 
     > :last-child {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
+
   }
+
 
 @mixin flag--small($flag__fig: flag__fig, $flag--rev: flag--rev) {
+
   > .#{$flag__fig} {
-    padding-right:$base-spacing-unit / 2;
+    padding-right: $base-spacing-unit / 2;
   }
 
-  @if multi-map-get( $objects, flag rev ) == true or $flag--rev {
+  @if ( multi-map-get( $objects, flag rev ) or $flag--rev ) {
     &.#{$flag__rev} {
       > .#{$flag__fig} {
-        padding-right:0;
-        padding-left:$base-spacing-unit / 2;
+        padding-right: 0;
+        padding-left: $base-spacing-unit / 2;
       }
     }
   }
+
 }
+
 
 @mixin flag--large($flag__fig: flag__fig, $flag--rev: flag--rev) {
+
   > .#{$flag__fig} {
-    padding-right:$base-spacing-unit * 2;
+    padding-right: $base-spacing-unit * 2;
   }
 
-  @if multi-map-get( $objects, flag rev ) == true or $flag--rev {
+  @if ( multi-map-get( $objects, flag rev ) or $flag--rev ) {
     &.#{$flag__rev} {
       > .#{$flag__fig} {
-        padding-right:0;
-        padding-left:$base-spacing-unit * 2;
+        padding-right: 0;
+        padding-left: $base-spacing-unit * 2;
       }
     }
   }
+
 }
 
+
 @mixin flag--rev($flag__fig: flag__fig, $flag__body: flag__body) {
+
   direction:rtl;
 
   > .#{$flag__fig},
   > .#{$flag__body} {
-    direction:ltr;
+    direction: ltr;
   }
 
   > .#{$flag__fig} {
-    padding-right:0;
-    padding-left:$base-spacing-unit;
+    padding-right: 0;
+    padding-left: $base-spacing-unit;
   }
+
 }
+
 
 @mixin flag--flush($flag__fig: flag__fig) {
+
   > .#{$flag__fig} {
-    padding-right:0;
-    padding-left:0;
+    padding-right: 0;
+    padding-left: 0;
   }
+
 }
+
 
 @mixin flag--top($flag__fig: flag__fig, $flag__body: flag__body) {
+
   .#{$flag__fig},
   .#{$flag__body} {
-    vertical-align:top;
+    vertical-align: top;
   }
+
 }
+
 
 @mixin flag--bottom($flag__fig: flag__fig, $flag__body: flag__body) {
+
   .#{$flag__fig},
   .#{$flag__body} {
-    vertical-align:bottom;
+    vertical-align: bottom;
   }
+
 }
 
-@if multi-map-get( $objects, flag regular ) == true {
+
+@if ( multi-map-get( $objects, flag regular ) ) {
 
   .flag { @include flag; }
 
@@ -108,37 +133,43 @@
 
 }
 
-@if multi-map-get( $objects, flag small ) == true {
+
+@if ( multi-map-get( $objects, flag small ) ) {
 
   .flag--small { @include flag--small; }
 
 }
 
-@if multi-map-get( $objects, flag large ) == true {
+
+@if ( multi-map-get( $objects, flag large ) ) {
 
   .flag--large { @include flag--large; }
 
 }
 
-@if multi-map-get( $objects, flag rev ) == true {
+
+@if ( multi-map-get( $objects, flag rev ) ) {
 
   .flag--rev { @include flag--rev; }
 
 }
 
-@if multi-map-get( $objects, flag flush ) == true {
+
+@if ( multi-map-get( $objects, flag flush ) ) {
 
   .flag--flush { @include flag--flush; }
 
 }
 
-@if multi-map-get( $objects, flag top ) == true {
+
+@if ( multi-map-get( $objects, flag top ) ) {
 
   .flag--top { @include flag--top; }
 
 }
 
-@if multi-map-get( $objects, flag bottom ) == true {
+
+@if ( multi-map-get( $objects, flag bottom ) ) {
 
   .flag--bottom { @include flag--bottom; }
 

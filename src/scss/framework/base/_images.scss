@@ -3,34 +3,36 @@
  **********************************************************************************/
 
 img {
-  max-width:100%;
+  max-width: 100%;
 }
 
 img[width],
 img[height] {
-  max-width:none;
+  max-width: none;
 }
 
 .img--right,
 .img--left,
 .img--center {
-  margin-bottom:$base-spacing-unit;
+  margin-bottom: $base-spacing-unit;
 }
 
 .img--right {
-  margin-left:$base-spacing-unit;
+  margin-left: $base-spacing-unit;
   float:right;
 }
+
 .img--left {
-  margin-right:$base-spacing-unit;
+  margin-right: $base-spacing-unit;
   float:left;
 }
+
 .img--center {
-  display:block;
-  margin-right:auto;
-  margin-left:auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 figure > img {
-  display:block;
+  display: block;
 }

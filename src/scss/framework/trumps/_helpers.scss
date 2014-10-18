@@ -7,11 +7,13 @@
   <div class="helper"></div>
 
   .element {
+
     @extend .helper;
 
-    @media (max-width:500px) {
+    @media ( max-width: 500px ) {
       @include helper;
     }
+
   }
 
  **********************************************************************************/
@@ -19,19 +21,33 @@
 /**
   Accessible alternative to `display:none`.
  */
-.accessibility { @include accessibility; }
+
+.accessibility { @include accessibility( important ); }
+
 
 /**
   Disable pointer events.
  */
-.inaccessible { @include inaccessible; }
+
+.inaccessible { @include inaccessible( important ); }
+
 
 /**
   Clearfix.
  */
-.cf { @include cf; }
+
+.cf { @include cf( important ); }
+
 
 /**
   Image replacement.
  */
-.ir { @include ir; }
+
+.ir { @include ir( important ); }
+
+
+/**
+  Removes indents and bullet points from lists.
+ */
+
+.bare-list { @include bare-list( important ); }

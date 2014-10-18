@@ -7,81 +7,98 @@
  **********************************************************************************/
 
 @mixin media {
-  display:block;
+
+  display: block;
 
   &:after {
-    content:'';
-    display:table;
-    clear:both;
+    content: '';
+    display: table;
+    clear: both;
   }
+
 }
 
+
   @mixin media__fig {
-    margin-right:$base-spacing-unit;
-    float:left;
+
+    margin-right: $base-spacing-unit;
+    float: left;
 
     > img {
-      display:block;
+      display: block;
     }
+
   }
 
+
   @mixin media__body {
-    overflow:hidden;
+
+    overflow: hidden;
 
     &,
     > :last-child {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
+
   }
 
-@mixin media--small($media__fig: media__fig, $media--rev: media--rev) {
+
+@mixin media--small ( $media__fig: media__fig, $media--rev: media--rev ) {
+
   > .#{$media__fig} {
-    margin-right:$base-spacing-unit / 2;
+    margin-right: ($base-spacing-unit / 2);
   }
 
-  @if multi-map-get( $objects, media rev ) == true or $media--rev {
+  @if ( multi-map-get( $objects, media rev ) or $media--rev ) {
     &.#{$media--rev} {
 
       > .#{$media__fig} {
-        margin-right:0;
-        margin-left:$base-spacing-unit / 2;
+        margin-right: 0;
+        margin-left: ($base-spacing-unit / 2);
       }
     }
   }
+
 }
 
-@mixin media--large($media__fig: media__fig, $media--rev: media--rev) {
+
+@mixin media--large ( $media__fig: media__fig, $media--rev: media--rev ) {
+
   > .#{$media__fig} {
-    margin-right:$base-spacing-unit * 2;
+    margin-right: ($base-spacing-unit * 2);
   }
 
-  @if multi-map-get( $objects, media rev ) == true or $media--rev {
+  @if ( multi-map-get( $objects, media rev ) or $media--rev ) {
     &.#{$media--rev} {
 
       > .#{$media__fig} {
-        margin-right:0;
-        margin-left:$base-spacing-unit * 2;
+        margin-right: 0;
+        margin-left: ($base-spacing-unit * 2);
       }
     }
   }
+
 }
+
 
 @mixin media--rev($media__fig: media__fig) {
   > .#{$media__fig} {
-    margin-right:0;
-    margin-left:$base-spacing-unit;
-    float:right;
+    margin-right: 0;
+    margin-left: $base-spacing-unit;
+    float: right;
   }
 }
+
 
 @mixin media--flush($media__fig: media__fig) {
   > .#{$media__fig} {
-    margin-right:0;
-    margin-left:0;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
-@if multi-map-get( $objects, media regular ) == true {
+
+@if ( multi-map-get( $objects, media regular ) ) {
 
   .media { @include media; }
 
@@ -91,25 +108,29 @@
 
 }
 
-@if multi-map-get( $objects, media small ) == true {
+
+@if ( multi-map-get( $objects, media small ) ) {
 
   .media--small { @include media--small; }
 
 }
 
-@if multi-map-get( $objects, media large ) == true {
+
+@if ( multi-map-get( $objects, media large ) ) {
 
   .media--large { @include media--large; }
 
 }
 
-@if multi-map-get( $objects, media rev ) == true {
+
+@if ( multi-map-get( $objects, media rev ) ) {
 
   .media--rev { @include media--rev; }
 
 }
 
-@if multi-map-get( $objects, media flush ) == true {
+
+@if ( multi-map-get( $objects, media flush ) ) {
 
   .media--flush { @include media--flush; }
 

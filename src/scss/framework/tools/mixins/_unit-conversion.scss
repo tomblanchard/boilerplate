@@ -12,25 +12,29 @@
   Usage:
 
   .element {
-    width:rem(20px);
-    height:em(20px, 10px);
-    @include rem(margin, 20px);
+    width: rem( 20px );
+    height: em( 20px, 10px );
+    @include rem( margin, 20px );
   }
 
  **********************************************************************************/
 
-@function rem($size) {
-  @return #{$size/$base-font-size}rem;
+@function rem ( $size ) {
+  @return #{ $size / $base-font-size }rem;
 }
 
-@function em($size, $base: $base-font-size) {
-  @return ($size / $base) * 1em;
+
+@function em ( $size, $base: $base-font-size ) {
+  @return ( ( $size / $base ) * 1em );
 }
 
-@mixin rem($property, $values) {
+
+@mixin rem ( $property, $values ) {
+
   $font-size: $base-font-size;
   $px-values: ();
   $rem-values: ();
+
   @each $value in $values {
     @if $value == 0 or $value == 0px {
       $px-values: join($px-values, 0);
@@ -50,6 +54,8 @@
       $rem-values: join($rem-values, #{$value}rem);
     }
   }
+
   #{$property}: $px-values;
   #{$property}: $rem-values;
+
 }

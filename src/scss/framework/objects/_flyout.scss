@@ -8,31 +8,38 @@
  **********************************************************************************/
 
 @mixin flyout($flyout__content: flyout__content) {
-  position:relative;
+
+  position: relative;
 
   &:hover {
     > .#{$flyout__content} {
-      left:0;
+      left: 0;
     }
   }
+
 }
+
 
   @mixin flyout__content {
-    position:absolute;
-    top:100%;
-    left:-99999px;
+    position: absolute;
+    top: 100%;
+    left: -99999px;
   }
+
 
 @mixin flyout--alt($flyout__content: flyout__content) {
+
   &:hover {
     .#{$flyout__content} {
-      top:0;
-      left:100%;
+      top: 0;
+      left: 100%;
     }
   }
+
 }
 
-@if multi-map-get( $objects, flyout regular ) == true {
+
+@if ( multi-map-get( $objects, flyout regular ) ) {
 
   .flyout { @include flyout; }
 
@@ -40,7 +47,8 @@
 
 }
 
-@if multi-map-get( $objects, flyout alt ) == true {
+
+@if ( multi-map-get( $objects, flyout alt ) ) {
 
   .flyout--alt { @include flyout--alt; }
 

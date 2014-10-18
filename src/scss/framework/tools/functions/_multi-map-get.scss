@@ -13,22 +13,27 @@
   );
 
   .element {
-    color:multi-map-get( $colors, element primary );
+    color: multi-map-get( $colors, element primary );
   }
 
  **********************************************************************************/
 
-@function multi-map-get($map, $keys) {
+@function multi-map-get ( $map, $keys ) {
+
   $key: nth($keys, 1);
   $length: length($keys);
   $value: map-get($map, $key);
+
   @if ($length > 1 and $value) {
     $rest: ();
     @for $i from 2 through $length {
       $rest: append($rest, nth($keys, $i))
     }
     @return multi-map-get($value, $rest)
-  } @else {
+  }
+
+  @else {
     @return $value;
   }
+
 }

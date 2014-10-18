@@ -12,26 +12,46 @@
 
   .element {
     @include media-query(L) {
-      background:red;
+      background: red;
     }
   }
 
  **********************************************************************************/
 
-@mixin media-query($media-query, $lt-ie-9-support: false) {
-  @if map-has-key($breakpoints, $media-query) {
-    @if $is-lt-ie-9-stylesheet == false {
-      @media #{map-get($breakpoints, $media-query)} {
-        @content;
-      }
-    }
-    @else {
+@mixin media-query ( $media-query, $lt-ie-9-support: false ) {
+
+
+  @if map-has-key( $breakpoints, $media-query ) {
+
+    @if $is-lt-ie-9-stylesheet {
       @if $lt-ie-9-support {
         @content;
       }
     }
+
+    @else {
+      @media #{ map-get( $breakpoints, $media-query ) } {
+        @content;
+      }
+    }
+
   }
+
+
   @else {
     @warn "Couldn't find a breakpoint named `#{$media-query}`.";
+  }
+
+
+}
+
+
+/**
+  Shorter alias for the `media-query` mixin.
+ */
+
+@mixin mq ( $args... ) {
+  @include media-query($args...) {
+    @content;
   }
 }

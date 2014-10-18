@@ -8,37 +8,44 @@
  **********************************************************************************/
 
 @mixin nav {
-  margin-left:0;
-  margin-bottom:0;
-  list-style:none;
+
+  margin-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 
   > li {
     &,
     > a {
-      display:inline-block;
-      *display:inline;
-      zoom:1;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
     }
   }
+
 }
+
 
 @mixin nav--stacked {
+
   > li {
-    display:list-item;
+    display: list-item;
 
     > a {
-      display:block;
+      display: block;
     }
   }
+
 }
 
-@if multi-map-get( $objects, nav regular ) == true {
+
+@if ( multi-map-get( $objects, nav regular ) ) {
 
   .nav { @include nav; }
 
 }
 
-@if multi-map-get( $objects, nav stacked ) == true {
+
+@if ( multi-map-get( $objects, nav stacked ) ) {
 
   .nav--stacked { @include nav--stacked; }
 

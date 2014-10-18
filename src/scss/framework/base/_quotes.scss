@@ -3,69 +3,80 @@
  **********************************************************************************/
 
 q {
-  quotes:'\2018' '\2019' '\201C' '\201D';
+
+  quotes: '\2018' '\2019' '\201C' '\201D';
 
   &:before {
-    content:'\2018';
-    content:open-quote;
+    content: '\2018';
+    content: open-quote;
   }
 
   &:after {
-    content:'\2019';
-    content:close-quote;
+    content: '\2019';
+    content: close-quote;
   }
 
   q:before {
-    content:'\201C';
-    content:open-quote;
+    content: '\201C';
+    content: open-quote;
   }
 
   q:after {
-    content:'\201D';
-    content:close-quote;
+    content: '\201D';
+    content: close-quote;
   }
+
 }
 
+
 blockquote {
-  quotes:'\201C' '\201D';
+
+  quotes: '\201C' '\201D';
 
   p:before {
-    content:'\201C';
-    content:open-quote;
+    content: '\201C';
+    content: open-quote;
   }
 
   p:after {
-    content:'';
-    content:no-close-quote;
+    content: '';
+    content: no-close-quote;
   }
 
   p:last-of-type:after {
-    content:'\201D';
-    content:close-quote;
+    content: '\201D';
+    content: close-quote;
   }
 
   q:before {
-    content:'\2018';
-    content:open-quote;
+    content: '\2018';
+    content: open-quote;
   }
 
   q:after {
-    content:'\2019';
-    content:close-quote;
+    content: '\2019';
+    content: close-quote;
   }
+
 }
+
 
 blockquote {
+
   p:last-of-type {
-    margin:0;
+    margin: 0;
   }
+
 }
 
+
 .source {
-  display:block;
-  text-indent:0;
+
+  display: block;
+  text-indent: 0;
 
   &:before {
-    content:'\2014';
+    content: '\2014';
   }
+
 }

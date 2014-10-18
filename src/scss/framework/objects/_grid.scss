@@ -7,90 +7,111 @@
  **********************************************************************************/
 
 @mixin grid {
-  list-style:none;
-  margin:0;
-  padding:0;
-  margin-left:-$grid-gutter;
-  margin-bottom:-$grid-gutter;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -$grid-gutter;
+  margin-bottom: -$grid-gutter;
 }
+
 
   @mixin grid__item {
-    display:inline-block;
-    padding-left:$grid-gutter;
-    padding-bottom:$grid-gutter;
-    vertical-align:top;
-    width:100%;
+    display: inline-block;
+    padding-left: $grid-gutter;
+    padding-bottom: $grid-gutter;
+    vertical-align: top;
+    width: 100%;
   }
 
-@mixin grid--small($grid__item: grid__item) {
-  margin-left:-($grid-gutter / 2);
-  margin-bottom:-($grid-gutter / 2);
+
+@mixin grid--small ( $grid__item: grid__item ) {
+
+  margin-left: -($grid-gutter / 2);
+  margin-bottom: -($grid-gutter / 2);
 
   > .#{$grid__item} {
-    padding-left:($grid-gutter / 2);
-    padding-bottom:($grid-gutter / 2);
+    padding-left: ($grid-gutter / 2);
+    padding-bottom: ($grid-gutter / 2);
+  }
+
+}
+
+
+@mixin grid--large ( $grid__item: grid__item ) {
+
+  margin-left: -($grid-gutter * 2);
+  margin-bottom: -($grid-gutter * 2);
+
+  > .#{$grid__item} {
+    padding-left: ($grid-gutter * 2);
+    padding-bottom: ($grid-gutter * 2);
+  }
+
+}
+
+
+@mixin grid--rev ( $grid__item: grid__item ) {
+
+  direction: rtl;
+  text-align: left;
+
+  > .#{$grid__item} {
+    direction: ltr;
+    text-align: left;
+  }
+
+}
+
+@mixin grid--flush ( $grid__item: grid__item ) {
+
+  margin-left: 0;
+  margin-bottom: 0;
+
+  > .#{$grid__item} {
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+
+}
+
+
+@mixin grid--middle ( $grid__item: grid__item ) {
+  > .#{$grid__item} {
+    vertical-align: middle;
   }
 }
 
-@mixin grid--large($grid__item: grid__item) {
-  margin-left:-($grid-gutter * 2);
-  margin-bottom:-($grid-gutter * 2);
 
+@mixin grid--bottom ( $grid__item: grid__item ) {
   > .#{$grid__item} {
-    padding-left:($grid-gutter * 2);
-    padding-bottom:($grid-gutter * 2);
+    vertical-align: bottom;
   }
 }
 
-@mixin grid--rev($grid__item: grid__item) {
-  direction:rtl;
-  text-align:left;
+
+@mixin grid--right ( $grid__item: grid__item ) {
+
+  text-align: right;
 
   > .#{$grid__item} {
-    direction:ltr;
-    text-align:left;
+    text-align: left;
   }
+
 }
 
-@mixin grid--flush($grid__item: grid__item) {
-  margin-left:0;
-  margin-bottom:0;
+
+@mixin grid--center ( $grid__item: grid__item ) {
+
+  text-align: center;
 
   > .#{$grid__item} {
-    padding-left:0;
-    padding-bottom:0;
+    text-align: left;
   }
+
 }
 
-@mixin grid--middle($grid__item: grid__item) {
-  > .#{$grid__item} {
-    vertical-align:middle;
-  }
-}
 
-@mixin grid--bottom($grid__item: grid__item) {
-  > .#{$grid__item} {
-    vertical-align:bottom;
-  }
-}
-
-@mixin grid--right($grid__item: grid__item) {
-  text-align:right;
-
-  > .#{$grid__item} {
-    text-align:left;
-  }
-}
-
-@mixin grid--center($grid__item: grid__item) {
-  text-align:center;
-
-  > .#{$grid__item} {
-    text-align:left;
-  }
-}
-
-@if multi-map-get( $objects, grid regular ) == true {
+@if ( multi-map-get( $objects, grid regular ) ) {
 
   .grid { @include grid; }
 
@@ -98,49 +119,57 @@
 
 }
 
-@if multi-map-get( $objects, grid small ) == true {
+
+@if ( multi-map-get( $objects, grid small ) ) {
 
   .grid--small { @include grid--small; }
 
 }
 
-@if multi-map-get( $objects, grid large ) == true {
+
+@if ( multi-map-get( $objects, grid large ) ) {
 
   .grid--large { @include grid--large; }
 
 }
 
-@if multi-map-get( $objects, grid rev ) == true {
+
+@if ( multi-map-get( $objects, grid rev ) ) {
 
   .grid--rev { @include grid--rev; }
 
 }
 
-@if multi-map-get( $objects, grid flush ) == true {
+
+@if ( multi-map-get( $objects, grid flush ) ) {
 
   .grid--flush { @include grid--flush; }
 
 }
 
-@if multi-map-get( $objects, grid middle ) == true {
+
+@if ( multi-map-get( $objects, grid middle ) ) {
 
   .grid--middle { @include grid--middle; }
 
 }
 
-@if multi-map-get( $objects, grid bottom ) == true {
+
+@if ( multi-map-get( $objects, grid bottom ) ) {
 
   .grid--bottom { @include grid--bottom; }
 
 }
 
-@if multi-map-get( $objects, grid right ) == true {
+
+@if ( multi-map-get( $objects, grid right ) ) {
 
   .grid--right { @include grid--right; }
 
 }
 
-@if multi-map-get( $objects, grid center ) == true {
+
+@if ( multi-map-get( $objects, grid center ) ) {
 
   .grid--center { @include grid--center; }
 
