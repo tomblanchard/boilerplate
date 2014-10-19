@@ -454,6 +454,8 @@ In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
 }
 ```
 
+This mixin also has the alias `mq`, so instead of having to write `@include media-query( ... ) { }` every time (which can get tedious), you have the option of writing `@include mq( ... ) { }`. When I refer to this as an "alias", this means that it's powered off the original `media-query` mixin so works exactly the same, just with a different name, usage is completely optional.
+
 #### `framework/tools/mixins/_spacing.scss`
 
 Margin and padding helper mixins in the format of:
