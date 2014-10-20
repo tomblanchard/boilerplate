@@ -119,3 +119,22 @@
   }
 
 }
+
+
+/**
+  Makes element block level and full-width.
+ */
+
+@mixin full ( $important: false ) {
+
+  @if ( $important ) {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  @else {
+    display: block;
+    width: 100%;
+  }
+
+}

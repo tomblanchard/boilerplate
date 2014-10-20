@@ -51,3 +51,10 @@
  */
 
 .bare-list { @include bare-list( important ); }
+
+
+/**
+  Makes element block level and full-width.
+ */
+
+.full { @include full( important ); }
