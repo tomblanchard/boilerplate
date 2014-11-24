@@ -4,8 +4,11 @@
 
 img {
   max-width: 100%;
+  font-style: italic;
+  vertical-align: middle;
 }
 
+.gm-style img,
 img[width],
 img[height] {
   max-width: none;
@@ -31,8 +34,4 @@ img[height] {
   display: block;
   margin-right: auto;
   margin-left: auto;
-}
-
-figure > img {
-  display: block;
 }
