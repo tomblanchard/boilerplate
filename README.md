@@ -162,9 +162,7 @@ Or like this:
 ```
 
 ```html
-<ul class="element">
-  <li>List Item</li>
-</ul>
+<span class="element"></span>
 ```
 
 Or like this:
@@ -178,9 +176,7 @@ Or like this:
 ```
 
 ```html
-<ul class="element">
-  <li>List Item</li>
-</ul>
+<span class="element"></span>
 ```
 
 This approach gets a little more complicated when it comes to more complex objects which contain modifier variations. I'll use parts of the `grid` object to illustrate the problem and my workaround. So with a few parts of the object taken out to save space this is what the `grid` object is like before my workaround:
