@@ -17,6 +17,8 @@
 
   @mixin grid__item {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     padding-left: $grid-gutter;
     padding-bottom: $grid-gutter;
     vertical-align: top;
