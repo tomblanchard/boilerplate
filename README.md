@@ -195,6 +195,8 @@ This approach gets a little more complicated when it comes to more complex objec
 
   @mixin grid__item {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     padding-left: $grid-gutter;
     padding-bottom: $grid-gutter;
     vertical-align: top;
@@ -218,7 +220,7 @@ This approach gets a little more complicated when it comes to more complex objec
   If the `regular` version of the `grid` object is enabled then output the
   necessary CSS.
  */
-@if multi-map-get( $objects, grid regular ) == true {
+@if map-deep-get( $objects, grid regular ) == true {
 
   .grid { @include grid; }
 
@@ -230,7 +232,7 @@ This approach gets a little more complicated when it comes to more complex objec
   If the `small` version of the `grid` object is enabled then output the
   necessary CSS.
  */
-@if multi-map-get( $objects, grid small ) == true {
+@if map-deep-get( $objects, grid small ) == true {
 
   .grid--small { @include grid--small; }
 
@@ -260,6 +262,8 @@ This outputs:
 
 .content__col {
   display: inline-block;
+  *display: inline;
+  zoom: 1;
   padding-left: 24px;
   padding-bottom: 24px;
   vertical-align: top;
@@ -299,6 +303,8 @@ My work around is to author the object like so:
 
   @mixin grid__item {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     padding-left: $grid-gutter;
     padding-bottom: $grid-gutter;
     vertical-align: top;
@@ -306,20 +312,20 @@ My work around is to author the object like so:
   }
 
 /**
-  Now the `grid__item` element name is able to be changed via the `grid--small`
-  mixin parameter `$grid__item`.
+  Now the `.grid__item` element is able to be changed via the `grid--small` mixin
+  parameter `$grid__item`.
  */
-@mixin grid--small( $grid__item:  grid__item ) {
+@mixin grid--small ( $grid__item: '.grid__item' ) {
   margin-left: -($grid-gutter / 2);
   margin-bottom: -($grid-gutter / 2);
 
-  > .#{$grid__item} {
+  > #{$grid__item} {
     padding-left: ($grid-gutter / 2);
     padding-bottom: ($grid-gutter / 2);
   }
 }
 
-@if multi-map-get( $objects, grid regular ) == true {
+@if map-deep-get( $objects, grid regular ) == true {
 
   .grid { @include grid; }
 
@@ -327,7 +333,7 @@ My work around is to author the object like so:
 
 }
 
-@if multi-map-get( $objects, grid small ) == true {
+@if map-deep-get( $objects, grid small ) == true {
 
   .grid--small { @include grid--small; }
 
@@ -339,9 +345,9 @@ Then when I want to `@include` the object I do it like so:
 ```scss
 .content { @include grid; }
 
-.content--alt { @include grid--small( $grid__item: content__col ); }
-
   .content__col { @include grid__item; }
+
+.content--alt { @include grid--small( $grid__item: '.content__col' ); }
 ```
 
 #### `framework/objects/_flag.scss`
@@ -376,7 +382,7 @@ Custom Sass functions and mixins live here.
 
 Custom Sass functions.
 
-#### `framework/tools/functions/multi-map-get.scss`
+#### `framework/tools/functions/map-deep-get.scss`
 
 Like `map-get` but can handle multi-dimensional maps. Usage:
 
@@ -388,7 +394,7 @@ $colors: (
 );
 
 .element {
-  color: multi-map-get( $colors, element primary );
+  color: map-deep-get( $colors, element primary );
 }
 ```
 

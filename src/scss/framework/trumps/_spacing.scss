@@ -18,7 +18,7 @@
 
  **********************************************************************************/
 
-@if ( multi-map-get( $spacing, margins positive regular ) ) {
+@if ( map-deep-get( $spacing, margins positive regular ) ) {
 
   .m { @include m( important ) };
   .mt { @include mt( important ) };
@@ -31,7 +31,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins positive tiny ) ) {
+@if ( map-deep-get( $spacing, margins positive tiny ) ) {
 
   .m-- { @include m--( important ) };
   .mt-- { @include mt--( important ) };
@@ -44,7 +44,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins positive small ) ) {
+@if ( map-deep-get( $spacing, margins positive small ) ) {
 
   .m- { @include m-( important ) };
   .mt- { @include mt-( important ) };
@@ -57,7 +57,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins positive large ) ) {
+@if ( map-deep-get( $spacing, margins positive large ) ) {
 
   .m\+ { @include m\+( important ) };
   .mt\+ { @include mt\+( important ) };
@@ -70,7 +70,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins positive huge ) ) {
+@if ( map-deep-get( $spacing, margins positive huge ) ) {
 
   .m\+\+ { @include m\+\+( important ) };
   .mt\+\+ { @include mt\+\+( important ) };
@@ -83,7 +83,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins negative regular ) ) {
+@if ( map-deep-get( $spacing, margins negative regular ) ) {
 
   .-m { @include -m( important ) };
   .-mt { @include -mt( important ) };
@@ -96,7 +96,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins negative tiny ) ) {
+@if ( map-deep-get( $spacing, margins negative tiny ) ) {
 
   .-m-- { @include -m--( important ) };
   .-mt-- { @include -mt--( important ) };
@@ -109,7 +109,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins negative small ) ) {
+@if ( map-deep-get( $spacing, margins negative small ) ) {
 
   .-m- { @include -m-( important ) };
   .-mt- { @include -mt-( important ) };
@@ -122,7 +122,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins negative large ) ) {
+@if ( map-deep-get( $spacing, margins negative large ) ) {
 
   .-m\+ { @include -m\+( important ) };
   .-mt\+ { @include -mt\+( important ) };
@@ -135,7 +135,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins negative huge ) ) {
+@if ( map-deep-get( $spacing, margins negative huge ) ) {
 
   .-m\+\+ { @include -m\+\+( important ) };
   .-mt\+\+ { @include -mt\+\+( important ) };
@@ -148,7 +148,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, margins none ) ) {
+@if ( map-deep-get( $spacing, margins none ) ) {
 
   .m0 { @include m0( important ) };
   .mt0 { @include mt0( important ) };
@@ -161,7 +161,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings regular ) ) {
+@if ( map-deep-get( $spacing, paddings regular ) ) {
 
   .p { @include p( important ) };
   .pt { @include pt( important ) };
@@ -174,7 +174,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings tiny ) ) {
+@if ( map-deep-get( $spacing, paddings tiny ) ) {
 
   .p-- { @include p--( important ) };
   .pt-- { @include pt--( important ) };
@@ -187,7 +187,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings small ) ) {
+@if ( map-deep-get( $spacing, paddings small ) ) {
 
   .p- { @include p-( important ) };
   .pt- { @include pt-( important ) };
@@ -200,7 +200,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings large ) ) {
+@if ( map-deep-get( $spacing, paddings large ) ) {
 
   .p\+ { @include p\+( important ) };
   .pt\+ { @include pt\+( important ) };
@@ -213,7 +213,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings huge ) ) {
+@if ( map-deep-get( $spacing, paddings huge ) ) {
 
   .p\+\+ { @include p\+\+( important ) };
   .pt\+\+ { @include pt\+\+( important ) };
@@ -226,7 +226,7 @@
 }
 
 
-@if ( multi-map-get( $spacing, paddings none ) ) {
+@if ( map-deep-get( $spacing, paddings none ) ) {
 
   .p0 { @include p0( important ) };
   .pt0 { @include pt0( important ) };

@@ -40,15 +40,15 @@
   }
 
 
-@mixin flag--small($flag__fig: flag__fig, $flag--rev: flag--rev) {
+@mixin flag--small($flag__fig: '.flag__fig', $flag--rev: '.flag--rev') {
 
-  > .#{$flag__fig} {
+  > #{$flag__fig} {
     padding-right: $base-spacing-unit / 2;
   }
 
-  @if ( multi-map-get( $objects, flag rev ) or $flag--rev ) {
-    &.#{$flag__rev} {
-      > .#{$flag__fig} {
+  @if ( map-deep-get( $objects, flag rev ) or $flag--rev ) {
+    &#{$flag__rev} {
+      > #{$flag__fig} {
         padding-right: 0;
         padding-left: $base-spacing-unit / 2;
       }
@@ -58,15 +58,15 @@
 }
 
 
-@mixin flag--large($flag__fig: flag__fig, $flag--rev: flag--rev) {
+@mixin flag--large($flag__fig: '.flag__fig', $flag--rev: '.flag--rev') {
 
-  > .#{$flag__fig} {
+  > #{$flag__fig} {
     padding-right: $base-spacing-unit * 2;
   }
 
-  @if ( multi-map-get( $objects, flag rev ) or $flag--rev ) {
-    &.#{$flag__rev} {
-      > .#{$flag__fig} {
+  @if ( map-deep-get( $objects, flag rev ) or $flag--rev ) {
+    &#{$flag__rev} {
+      > #{$flag__fig} {
         padding-right: 0;
         padding-left: $base-spacing-unit * 2;
       }
@@ -76,16 +76,16 @@
 }
 
 
-@mixin flag--rev($flag__fig: flag__fig, $flag__body: flag__body) {
+@mixin flag--rev($flag__fig: '.flag__fig', $flag__body: '.flag__body') {
 
   direction:rtl;
 
-  > .#{$flag__fig},
-  > .#{$flag__body} {
+  > #{$flag__fig},
+  > #{$flag__body} {
     direction: ltr;
   }
 
-  > .#{$flag__fig} {
+  > #{$flag__fig} {
     padding-right: 0;
     padding-left: $base-spacing-unit;
   }
@@ -93,9 +93,9 @@
 }
 
 
-@mixin flag--flush($flag__fig: flag__fig) {
+@mixin flag--flush($flag__fig: '.flag__fig') {
 
-  > .#{$flag__fig} {
+  > #{$flag__fig} {
     padding-right: 0;
     padding-left: 0;
   }
@@ -103,27 +103,27 @@
 }
 
 
-@mixin flag--top($flag__fig: flag__fig, $flag__body: flag__body) {
+@mixin flag--top($flag__fig: '.flag__fig', $flag__body: '.flag__body') {
 
-  .#{$flag__fig},
-  .#{$flag__body} {
+  #{$flag__fig},
+  #{$flag__body} {
     vertical-align: top;
   }
 
 }
 
 
-@mixin flag--bottom($flag__fig: flag__fig, $flag__body: flag__body) {
+@mixin flag--bottom($flag__fig: '.flag__fig', $flag__body: '.flag__body') {
 
-  .#{$flag__fig},
-  .#{$flag__body} {
+  #{$flag__fig},
+  #{$flag__body} {
     vertical-align: bottom;
   }
 
 }
 
 
-@if ( multi-map-get( $objects, flag regular ) ) {
+@if ( map-deep-get( $objects, flag regular ) ) {
 
   .flag { @include flag; }
 
@@ -134,42 +134,42 @@
 }
 
 
-@if ( multi-map-get( $objects, flag small ) ) {
+@if ( map-deep-get( $objects, flag small ) ) {
 
   .flag--small { @include flag--small; }
 
 }
 
 
-@if ( multi-map-get( $objects, flag large ) ) {
+@if ( map-deep-get( $objects, flag large ) ) {
 
   .flag--large { @include flag--large; }
 
 }
 
 
-@if ( multi-map-get( $objects, flag rev ) ) {
+@if ( map-deep-get( $objects, flag rev ) ) {
 
   .flag--rev { @include flag--rev; }
 
 }
 
 
-@if ( multi-map-get( $objects, flag flush ) ) {
+@if ( map-deep-get( $objects, flag flush ) ) {
 
   .flag--flush { @include flag--flush; }
 
 }
 
 
-@if ( multi-map-get( $objects, flag top ) ) {
+@if ( map-deep-get( $objects, flag top ) ) {
 
   .flag--top { @include flag--top; }
 
 }
 
 
-@if ( multi-map-get( $objects, flag bottom ) ) {
+@if ( map-deep-get( $objects, flag bottom ) ) {
 
   .flag--bottom { @include flag--bottom; }
 

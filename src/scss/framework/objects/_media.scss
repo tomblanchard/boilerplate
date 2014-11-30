@@ -43,16 +43,16 @@
   }
 
 
-@mixin media--small ( $media__fig: media__fig, $media--rev: media--rev ) {
+@mixin media--small ( $media__fig: '.media__fig', $media--rev: '.media--rev' ) {
 
-  > .#{$media__fig} {
+  > #{$media__fig} {
     margin-right: ($base-spacing-unit / 2);
   }
 
-  @if ( multi-map-get( $objects, media rev ) or $media--rev ) {
-    &.#{$media--rev} {
+  @if ( map-deep-get( $objects, media rev ) or $media--rev ) {
+    &#{$media--rev} {
 
-      > .#{$media__fig} {
+      > #{$media__fig} {
         margin-right: 0;
         margin-left: ($base-spacing-unit / 2);
       }
@@ -62,16 +62,16 @@
 }
 
 
-@mixin media--large ( $media__fig: media__fig, $media--rev: media--rev ) {
+@mixin media--large ( $media__fig: '.media__fig', $media--rev: '.media--rev' ) {
 
-  > .#{$media__fig} {
+  > #{$media__fig} {
     margin-right: ($base-spacing-unit * 2);
   }
 
-  @if ( multi-map-get( $objects, media rev ) or $media--rev ) {
-    &.#{$media--rev} {
+  @if ( map-deep-get( $objects, media rev ) or $media--rev ) {
+    &#{$media--rev} {
 
-      > .#{$media__fig} {
+      > #{$media__fig} {
         margin-right: 0;
         margin-left: ($base-spacing-unit * 2);
       }
@@ -81,8 +81,8 @@
 }
 
 
-@mixin media--rev($media__fig: media__fig) {
-  > .#{$media__fig} {
+@mixin media--rev($media__fig: '.media__fig') {
+  > #{$media__fig} {
     margin-right: 0;
     margin-left: $base-spacing-unit;
     float: right;
@@ -90,15 +90,15 @@
 }
 
 
-@mixin media--flush($media__fig: media__fig) {
-  > .#{$media__fig} {
+@mixin media--flush($media__fig: '.media__fig') {
+  > #{$media__fig} {
     margin-right: 0;
     margin-left: 0;
   }
 }
 
 
-@if ( multi-map-get( $objects, media regular ) ) {
+@if ( map-deep-get( $objects, media regular ) ) {
 
   .media { @include media; }
 
@@ -109,28 +109,28 @@
 }
 
 
-@if ( multi-map-get( $objects, media small ) ) {
+@if ( map-deep-get( $objects, media small ) ) {
 
   .media--small { @include media--small; }
 
 }
 
 
-@if ( multi-map-get( $objects, media large ) ) {
+@if ( map-deep-get( $objects, media large ) ) {
 
   .media--large { @include media--large; }
 
 }
 
 
-@if ( multi-map-get( $objects, media rev ) ) {
+@if ( map-deep-get( $objects, media rev ) ) {
 
   .media--rev { @include media--rev; }
 
 }
 
 
-@if ( multi-map-get( $objects, media flush ) ) {
+@if ( map-deep-get( $objects, media flush ) ) {
 
   .media--flush { @include media--flush; }
 

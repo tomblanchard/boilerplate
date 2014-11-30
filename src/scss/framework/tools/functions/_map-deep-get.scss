@@ -13,12 +13,12 @@
   );
 
   .element {
-    color: multi-map-get( $colors, element primary );
+    color: map-deep-get( $colors, element primary );
   }
 
  **********************************************************************************/
 
-@function multi-map-get ( $map, $keys ) {
+@function map-deep-get ( $map, $keys ) {
 
   $key: nth($keys, 1);
   $length: length($keys);
@@ -29,7 +29,7 @@
     @for $i from 2 through $length {
       $rest: append($rest, nth($keys, $i))
     }
-    @return multi-map-get($value, $rest)
+    @return map-deep-get($value, $rest)
   }
 
   @else {
