@@ -167,10 +167,32 @@
   (located in `_config.scss`) list.
  */
 
+// For each width class we want to output (defined in `$grid-widths-to-output`)
 @each $class in $grid-widths-to-output {
 
-  .#{$class} {
-    @extend %#{$class};
+  // If the `lt-ie-9` stylesheet
+  @if $is-lt-ie-9-stylesheet {
+
+    // If the width class contains the string `-down--` this means it's inside a
+    // `max-width` defined media query which is useless to `lt-ie-9` browsers so
+    // these width classes don't need to be outputted in this file
+    @if not str-index( $class, '-down--' ) {
+
+      // Output the width class
+      .#{$class} {
+        @extend %#{$class};
+      }
+
+    }
+
+  // If not the `lt-ie-9` stylesheet
+  } @else {
+
+    // Output every width class defined, no matter what
+    .#{$class} {
+      @extend %#{$class};
+    }
+
   }
 
 }
