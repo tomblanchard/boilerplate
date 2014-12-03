@@ -170,25 +170,13 @@
 // For each width class we want to output (defined in `$grid-widths-to-output`)
 @each $class in $grid-widths-to-output {
 
-  // If the `lt-ie-9` stylesheet
-  @if $is-lt-ie-9-stylesheet {
+  // If not the `lt-ie-9` stylesheet then output every width class defined, no matter
+  // what. But if we are on the `lt-ie-9` stylesheet then output every width class
+  // defined except ones that contain the string `-down--`. The reason not to output
+  // those certain width classes is because they're powered by `max-width` media
+  // queries which are useless to `lt-ie-9` browsers
+  @if not $is-lt-ie-9-stylesheet or $is-lt-ie-9-stylesheet and not str-index( $class, '-down--' ) {
 
-    // If the width class contains the string `-down--` this means it's inside a
-    // `max-width` defined media query which is useless to `lt-ie-9` browsers so
-    // these width classes don't need to be outputted in this file
-    @if not str-index( $class, '-down--' ) {
-
-      // Output the width class
-      .#{$class} {
-        @extend %#{$class};
-      }
-
-    }
-
-  // If not the `lt-ie-9` stylesheet
-  } @else {
-
-    // Output every width class defined, no matter what
     .#{$class} {
       @extend %#{$class};
     }
