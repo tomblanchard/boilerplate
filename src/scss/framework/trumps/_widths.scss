@@ -179,9 +179,10 @@
 
     $new-class: $class;
 
-    // Fraction classes (e.g. `1/5`) aren't valid CSS, this manipulate the class to be
-    // valid, this would transform `.1/5` into `.\31\/5`, then to use the class in HTML
-    // it's as simple as `class="1/5"`.
+    // Fraction classes (e.g. `.1/5`) aren't valid CSS, this manipulates the class to
+    // be valid by escaping the starting number and forward slash, this would
+    // transform `.1/5` into `.\31\/5`, then to use the class in HTML it's as simple as
+    // `class="1/5"`.
     @for $i from 1 to 12 {
       @if str-index( $class, '#{$i}/' ) {
         $new-class: unquote( str-replace( $class, '#{$i}/', '\\3#{$i}\\/'  ) );
