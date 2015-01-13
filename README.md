@@ -382,7 +382,7 @@ Custom Sass functions and mixins live here.
 
 Custom Sass functions.
 
-#### `framework/tools/functions/map-deep-get.scss`
+#### `framework/tools/functions/_map-deep-get.scss`
 
 Like `map-get` but can handle multi-dimensional maps. Usage:
 
@@ -397,6 +397,10 @@ $colors: (
   color: map-deep-get( $colors, element primary );
 }
 ```
+
+#### `framework/tools/functions/_str-replace.scss`
+
+Replace contents of a string, authored by [Hugo Giraudel](http://hugogiraudel.com).
 
 #### `framework/tools/mixins/`
 
@@ -571,7 +575,7 @@ Spacing between grid items, defaults to the value of `$base-spacing-unit`.
 
 `$custom-grid-widths`:
 
-The boilerplate comes with loads of grid widths already defined in `framework/trumps/_widths.scss`, these widths are fractions going from `one-whole` to `eleven-twelfths`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
+The boilerplate comes with loads of grid widths already defined in `framework/trumps/_widths.scss`, these widths are fractions going from `1/1` to `11/12`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
 
 ```scss
 $custom-grid-widths: (
@@ -581,13 +585,13 @@ $custom-grid-widths: (
 
 `$grid-widths-to-output`:
 
-Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so:
+Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so (note, you'll have to contain fraction classes in quotes):
 
 ```scss
 $grid-widths-to-output: (
-  one-third
+  '1/3',
   width-class,
-  M--one-half,
+  'M--1/2',
   XL-up--width-class
 );
 ```
@@ -595,7 +599,11 @@ $grid-widths-to-output: (
 This outputs:
 
 ```css
-.one-third {
+/**
+  This class looks strange but all it's doing is escaping non-valid characters.
+  Usage in HTML is still `class="1/3"`
+ */
+.\31\/3 {
   width: 33.333%;
 }
 
@@ -604,7 +612,11 @@ This outputs:
 }
 
 @media ( min-width: 768px ) and ( max-width: 1023px ) {
-  .M--one-half {
+  /**
+    Another weird looking class, it's just escaping stuff, usage in HTML is still
+    `class="M--1/2"`.
+   */
+  .M--\31\/2 {
     width: 50%;
   }
 }
