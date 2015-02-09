@@ -19,10 +19,16 @@
  **********************************************************************************/
 
 /**
+  Hide element (affects SEO and accessibility.)
+ */
+
+.remove { @include remove( important ); }
+
+/**
   Accessible alternative to `display:none`.
  */
 
-.accessibility { @include accessibility( important ); }
+.hide { @include hide( important ); }
 
 
 /**

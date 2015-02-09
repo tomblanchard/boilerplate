@@ -7,10 +7,27 @@
  **********************************************************************************/
 
 /**
+  Hide element (affects SEO and accessibility.)
+ */
+
+@mixin remove ( $important: false ) {
+
+  @if ( $important ) {
+    display: none !important;
+  }
+
+  @else {
+    display: none;
+  }
+
+}
+
+
+/**
   Accessible alternative to `display: none`.
  */
 
-@mixin accessibility ( $important: false ) {
+@mixin hide ( $important: false ) {
 
   @if ( $important ) {
     border: 0 !important;
