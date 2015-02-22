@@ -20,7 +20,7 @@ This is the starting point for all of my web projects and a combination of vario
 
 All automation is powered by [Grunt](http://gruntjs.com), it has one task `default`, when run the following happens:
 
-- A local server is started at `http://localhost:9999`, using `site/` as the base, so you can view the project web pages / files as if you were on a live server.
+- A local server is started and opened in your default browser, using `site/` as the base, so you can view the project web pages / files as if you were on a live server.
 - Sass files located in `src/scss/framework/` are compiled to `site/lib/css/`, if you're not familiar with Sass, think CSS on steroids.
 - The CSS files compiled to `site/lib/css/` are then run through [Autoprefixer](https://github.com/ai/autoprefixer), this will automatically add browser prefixes to unsupported CSS properties.
 - The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`, this minifies and squashes the outputted JS file as much as possible.

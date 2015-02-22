@@ -7,20 +7,14 @@ module.exports = function(grunt) {
 
 
 
-    connect: {
-      server: {
-        options: {
-          port: 9999,
-          base: 'site',
-          hostname: '*',
-          middleware: function(connect, opts) {
-            return [
-              require('connect-livereload')(),
-              connect.static(require('path').resolve(__dirname + '/site'))
-            ];
-          }
-        }
-      }
+    browserSync: {
+      options: {
+        watchTask: true,
+        server: 'site',
+        open: 'external',
+        notify: false
+      },
+      files: 'site/**/*'
     },
 
 
@@ -102,8 +96,7 @@ module.exports = function(grunt) {
         files: 'src/templates/**/*',
         tasks: ['clean:html', 'assemble:pages'],
         options: {
-          spawn: false,
-          livereload: true
+          spawn: false
         }
       },
 
@@ -111,8 +104,7 @@ module.exports = function(grunt) {
         files: 'src/scss/**/*.scss',
         tasks: ['sass:dist', 'autoprefixer:dist'],
         options: {
-          spawn: false,
-          livereload: true
+          spawn: false
         }
       },
 
@@ -120,8 +112,7 @@ module.exports = function(grunt) {
         files: 'src/js/main.js',
         tasks: 'uglify',
         options: {
-          spawn: false,
-          livereload: true
+          spawn: false
         }
       }
     }
@@ -132,7 +123,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', [
-    'connect',
+    'browserSync',
     'sass:dist',
     'autoprefixer:dist',
     'uglify:dist',
