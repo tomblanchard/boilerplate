@@ -82,7 +82,7 @@ You can find all the assemble documentation on the official [repo](https://githu
 
 When working with custom (handwritten and not existing libraries) Javascript, only ever change / add / remove files in `src/js/`.
 
-By default there is one file setup `main.js`, this just contains an [IIFE (immediately-invoked function expression)](http://toddmotto.com/what-function-window-document-undefined-iife-really-means) to help you get started straight away. This file gets compiled to `site/lib/js/main.min.js` every time its modified.
+By default there is one file setup `main.js`, this just contains an [IIFE (immediately-invoked function expression)](http://toddmotto.com/what-function-window-document-undefined-iife-really-means) and a simple module structured via the [Revealing Module Pattern](http://toddmotto.com/mastering-the-module-pattern/) to help you get started straight away. This file gets compiled to `site/lib/js/main.min.js` every time its modified.
 
 For any third party libraries such as jQuery place them in `site/lib/js/`.
 
