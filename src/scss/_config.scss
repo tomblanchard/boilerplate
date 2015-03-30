@@ -133,38 +133,32 @@ $breakpoints: (
 
 
 /***********************************************************************************
-  GRID
+  WIDTHS
  ***********************************************************************************
 
-  Use `$custom-grid-widths` to define custom grid widths (ones not already defined
-  in `generic/_grid-width-builder.scss`), usage:
+  Use `$custom-widths` to define custom grid widths (ones not already defined
+  in `trumps/_widths.scss`), usage:
 
-  $custom-grid-widths: (
-
+  $custom-widths: (
     width-class: 200px,
-
   );
 
-  Use `$grid-widths-to-output` to output grid width classes (breakpoint specific
-  classes too) in the CSS, usage:
+  Use `$widths-to-output` to output width classes (breakpoint specific classes
+  too) in the CSS, usage:
 
-  $grid-widths-to-output: (
-
+  $widths-to-output: (
     '1/5',
     'M-down--1/2',
-    width-class,
-    XL-up--width-class,
-
+    'width-class',
+    'XL-up--width-class',
   );
 
  **********************************************************************************/
 
-$grid-gutter: $base-spacing-unit;
-
-$custom-grid-widths: (
+$custom-widths: (
 );
 
-$grid-widths-to-output: (
+$widths-to-output: (
 );
 
 

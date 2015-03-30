@@ -189,16 +189,16 @@ This approach gets a little more complicated when it comes to more complex objec
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -$grid-gutter;
-  margin-bottom: -$grid-gutter;
+  margin-left: -$base-spacing-unit;
+  margin-bottom: -$base-spacing-unit;
 }
 
   @mixin grid__item {
     display: inline-block;
     *display: inline;
     zoom: 1;
-    padding-left: $grid-gutter;
-    padding-bottom: $grid-gutter;
+    padding-left: $base-spacing-unit;
+    padding-bottom: $base-spacing-unit;
     vertical-align: top;
     width: 100%;
   }
@@ -207,12 +207,12 @@ This approach gets a little more complicated when it comes to more complex objec
   `grid--small` modifier, extends the `grid` object, with a smaller gutter.
  */
 @mixin grid--small {
-  margin-left: -($grid-gutter / 2);
-  margin-bottom: -($grid-gutter / 2);
+  margin-left: -($base-spacing-unit / 2);
+  margin-bottom: -($base-spacing-unit / 2);
 
   > .grid__item {
-    padding-left: ($grid-gutter / 2);
-    padding-bottom: ($grid-gutter / 2);
+    padding-left: ($base-spacing-unit / 2);
+    padding-bottom: ($base-spacing-unit / 2);
   }
 }
 
@@ -297,16 +297,16 @@ My work around is to author the object like so:
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -$grid-gutter;
-  margin-bottom: -$grid-gutter;
+  margin-left: -$base-spacing-unit;
+  margin-bottom: -$base-spacing-unit;
 }
 
   @mixin grid__item {
     display: inline-block;
     *display: inline;
     zoom: 1;
-    padding-left: $grid-gutter;
-    padding-bottom: $grid-gutter;
+    padding-left: $base-spacing-unit;
+    padding-bottom: $base-spacing-unit;
     vertical-align: top;
     width: 100%;
   }
@@ -316,12 +316,12 @@ My work around is to author the object like so:
   parameter `$grid__item`.
  */
 @mixin grid--small ( $grid__item: '.grid__item' ) {
-  margin-left: -($grid-gutter / 2);
-  margin-bottom: -($grid-gutter / 2);
+  margin-left: -($base-spacing-unit / 2);
+  margin-bottom: -($base-spacing-unit / 2);
 
   > #{$grid__item} {
-    padding-left: ($grid-gutter / 2);
-    padding-bottom: ($grid-gutter / 2);
+    padding-left: ($base-spacing-unit / 2);
+    padding-bottom: ($base-spacing-unit / 2);
   }
 }
 
@@ -516,7 +516,7 @@ Outputs the spacing mixins defined in `framework/tools/mixins/_spacing.scss` to 
 
 #### `framework/trumps/_widths.scss`
 
-Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-grid-widths` / `$grid-widths-to-output` config variables.
+Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-widths` / `$widths-to-output` config variables.
 
 #### `framework/_base.scss`
 
@@ -529,10 +529,6 @@ The lower than IE 9 Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to 
 #### `framework/style.scss`
 
 The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet == false { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/style.css`.
-
-#### `ui/`
-
-All of your project Sass should live here, nicely organised into lots of modular partials.
 
 #### `_config.scss`
 
@@ -569,26 +565,26 @@ Then I reference these variables in the `$breakpoints` map, I have a `S / M / L 
 
 After the responsive stuff, comes the `grid` object width settings (on responsive grid-heavy sites there will be a lot of grid widths at specific media queries, this allows for much better organisation), these consist of three variables:
 
-`$grid-gutter`:
+`$base-spacing-unit`:
 
 Spacing between grid items, defaults to the value of `$base-spacing-unit`.
 
-`$custom-grid-widths`:
+`$custom-widths`:
 
 The boilerplate comes with loads of grid widths already defined in `framework/trumps/_widths.scss`, these widths are fractions going from `1/1` to `11/12`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
 
 ```scss
-$custom-grid-widths: (
+$custom-widths: (
   width-class: 200px
 );
 ```
 
-`$grid-widths-to-output`:
+`$widths-to-output`:
 
 Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so (note, you'll have to contain fraction classes in quotes):
 
 ```scss
-$grid-widths-to-output: (
+$widths-to-output: (
   '1/3',
   width-class,
   'M--1/2',
@@ -634,7 +630,7 @@ After all the default variables you can go ahead and state any custom project va
 
 #### `_style.scss`
 
-Import all of your project Sass partials from `ui/`.
+Project specific Sass goes here.
 
 ### Any other assets
 

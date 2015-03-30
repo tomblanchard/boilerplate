@@ -10,8 +10,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -$grid-gutter;
-  margin-bottom: -$grid-gutter;
+  margin-left: -$base-spacing-unit;
+  margin-bottom: -$base-spacing-unit;
 }
 
 
@@ -19,8 +19,8 @@
     display: inline-block;
     *display: inline;
     zoom: 1;
-    padding-left: $grid-gutter;
-    padding-bottom: $grid-gutter;
+    padding-left: $base-spacing-unit;
+    padding-bottom: $base-spacing-unit;
     vertical-align: top;
     width: 100%;
   }
@@ -28,12 +28,12 @@
 
 @mixin grid--small ( $grid__item: '.grid__item' ) {
 
-  margin-left: -($grid-gutter / 2);
-  margin-bottom: -($grid-gutter / 2);
+  margin-left: -($base-spacing-unit / 2);
+  margin-bottom: -($base-spacing-unit / 2);
 
   > #{$grid__item} {
-    padding-left: ($grid-gutter / 2);
-    padding-bottom: ($grid-gutter / 2);
+    padding-left: ($base-spacing-unit / 2);
+    padding-bottom: ($base-spacing-unit / 2);
   }
 
 }
@@ -41,12 +41,12 @@
 
 @mixin grid--large ( $grid__item: '.grid__item' ) {
 
-  margin-left: -($grid-gutter * 2);
-  margin-bottom: -($grid-gutter * 2);
+  margin-left: -($base-spacing-unit * 2);
+  margin-bottom: -($base-spacing-unit * 2);
 
   > #{$grid__item} {
-    padding-left: ($grid-gutter * 2);
-    padding-bottom: ($grid-gutter * 2);
+    padding-left: ($base-spacing-unit * 2);
+    padding-bottom: ($base-spacing-unit * 2);
   }
 
 }
