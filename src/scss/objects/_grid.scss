@@ -6,7 +6,7 @@
 
  **********************************************************************************/
 
-@mixin grid {
+@mixin o-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@
 }
 
 
-  @mixin grid__item {
+  @mixin o-grid__item {
     display: inline-block;
     *display: inline;
     zoom: 1;
@@ -26,12 +26,12 @@
   }
 
 
-@mixin grid--small ( $grid__item: '.grid__item' ) {
+@mixin o-grid--small ( $o-grid__item: '.o-grid__item' ) {
 
   margin-left: -($base-spacing-unit / 2);
   margin-bottom: -($base-spacing-unit / 2);
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     padding-left: ($base-spacing-unit / 2);
     padding-bottom: ($base-spacing-unit / 2);
   }
@@ -39,12 +39,12 @@
 }
 
 
-@mixin grid--large ( $grid__item: '.grid__item' ) {
+@mixin o-grid--large ( $o-grid__item: '.o-grid__item' ) {
 
   margin-left: -($base-spacing-unit * 2);
   margin-bottom: -($base-spacing-unit * 2);
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     padding-left: ($base-spacing-unit * 2);
     padding-bottom: ($base-spacing-unit * 2);
   }
@@ -52,24 +52,24 @@
 }
 
 
-@mixin grid--rev ( $grid__item: '.grid__item' ) {
+@mixin o-grid--rev ( $o-grid__item: '.o-grid__item' ) {
 
   direction: rtl;
   text-align: left;
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     direction: ltr;
     text-align: left;
   }
 
 }
 
-@mixin grid--flush ( $grid__item: '.grid__item' ) {
+@mixin o-grid--flush ( $o-grid__item: '.o-grid__item' ) {
 
   margin-left: 0;
   margin-bottom: 0;
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     padding-left: 0;
     padding-bottom: 0;
   }
@@ -77,36 +77,36 @@
 }
 
 
-@mixin grid--middle ( $grid__item: '.grid__item' ) {
-  > #{$grid__item} {
+@mixin o-grid--middle ( $o-grid__item: '.o-grid__item' ) {
+  > #{$o-grid__item} {
     vertical-align: middle;
   }
 }
 
 
-@mixin grid--bottom ( $grid__item: '.grid__item' ) {
-  > #{$grid__item} {
+@mixin o-grid--bottom ( $o-grid__item: '.o-grid__item' ) {
+  > #{$o-grid__item} {
     vertical-align: bottom;
   }
 }
 
 
-@mixin grid--right ( $grid__item: '.grid__item' ) {
+@mixin o-grid--right ( $o-grid__item: '.o-grid__item' ) {
 
   text-align: right;
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     text-align: left;
   }
 
 }
 
 
-@mixin grid--center ( $grid__item: '.grid__item' ) {
+@mixin o-grid--center ( $o-grid__item: '.o-grid__item' ) {
 
   text-align: center;
 
-  > #{$grid__item} {
+  > #{$o-grid__item} {
     text-align: left;
   }
 
@@ -115,64 +115,64 @@
 
 @if ( map-deep-get( $objects, grid regular ) ) {
 
-  .grid { @include grid; }
+  .o-grid { @include o-grid; }
 
-    .grid__item { @include grid__item; }
+    .o-grid__item { @include o-grid__item; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid small ) ) {
 
-  .grid--small { @include grid--small; }
+  .o-grid--small { @include o-grid--small; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid large ) ) {
 
-  .grid--large { @include grid--large; }
+  .o-grid--large { @include o-grid--large; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid rev ) ) {
 
-  .grid--rev { @include grid--rev; }
+  .o-grid--rev { @include o-grid--rev; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid flush ) ) {
 
-  .grid--flush { @include grid--flush; }
+  .o-grid--flush { @include o-grid--flush; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid middle ) ) {
 
-  .grid--middle { @include grid--middle; }
+  .o-grid--middle { @include o-grid--middle; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid bottom ) ) {
 
-  .grid--bottom { @include grid--bottom; }
+  .o-grid--bottom { @include o-grid--bottom; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid right ) ) {
 
-  .grid--right { @include grid--right; }
+  .o-grid--right { @include o-grid--right; }
 
 }
 
 
 @if ( map-deep-get( $objects, grid center ) ) {
 
-  .grid--center { @include grid--center; }
+  .o-grid--center { @include o-grid--center; }
 
 }

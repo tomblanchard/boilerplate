@@ -7,7 +7,7 @@
 
  **********************************************************************************/
 
-@mixin nav {
+@mixin o-nav {
 
   margin: 0;
   padding: 0;
@@ -24,6 +24,6 @@
 
 @if ( map-get( $objects, nav ) ) {
 
-  .nav { @include nav; }
+  .o-nav { @include o-nav; }
 
 }

@@ -6,8 +6,8 @@
 
   var Module = (function () {
 
-    var _elements = {
-      $doc: $('html')
+    var _dom = {
+      $doc: $(document)
     };
 
     var init = function () {
@@ -15,12 +15,12 @@
     };
 
     var _bindDocument = function () {
-     _elements.$doc.on( 'click', _someEvent );
+      _dom.$doc.on('click', function() {
+        _someEvent('some text');
+      });
     };
 
-    var _someEvent = function () {
-      var text = 'some text';
-
+    var _someEvent = function ( text ) {
       console.log( text );
     };
 

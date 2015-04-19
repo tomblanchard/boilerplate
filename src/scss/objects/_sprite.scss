@@ -6,7 +6,7 @@
 
  **********************************************************************************/
 
-@mixin sprite {
+@mixin o-sprite {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -19,6 +19,6 @@
 
 @if ( map-get( $objects, sprite ) ) {
 
-  .sprite { @include sprite; }
+  .o-sprite { @include o-sprite; }
 
 }

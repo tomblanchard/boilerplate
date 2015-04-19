@@ -21,7 +21,7 @@ This is the starting point for all of my web projects and a combination of vario
 All automation is powered by [Grunt](http://gruntjs.com), it has one task `default`, when run the following happens:
 
 - A local server is started and opened in your default browser, using `site/` as the base, so you can view the project web pages / files as if you were on a live server.
-- Sass files located in `src/scss/framework/` are compiled to `site/lib/css/`, if you're not familiar with Sass, think CSS on steroids.
+- Sass files located in `src/scss/` are compiled to `site/lib/css/`, if you're not familiar with Sass, think CSS on steroids.
 - The CSS files compiled to `site/lib/css/` are then run through [Autoprefixer](https://github.com/ai/autoprefixer), this will automatically add browser prefixes to unsupported CSS properties.
 - The file `src/js/main.js` is run through [UglifyJS](https://github.com/mishoo/UglifyJS) and gets outputted as `site/lib/js/main.min.js`, this minifies and squashes the outputted JS file as much as possible.
 - Any `.html` files located in `site/` get deleted, so we start from a fresh set of pages each time the Grunt task is run.
@@ -88,48 +88,46 @@ For any third party libraries such as jQuery place them in `site/lib/js/`.
 
 ### CSS
 
-When working with CSS only ever change / add / remove files in `src/scss/` although never touch any files inside `src/scss/framework/`, bad things will happen.
-
 The CSS side of this boilerplate is by far the most complicated part, I'll copy / paste an excerpt from the [inuit.css](https://github.com/csswizardry/inuit.css) docs as the same applies to this:
 
 > It is a Sass based, Object Oriented framework that is full of objects and abstractions. inuit.css provides little-to-no design which means no undoing things, no deleting CSS and no adhering to other peoples’ design decisions.
 
 > inuit.css is built on a [BEM](http://bem.info/)-style naming convention and honed based on [work done by Nicolas Gallagher](https://gist.github.com/1309546).
 
+It's also worth noting that I follow this [namespacing methodology](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/) which helps keep the codebase as transparent as possible (objects are prefixed with `o-`, components with `c-`, utility classes with `u-` etc). I recommend reading the article for a thorough explanation of the advantages of this.
+
 Below I'll walk you through what each file and directory is for:
 
-#### `framework/`
+#### `base/`
 
-Where all the default boilerplate's framework Sass lives.
+Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
 
-#### `framework/base/`
+#### `components/`
 
-Default base stuff such as minimal styling of elements like `<code>`, `<tables>` etc. Also contains styles which set the `<h1-6>` font-sizes, using the `$h[1-6]-size` variables set in `_config.scss`. There's no point in me listing each file in this directory as it's all simple, self-explanatory stuff.
+Where all your project-specific components should live, it's an empty directory by default.
 
-#### `framework/generic/`
+#### `generic/`
 
 Element reset, normalize.css, box sizing etc.
 
-#### `framework/generic/_box-sizing.scss`
+#### `generic/_box-sizing.scss`
 
 Sets all element's `box-sizing` state to `border-box` if the `$global-border-box` config variable is set to true (which it is by default).
 
-#### `framework/generic/_normalize.scss`
+#### `generic/_normalize.scss`
 
 [Nicolas Gallagher](https://twitter.com/necolas)'s [normalize.css v3.0.1](https://github.com/necolas/normalize.css/).
 
-#### `framework/generic/_reset.scss`
+#### `generic/_reset.scss`
 
 A more considered reset ([csswizardry.com/2011/10/reset-restarted](http://csswizardry.com/2011/10/reset-restarted)).
 
-#### `framework/objects/`
+#### `objects/`
 
-All objects are throughly explained [here](http://tomblanchard.github.io/boilerplate).
-
-Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `framework/objects/_sprite.scss` object looks like:
+Where all the default objects live. The way I author my CSS objects is a little different from the usual approach, instead of limiting the object from just being contained in a class (which limits usage to either a class in the HTML or the `@extend` directive in Sass) also have it in a mixin. For example this is what the `objects/_sprite.scss` object looks like:
 
 ```scss
-@mixin sprite {
+@mixin o-sprite {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -142,7 +140,7 @@ Where all the default objects live. The way I author my CSS objects is a little 
 
 @if ( map-get( $objects, sprite ) ) {
 
-  .sprite { @include sprite; }
+  .o-sprite { @include o-sprite; }
 
 }
 ```
@@ -150,14 +148,14 @@ Where all the default objects live. The way I author my CSS objects is a little 
 If the object is enabled I can use this object like so:
 
 ```html
-<span class="sprite"></span>
+<span class="o-sprite"></span>
 ```
 
 Or like this:
 
 ```scss
 .element {
-  @extend .sprite;
+  @extend .o-sprite;
 }
 ```
 
@@ -170,7 +168,7 @@ Or like this:
 ```scss
 .element {
   @media ( max-width: 500px ) {
-    @include sprite;
+    @include o-sprite;
   }
 }
 ```
@@ -185,7 +183,7 @@ This approach gets a little more complicated when it comes to more complex objec
 /**
   Regular `grid` object.
  */
-@mixin grid {
+@mixin o-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -193,7 +191,7 @@ This approach gets a little more complicated when it comes to more complex objec
   margin-bottom: -$base-spacing-unit;
 }
 
-  @mixin grid__item {
+  @mixin o-grid__item {
     display: inline-block;
     *display: inline;
     zoom: 1;
@@ -206,11 +204,11 @@ This approach gets a little more complicated when it comes to more complex objec
 /**
   `grid--small` modifier, extends the `grid` object, with a smaller gutter.
  */
-@mixin grid--small {
+@mixin o-grid--small {
   margin-left: -($base-spacing-unit / 2);
   margin-bottom: -($base-spacing-unit / 2);
 
-  > .grid__item {
+  > .o-grid__item {
     padding-left: ($base-spacing-unit / 2);
     padding-bottom: ($base-spacing-unit / 2);
   }
@@ -222,9 +220,9 @@ This approach gets a little more complicated when it comes to more complex objec
  */
 @if map-deep-get( $objects, grid regular ) == true {
 
-  .grid { @include grid; }
+  .o-grid { @include o-grid; }
 
-    .grid__item { @include grid__item; }
+    .o-grid__item { @include o-grid__item; }
 
 }
 
@@ -234,19 +232,19 @@ This approach gets a little more complicated when it comes to more complex objec
  */
 @if map-deep-get( $objects, grid small ) == true {
 
-  .grid--small { @include grid--small; }
+  .o-grid--small { @include o-grid--small; }
 
 }
 ```
 
-This is fine if I `@extend` the object or use the normal `.grid` classes in my HTML, the problem arises when I want to `@include` the object into custom class names. Lets say I wanted to use the `grid` mixins, I'd do it like:
+This is fine if I `@extend` the object or use the normal `.o-grid` classes in my HTML, the problem arises when I want to `@include` the object into custom class names. Lets say I wanted to use the `grid` mixins, I'd do it like:
 
 ```scss
-.content { @include grid; }
+.content { @include o-grid; }
 
-  .content__col { @include grid__item; }
+  .content__col { @include o-grid__item; }
 
-.content--alt { @include grid--small; }
+.content--alt { @include o-grid--small; }
 ```
 
 This outputs:
@@ -274,13 +272,13 @@ This outputs:
   margin-left: -12px;
   margin-bottom: -12px;
 }
-.content--alt > .grid__item {
+.content--alt > .o-grid__item {
   padding-left: 12px;
   padding-bottom: 12px;
 }
 ```
 
-You see the `.content--alt > .grid__item` part? That's the problem, it should output to `.content--alt > .content__col`, it doesn't match what the DOM structure will look like, it's targeting the wrong child element. The HTML looks like this:
+You see the `.content--alt > .o-grid__item` part? That's the problem, it should output to `.content--alt > .content__col`, it doesn't match what the DOM structure will look like, it's targeting the wrong child element. The HTML looks like this:
 
 ```html
 <div class="content content--alt">
@@ -293,7 +291,7 @@ You see the `.content--alt > .grid__item` part? That's the problem, it should ou
 My work around is to author the object like so:
 
 ```scss
-@mixin grid {
+@mixin o-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -301,7 +299,7 @@ My work around is to author the object like so:
   margin-bottom: -$base-spacing-unit;
 }
 
-  @mixin grid__item {
+  @mixin o-grid__item {
     display: inline-block;
     *display: inline;
     zoom: 1;
@@ -312,10 +310,10 @@ My work around is to author the object like so:
   }
 
 /**
-  Now the `.grid__item` element is able to be changed via the `grid--small` mixin
-  parameter `$grid__item`.
+  Now the `.o-grid__item` element is able to be changed via the `o-grid--small` mixin
+  parameter `$o-grid__item`.
  */
-@mixin grid--small ( $grid__item: '.grid__item' ) {
+@mixin o-grid--small ( $o-grid__item: '.o-grid__item' ) {
   margin-left: -($base-spacing-unit / 2);
   margin-bottom: -($base-spacing-unit / 2);
 
@@ -327,15 +325,15 @@ My work around is to author the object like so:
 
 @if map-deep-get( $objects, grid regular ) == true {
 
-  .grid { @include grid; }
+  .o-grid { @include o-grid; }
 
-    .grid__item { @include grid__item; }
+    .o-grid__item { @include o-grid__item; }
 
 }
 
 @if map-deep-get( $objects, grid small ) == true {
 
-  .grid--small { @include grid--small; }
+  .o-grid--small { @include o-grid--small; }
 
 }
 ```
@@ -343,46 +341,50 @@ My work around is to author the object like so:
 Then when I want to `@include` the object I do it like so:
 
 ```scss
-.content { @include grid; }
+.content { @include o-grid; }
 
-  .content__col { @include grid__item; }
+  .content__col { @include o-grid__item; }
 
-.content--alt { @include grid--small( $grid__item: '.content__col' ); }
+.content--alt { @include o-grid--small( $o-grid__item: '.content__col' ); }
 ```
 
-#### `framework/objects/_flag.scss`
+#### `objects/_flag.scss`
 
-Very similar to the media object, however it give us control over the vertical alignments of the text and image. See [here](http://tomblanchard.github.io/boilerplate/#flag) for usage / notes examples etc.
+Very similar to the media object, however it give us control over the vertical alignments of the text and image.
 
-#### `framework/objects/_flyout.scss`
+#### `objects/_flyout.scss`
 
-Content that flys out of a parent when said parent is hovered. They typically appear bottom-left of the parent. See [here](http://tomblanchard.github.io/boilerplate/#flyout) for usage / notes examples etc.
+Content that flys out of a parent when said parent is hovered. They typically appear bottom-left of the parent.
 
-#### `framework/objects/_grid.scss`
+#### `objects/_grid.scss`
 
-Simple, fluid, nestable, flexible grid system. See [here](http://tomblanchard.github.io/boilerplate/#grid) for usage / notes examples etc.
+Simple, fluid, nestable, flexible grid system.
 
-#### `framework/objects/_media.scss`
+#### `objects/_media.scss`
 
-Place image and text-like content side-by-side. See [here](http://tomblanchard.github.io/boilerplate/#media) for usage / notes examples etc.
+Place image and text-like content side-by-side.
 
-#### `framework/objects/_nav.scss`
+#### `objects/_nav.scss`
 
-Turn a list into a horizontal row of list items, mostly for use in navigation menus. See [here](http://tomblanchard.github.io/boilerplate/#nav) for usage / notes examples etc.
+Turn a list into a horizontal row of list items, mostly for use in navigation menus.
 
-#### `framework/objects/_sprite.scss`
+#### `objects/_sprite.scss`
 
-Turn elements into icons with a background image and no text. See [here](http://tomblanchard.github.io/boilerplate/#sprite) for usage / notes examples etc.
+Turn elements into icons with a background image and no text.
 
-#### `framework/tools/`
+#### `objects/_wrapper.scss`
+
+Centered container with a set max-width.
+
+#### `tools/`
 
 Custom Sass functions and mixins live here.
 
-#### `framework/tools/functions/`
+#### `tools/functions/`
 
 Custom Sass functions.
 
-#### `framework/tools/functions/_map-deep-get.scss`
+#### `tools/functions/_map-deep-get.scss`
 
 Like `map-get` but can handle multi-dimensional maps. Usage:
 
@@ -398,15 +400,15 @@ $colors: (
 }
 ```
 
-#### `framework/tools/functions/_str-replace.scss`
+#### `tools/functions/_str-replace.scss`
 
 Replace contents of a string, authored by [Hugo Giraudel](http://hugogiraudel.com).
 
-#### `framework/tools/mixins/`
+#### `tools/mixins/`
 
 Custom mixins.
 
-#### `framework/tools/mixins/_font-size.scss`
+#### `tools/mixins/_font-size.scss`
 
 Create a fully formed type style (sizing and vertical rhythm) by passing in a single value. Usage:
 
@@ -426,11 +428,11 @@ This outputs:
 }
 ```
 
-#### `framework/tools/mixins/_helpers.scss`
+#### `tools/mixins/_helpers.scss`
 
-Simple helper mixins such as a clearfix solution, image replacement etc.
+Simple helper utility mixins such as a clearfix solution, image replacement etc.
 
-#### `framework/tools/mixins/_media-query.scss`
+#### `tools/mixins/_media-query.scss`
 
 Output media query with dynamic content and query declaration, the declarations which can be used are defined in `$breakpoints` (located in `_config.scss`). This also comes with optional support for IE8 and below, set `$lt-ie-9-support` as `true` and it will output the CSS content inside the media query in the `lt-ie-9.min.css` file stripping the media query wrapped around it. Usage:
 
@@ -462,15 +464,15 @@ In the compiled `site/lib/css/lt-ie-9.min.css`, this outputs:
 
 This mixin also has the alias `mq`, so instead of having to write `@include media-query( ... ) { }` every time (which can get tedious), you have the option of writing `@include mq( ... ) { }`. When I refer to this as an "alias", this means that it's powered off the original `media-query` mixin so works exactly the same, just with a different name, usage is completely optional.
 
-#### `framework/tools/mixins/_spacing.scss`
+#### `tools/mixins/_spacing.scss`
 
-Margin and padding helper mixins in the format of:
+Margin and padding utility helper mixins in the format of:
 
-`.(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none.
+`.u-(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none.
 
-I explain this in much more details later on, when I talk about the `$spacing` config variables.
+I explain this in much more details later on, when I talk about the `$spacing` config variable.
 
-#### `framework/tools/mixins/_unit-conversion.scss`
+#### `tools/mixins/_unit-conversion.scss`
 
 Convert units to other units.
 
@@ -502,39 +504,42 @@ This outputs:
 }
 ```
 
-#### `framework/trumps/`
+#### `trumps/`
 
-High-specificity, very explicit selectors, the styles here are for overrides and helper classes.
+High-specificity, very explicit selectors, the styles here are for overrides and helper / utility classes.
 
-#### `framework/trumps/_helpers.scss`
+#### `trumps/_helpers.scss`
 
-Outputs the helpers mixins defined in `framework/tools/mixins/_helpers.scss` to actual classes.
+Outputs the helpers mixins defined in `tools/mixins/_helpers.scss` to actual classes.
 
-#### `framework/trumps/_spacing.scss`
+#### `trumps/_spacing.scss`
 
-Outputs the spacing mixins defined in `framework/tools/mixins/_spacing.scss` to actual classes, depending on which spacing variants are enabled in the `$spacing` config variable.
+Outputs the spacing mixins defined in `tools/mixins/_spacing.scss` to actual classes, depending on which spacing variants are enabled in the `$spacing` config variable.
 
-#### `framework/trumps/_widths.scss`
+#### `trumps/_widths.scss`
 
-Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$custom-widths` / `$widths-to-output` config variables.
+Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$widths` config variable.
 
-#### `framework/_base.scss`
+#### `_all.scss`
 
-Every partial gets imported into this file, starting with `_config.scss`, followed by custom functions, mixins, stuff in `framework/generic/`, stuff in `framework/base/`, stuff in `framework/objects/`, your custom project Sass located in `_style.scss` then finally stuff in `framework/trumps/`.
-
-#### `framework/lt-ie-9.scss`
-
-The lower than IE 9 Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `true` (so any time you use `@if $is-lt-ie-9-stylesheet == true { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/lt-ie-9.min.css`.
-
-#### `framework/style.scss`
-
-The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet == false { }` that code will only show up in this file) and imports `framework/_base.scss`. This file compiles to `site/lib/css/style.css`.
+Every partial gets imported into this file.
 
 #### `_config.scss`
 
 Where all of your settings live, this is basically one massive file of variables, some variables I won't need to explain to due their simplicity, for example `$global-border-box` resets every element's box model to `box-sizing: border-box`, `$base-*` variables control such things as font-sizes, spacing units etc.
 
-It starts to get more complicated when you hit the `$objects` variable which is actually a Sass map which controls which default objects should get outputted into the compiled CSS (this boilerplate comes with some default objects such as a grids etc, there's no point in outputting every object if they're not going to be used, no-one likes code bloat). Most default objects do have various modifiers / variations which you can enable / disable as you please, for example if I wanted the `grid` object and the object variation `large` (which adds a wider gutter to the grid), the `$objects` variable would look like so:
+The `$breakpoints` variable contains a Sass map (this is used in a few different parts of the boilerplate) which should contain all the projects responsive breakpoints. By default I have a few breakpoints set up:
+
+```scss
+$breakpoint--S:  480px;
+$breakpoint--M:  768px;
+$breakpoint--L:  1024px;
+$breakpoint--XL: 1140px;
+```
+
+Then I reference these variables in the `$breakpoints` map, I have a `S / M / L / XL` naming convention to my breakpoints. For example, the `L` breakpoint is a media query of `( min-width: 1024px ) and ( max-width: 1139px )`, the `L-down` breakpoint is a media query of `( max-width: 1023px )` and the `L-up` breakpoint is a media query of `( min-width: 1024px )`.
+
+The `$objects` variable is a Sass map which controls which default objects should get outputted into the compiled CSS (this boilerplate comes with some default objects such as a grids etc, there's no point in outputting every object if they're not going to be used, no-one likes code bloat). Most default objects do have various modifiers / variations which you can enable / disable as you please, for example if I wanted the `grid` object and the object variation `large` (which adds a wider gutter to the grid), the `$objects` variable would look like so:
 
 ```scss
 $objects: (
@@ -552,43 +557,12 @@ $objects: (
 ...
 ```
 
-Next up on the settings file is the part which handles the responsive stuff. The `$breakpoints` variable contains a Sass map (this is used in a few different parts of the boilerplate) which should contain all the projects responsive breakpoints. By default I have a few breakpoints set up:
+Next up is the `$widths` variable which where you select which width utility classes to output (on responsive grid-heavy sites there will be a lot of grid widths at specific media queries, this allows for much better organisation). You use it like so. Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so (note, you'll have to contain fraction classes in quotes):
 
 ```scss
-$breakpoint--S:  480px;
-$breakpoint--M:  768px;
-$breakpoint--L:  1024px;
-$breakpoint--XL: 1140px;
-```
-
-Then I reference these variables in the `$breakpoints` map, I have a `S / M / L / XL` naming convention to my breakpoints. For example, the `L` breakpoint is a media query of `( min-width: 1024px ) and ( max-width: 1139px )`, the `L-down` breakpoint is a media query of `( max-width: 1023px )` and the `L-up` breakpoint is a media query of `( min-width: 1024px )`.
-
-After the responsive stuff, comes the `grid` object width settings (on responsive grid-heavy sites there will be a lot of grid widths at specific media queries, this allows for much better organisation), these consist of three variables:
-
-`$base-spacing-unit`:
-
-Spacing between grid items, defaults to the value of `$base-spacing-unit`.
-
-`$custom-widths`:
-
-The boilerplate comes with loads of grid widths already defined in `framework/trumps/_widths.scss`, these widths are fractions going from `1/1` to `11/12`, all-in-all they cover wholes, halves, thirds, quarters, fifths, sixths, sevenths, eighths, ninths, tenths, elevenths and twelfths. So if you want to add custom grid widths, you use this variable like so:
-
-```scss
-$custom-widths: (
-  width-class: 200px
-);
-```
-
-`$widths-to-output`:
-
-Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so (note, you'll have to contain fraction classes in quotes):
-
-```scss
-$widths-to-output: (
-  '1/3',
-  width-class,
-  'M--1/2',
-  XL-up--width-class
+$widths: (
+  'u-1/5',
+  'u-1/2--M-down'
 );
 ```
 
@@ -597,40 +571,34 @@ This outputs:
 ```css
 /**
   This class looks strange but all it's doing is escaping non-valid characters.
-  Usage in HTML is still `class="1/3"`
+  Usage in HTML is still `class="u-1/5"`
  */
-.\31\/3 {
-  width: 33.333%;
+.u-1\/5 {
+  width: 20%;
 }
 
-.width-class {
-  width: 200px;
-}
-
-@media ( min-width: 768px ) and ( max-width: 1023px ) {
+@media ( max-width: 767px ) {
   /**
     Another weird looking class, it's just escaping stuff, usage in HTML is still
-    `class="M--1/2"`.
+    `class="u-1/2--M-down"`.
    */
-  .M--\31\/2 {
+  .u-1\/2--M-down {
     width: 50%;
-  }
-}
-
-@media ( min-width: 1140px ) {
-  .XL-up--width-class {
-    width: 200px;
   }
 }
 ```
 
-The last default variable in the settings file is `$spacing` which is a map very similar to the `$objects` map. The `$spacing` map controls which spacing helper classes (located at `framework/trumps/_spacing.scss`) get outputted into the compiled CSS.
+The last default variable in the settings file is `$spacing` which is a map very similar to the `$objects` map. The `$spacing` map controls which spacing utility classes (located at `trumps/_spacing.scss`) get outputted into the compiled CSS.
 
 After all the default variables you can go ahead and state any custom project variables such as colours, font stacks etc.
 
-#### `_style.scss`
+#### `lt-ie-9.scss`
 
-Project specific Sass goes here.
+The lower than IE 9 Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `true` (so any time you use `@if $is-lt-ie-9-stylesheet == true { }` that code will only show up in this file) and imports `_all.scss`. This file compiles to `site/lib/css/lt-ie-9.min.css`.
+
+#### `style.scss`
+
+The default main Sass file, it sets the `$is-lt-ie-9-stylesheet` variable to `false` (so any time you use `@if $is-lt-ie-9-stylesheet == false { }` that code will only show up in this file) and imports `_all.scss`. This file compiles to `site/lib/css/style.css`.
 
 ### Any other assets
 

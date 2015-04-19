@@ -27,19 +27,32 @@ $base-text-color: #000;
 
 
 /***********************************************************************************
-  FONT SIZES
+  RESPONSIVE
  **********************************************************************************/
 
-$giga-size: 96px;
-$mega-size: 72px;
-$kilo-size: 48px;
+$breakpoint--S:  480px;
+$breakpoint--M:  768px;
+$breakpoint--L:  1024px;
+$breakpoint--XL: 1140px;
 
-$h1-size: 36px;
-$h2-size: 30px;
-$h3-size: 24px;
-$h4-size: 20px;
-$h5-size: 16px;
-$h6-size: 14px;
+$breakpoints: (
+
+  'S-up':    '(min-width: #{$breakpoint--S})', // S and higher
+  'S-down':  '(max-width: #{$breakpoint--S - 1px})', // Below S
+  'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M - 1px})', // Just S
+
+  'M-up':    '(min-width: #{$breakpoint--M})', // M and higher
+  'M-down':  '(max-width: #{$breakpoint--M - 1px})', // Below M
+  'M':       '(min-width: #{$breakpoint--M}) and (max-width: #{$breakpoint--L - 1px})', // Just M
+
+  'L-up':    '(min-width: #{$breakpoint--L})', // L and higher
+  'L-down':  '(max-width: #{$breakpoint--L - 1px})', // Below L
+  'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL - 1px})', // Just L
+
+  'XL-up':   '(min-width: #{$breakpoint--XL})', // XL and higher
+  'XL-down': '(max-width: #{$breakpoint--XL - 1px})', // Below XL
+
+);
 
 
 
@@ -92,6 +105,8 @@ $objects: (
 
   nav: false,
 
+  wrapper: false,
+
   sprite: false,
 
 );
@@ -101,31 +116,19 @@ $objects: (
 
 
 /***********************************************************************************
-  RESPONSIVE
+  UTILITIES: WIDTHS
+ ***********************************************************************************
+
+  Select which width utility classes to output, usage:
+
+  $widths: (
+    'u-1/5',
+    'u-1/2--M-down'
+  );
+
  **********************************************************************************/
 
-$breakpoint--S:  480px;
-$breakpoint--M:  768px;
-$breakpoint--L:  1024px;
-$breakpoint--XL: 1140px;
-
-$breakpoints: (
-
-  'S-up':    '(min-width: #{$breakpoint--S})', // S and higher
-  'S-down':  '(max-width: #{$breakpoint--S - 1px})', // Below S
-  'S':       '(min-width: #{$breakpoint--S}) and (max-width: #{$breakpoint--M - 1px})', // Just S
-
-  'M-up':    '(min-width: #{$breakpoint--M})', // M and higher
-  'M-down':  '(max-width: #{$breakpoint--M - 1px})', // Below M
-  'M':       '(min-width: #{$breakpoint--M}) and (max-width: #{$breakpoint--L - 1px})', // Just M
-
-  'L-up':    '(min-width: #{$breakpoint--L})', // L and higher
-  'L-down':  '(max-width: #{$breakpoint--L - 1px})', // Below L
-  'L':       '(min-width: #{$breakpoint--L}) and (max-width: #{$breakpoint--XL - 1px})', // Just L
-
-  'XL-up':   '(min-width: #{$breakpoint--XL})', // XL and higher
-  'XL-down': '(max-width: #{$breakpoint--XL - 1px})', // Below XL
-
+$widths: (
 );
 
 
@@ -133,43 +136,10 @@ $breakpoints: (
 
 
 /***********************************************************************************
-  WIDTHS
+  UTILITIES: SPACING
  ***********************************************************************************
 
-  Use `$custom-widths` to define custom grid widths (ones not already defined
-  in `trumps/_widths.scss`), usage:
-
-  $custom-widths: (
-    width-class: 200px,
-  );
-
-  Use `$widths-to-output` to output width classes (breakpoint specific classes
-  too) in the CSS, usage:
-
-  $widths-to-output: (
-    '1/5',
-    'M-down--1/2',
-    'width-class',
-    'XL-up--width-class',
-  );
-
- **********************************************************************************/
-
-$custom-widths: (
-);
-
-$widths-to-output: (
-);
-
-
-
-
-
-/***********************************************************************************
-  SPACING
- ***********************************************************************************
-
-  Select which spacing helper classes to enable.
+  Select which spacing utility classes to output.
 
  **********************************************************************************/
 

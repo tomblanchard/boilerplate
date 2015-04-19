@@ -1,8 +1,8 @@
 /***********************************************************************************
-  MIXINS: SPACING
+  MIXINS: SPACING UTILITIES
  ***********************************************************************************
 
-  Margin and padding helper mixins.
+  Margin and padding utility mixins.
 
  **********************************************************************************/
 
@@ -10,7 +10,7 @@
   Margins: Positive: Regular
  */
 
-@mixin m ( $important: false ) {
+@mixin u-m ( $important: false ) {
 
   @if ( $important ) {
     margin: $base-spacing-unit !important;
@@ -23,7 +23,7 @@
 }
 
 
-@mixin mt ( $important: false ) {
+@mixin u-mt ( $important: false ) {
 
   @if ( $important ) {
     margin-top: $base-spacing-unit !important;
@@ -36,7 +36,7 @@
 }
 
 
-@mixin mr ( $important: false ) {
+@mixin u-mr ( $important: false ) {
 
   @if ( $important ) {
     margin-right: $base-spacing-unit !important;
@@ -49,7 +49,7 @@
 }
 
 
-@mixin mb ( $important: false ) {
+@mixin u-mb ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: $base-spacing-unit !important;
@@ -62,7 +62,7 @@
 }
 
 
-@mixin ml ( $important: false ) {
+@mixin u-ml ( $important: false ) {
 
   @if ( $important ) {
     margin-left: $base-spacing-unit !important;
@@ -75,7 +75,7 @@
 }
 
 
-@mixin mh ( $important: false ) {
+@mixin u-mh ( $important: false ) {
 
   @if ( $important ) {
     margin-right: $base-spacing-unit !important;
@@ -90,7 +90,7 @@
 }
 
 
-@mixin mv ( $important: false ) {
+@mixin u-mv ( $important: false ) {
 
   @if ( $important ) {
     margin-top: $base-spacing-unit !important;
@@ -112,7 +112,7 @@
   Margins: Positive: Tiny
  */
 
-@mixin m-- ( $important: false ) {
+@mixin u-m-- ( $important: false ) {
 
   @if ( $important ) {
     margin: ($base-spacing-unit / 4) !important;
@@ -125,7 +125,7 @@
 }
 
 
-@mixin mt-- ( $important: false ) {
+@mixin u-mt-- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit / 4) !important;
@@ -138,7 +138,7 @@
 }
 
 
-@mixin mr-- ( $important: false ) {
+@mixin u-mr-- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit / 4) !important;
@@ -151,7 +151,7 @@
 }
 
 
-@mixin mb-- ( $important: false ) {
+@mixin u-mb-- ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: ($base-spacing-unit / 4) !important;
@@ -164,7 +164,7 @@
 }
 
 
-@mixin ml-- ( $important: false ) {
+@mixin u-ml-- ( $important: false ) {
 
   @if ( $important ) {
     margin-left: ($base-spacing-unit / 4) !important;
@@ -177,7 +177,7 @@
 }
 
 
-@mixin mh-- ( $important: false ) {
+@mixin u-mh-- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit / 4) !important;
@@ -192,7 +192,7 @@
 }
 
 
-@mixin mv-- ( $important: false ) {
+@mixin u-mv-- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit / 4) !important;
@@ -214,7 +214,7 @@
   Margins: Positive: Small
  */
 
-@mixin m- ( $important: false ) {
+@mixin u-m- ( $important: false ) {
 
   @if ( $important ) {
     margin: ($base-spacing-unit / 2) !important;
@@ -227,7 +227,7 @@
 }
 
 
-@mixin mt- ( $important: false ) {
+@mixin u-mt- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit / 2) !important;
@@ -240,7 +240,7 @@
 }
 
 
-@mixin mr- ( $important: false ) {
+@mixin u-mr- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit / 2) !important;
@@ -253,7 +253,7 @@
 }
 
 
-@mixin mb- ( $important: false ) {
+@mixin u-mb- ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: ($base-spacing-unit / 2) !important;
@@ -266,7 +266,7 @@
 }
 
 
-@mixin ml- ( $important: false ) {
+@mixin u-ml- ( $important: false ) {
 
   @if ( $important ) {
     margin-left: ($base-spacing-unit / 2) !important;
@@ -279,7 +279,7 @@
 }
 
 
-@mixin mh- ( $important: false ) {
+@mixin u-mh- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit / 2) !important;
@@ -294,7 +294,7 @@
 }
 
 
-@mixin mv- ( $important: false ) {
+@mixin u-mv- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit / 2) !important;
@@ -316,7 +316,7 @@
   Margins: Positive: Large
  */
 
-@mixin m\+ ( $important: false ) {
+@mixin u-m\+ ( $important: false ) {
 
   @if ( $important ) {
     margin: ($base-spacing-unit * 2) !important;
@@ -329,7 +329,7 @@
 }
 
 
-@mixin mt\+ ( $important: false ) {
+@mixin u-mt\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit * 2) !important;
@@ -342,7 +342,7 @@
 }
 
 
-@mixin mr\+ ( $important: false ) {
+@mixin u-mr\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit * 2) !important;
@@ -355,7 +355,7 @@
 }
 
 
-@mixin mb\+ ( $important: false ) {
+@mixin u-mb\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: ($base-spacing-unit * 2) !important;
@@ -368,7 +368,7 @@
 }
 
 
-@mixin ml\+ ( $important: false ) {
+@mixin u-ml\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-left: ($base-spacing-unit * 2) !important;
@@ -381,7 +381,7 @@
 }
 
 
-@mixin mh\+ ( $important: false ) {
+@mixin u-mh\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit * 2) !important;
@@ -396,7 +396,7 @@
 }
 
 
-@mixin mv\+ ( $important: false ) {
+@mixin u-mv\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit * 2) !important;
@@ -418,7 +418,7 @@
   Margins: Positive: Huge
  */
 
-@mixin m\+\+ ( $important: false ) {
+@mixin u-m\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin: ($base-spacing-unit * 4) !important;
@@ -431,7 +431,7 @@
 }
 
 
-@mixin mt\+\+ ( $important: false ) {
+@mixin u-mt\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit * 4) !important;
@@ -444,7 +444,7 @@
 }
 
 
-@mixin mr\+\+ ( $important: false ) {
+@mixin u-mr\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit * 4) !important;
@@ -457,7 +457,7 @@
 }
 
 
-@mixin mb\+\+ ( $important: false ) {
+@mixin u-mb\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: ($base-spacing-unit * 4) !important;
@@ -470,7 +470,7 @@
 }
 
 
-@mixin ml\+\+ ( $important: false ) {
+@mixin u-ml\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-left: ($base-spacing-unit * 4) !important;
@@ -483,7 +483,7 @@
 }
 
 
-@mixin mh\+\+ ( $important: false ) {
+@mixin u-mh\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: ($base-spacing-unit * 4) !important;
@@ -498,7 +498,7 @@
 }
 
 
-@mixin mv\+\+ ( $important: false ) {
+@mixin u-mv\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: ($base-spacing-unit * 4) !important;
@@ -520,7 +520,7 @@
   Margins: Negative: Regular
  */
 
-@mixin -m ( $important: false ) {
+@mixin u--m ( $important: false ) {
 
   @if ( $important ) {
     margin: -$base-spacing-unit !important;
@@ -533,7 +533,7 @@
 }
 
 
-@mixin -mt ( $important: false ) {
+@mixin u--mt ( $important: false ) {
 
   @if ( $important ) {
     margin-top: -$base-spacing-unit !important;
@@ -546,7 +546,7 @@
 }
 
 
-@mixin -mr ( $important: false ) {
+@mixin u--mr ( $important: false ) {
 
   @if ( $important ) {
     margin-right: -$base-spacing-unit !important;
@@ -559,7 +559,7 @@
 }
 
 
-@mixin -mb ( $important: false ) {
+@mixin u--mb ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: -$base-spacing-unit !important;
@@ -572,7 +572,7 @@
 }
 
 
-@mixin -ml ( $important: false ) {
+@mixin u--ml ( $important: false ) {
 
   @if ( $important ) {
     margin-left: -$base-spacing-unit !important;
@@ -585,7 +585,7 @@
 }
 
 
-@mixin -mh ( $important: false ) {
+@mixin u--mh ( $important: false ) {
 
   @if ( $important ) {
     margin-right: -$base-spacing-unit !important;
@@ -600,7 +600,7 @@
 }
 
 
-@mixin -mv ( $important: false ) {
+@mixin u--mv ( $important: false ) {
 
   @if ( $important ) {
     margin-top: -$base-spacing-unit !important;
@@ -622,7 +622,7 @@
   Margins: Negative: Tiny
  */
 
-@mixin -m-- ( $important: false ) {
+@mixin u--m-- ( $important: false ) {
 
   @if ( $important ) {
     margin: (-$base-spacing-unit / 4) !important;
@@ -635,7 +635,7 @@
 }
 
 
-@mixin -mt-- ( $important: false ) {
+@mixin u--mt-- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit / 4) !important;
@@ -648,7 +648,7 @@
 }
 
 
-@mixin -mr-- ( $important: false ) {
+@mixin u--mr-- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit / 4) !important;
@@ -661,7 +661,7 @@
 }
 
 
-@mixin -mb-- ( $important: false ) {
+@mixin u--mb-- ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: (-$base-spacing-unit / 4) !important;
@@ -674,7 +674,7 @@
 }
 
 
-@mixin -ml-- ( $important: false ) {
+@mixin u--ml-- ( $important: false ) {
 
   @if ( $important ) {
     margin-left: (-$base-spacing-unit / 4) !important;
@@ -687,7 +687,7 @@
 }
 
 
-@mixin -mh-- ( $important: false ) {
+@mixin u--mh-- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit / 4) !important;
@@ -702,7 +702,7 @@
 }
 
 
-@mixin -mv-- ( $important: false ) {
+@mixin u--mv-- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit / 4) !important;
@@ -724,7 +724,7 @@
   Margins: Negative: Small
  */
 
-@mixin -m- ( $important: false ) {
+@mixin u--m- ( $important: false ) {
 
   @if ( $important ) {
     margin: (-$base-spacing-unit / 2) !important;
@@ -737,7 +737,7 @@
 }
 
 
-@mixin -mt- ( $important: false ) {
+@mixin u--mt- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit / 2) !important;
@@ -750,7 +750,7 @@
 }
 
 
-@mixin -mr- ( $important: false ) {
+@mixin u--mr- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit / 2) !important;
@@ -763,7 +763,7 @@
 }
 
 
-@mixin -mb- ( $important: false ) {
+@mixin u--mb- ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: (-$base-spacing-unit / 2) !important;
@@ -776,7 +776,7 @@
 }
 
 
-@mixin -ml- ( $important: false ) {
+@mixin u--ml- ( $important: false ) {
 
   @if ( $important ) {
     margin-left: (-$base-spacing-unit / 2) !important;
@@ -789,7 +789,7 @@
 }
 
 
-@mixin -mh- ( $important: false ) {
+@mixin u--mh- ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit / 2) !important;
@@ -804,7 +804,7 @@
 }
 
 
-@mixin -mv- ( $important: false ) {
+@mixin u--mv- ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit / 2) !important;
@@ -826,7 +826,7 @@
   Margins: Negative: Large
  */
 
-@mixin -m\+ ( $important: false ) {
+@mixin u--m\+ ( $important: false ) {
 
   @if ( $important ) {
     margin: (-$base-spacing-unit * 2) !important;
@@ -839,7 +839,7 @@
 }
 
 
-@mixin -mt\+ ( $important: false ) {
+@mixin u--mt\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit * 2) !important;
@@ -852,7 +852,7 @@
 }
 
 
-@mixin -mr\+ ( $important: false ) {
+@mixin u--mr\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit * 2) !important;
@@ -865,7 +865,7 @@
 }
 
 
-@mixin -mb\+ ( $important: false ) {
+@mixin u--mb\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: (-$base-spacing-unit * 2) !important;
@@ -878,7 +878,7 @@
 }
 
 
-@mixin -ml\+ ( $important: false ) {
+@mixin u--ml\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-left: (-$base-spacing-unit * 2) !important;
@@ -891,7 +891,7 @@
 }
 
 
-@mixin -mh\+ ( $important: false ) {
+@mixin u--mh\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit * 2) !important;
@@ -906,7 +906,7 @@
 }
 
 
-@mixin -mv\+ ( $important: false ) {
+@mixin u--mv\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit * 2) !important;
@@ -928,7 +928,7 @@
   Margins: Negative: Huge
  */
 
-@mixin -m\+\+ ( $important: false ) {
+@mixin u--m\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin: (-$base-spacing-unit * 4) !important;
@@ -941,7 +941,7 @@
 }
 
 
-@mixin -mt\+\+ ( $important: false ) {
+@mixin u--mt\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit * 4) !important;
@@ -954,7 +954,7 @@
 }
 
 
-@mixin -mr\+\+ ( $important: false ) {
+@mixin u--mr\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit * 4) !important;
@@ -967,7 +967,7 @@
 }
 
 
-@mixin -mb\+\+ ( $important: false ) {
+@mixin u--mb\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: (-$base-spacing-unit * 4) !important;
@@ -980,7 +980,7 @@
 }
 
 
-@mixin -ml\+\+ ( $important: false ) {
+@mixin u--ml\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-left: (-$base-spacing-unit * 4) !important;
@@ -993,7 +993,7 @@
 }
 
 
-@mixin -mh\+\+ ( $important: false ) {
+@mixin u--mh\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-right: (-$base-spacing-unit * 4) !important;
@@ -1008,7 +1008,7 @@
 }
 
 
-@mixin -mv\+\+ ( $important: false ) {
+@mixin u--mv\+\+ ( $important: false ) {
 
   @if ( $important ) {
     margin-top: (-$base-spacing-unit * 4) !important;
@@ -1030,7 +1030,7 @@
   Margins: None
  */
 
-@mixin m0 ( $important: false ) {
+@mixin u-m0 ( $important: false ) {
 
   @if ( $important ) {
     margin: 0 !important;
@@ -1043,7 +1043,7 @@
 }
 
 
-@mixin mt0 ( $important: false ) {
+@mixin u-mt0 ( $important: false ) {
 
   @if ( $important ) {
     margin-top: 0 !important;
@@ -1056,7 +1056,7 @@
 }
 
 
-@mixin mr0 ( $important: false ) {
+@mixin u-mr0 ( $important: false ) {
 
   @if ( $important ) {
     margin-right: 0 !important;
@@ -1069,7 +1069,7 @@
 }
 
 
-@mixin mb0 ( $important: false ) {
+@mixin u-mb0 ( $important: false ) {
 
   @if ( $important ) {
     margin-bottom: 0 !important;
@@ -1082,7 +1082,7 @@
 }
 
 
-@mixin ml0 ( $important: false ) {
+@mixin u-ml0 ( $important: false ) {
 
   @if ( $important ) {
     margin-left: 0 !important;
@@ -1095,7 +1095,7 @@
 }
 
 
-@mixin mh0 ( $important: false ) {
+@mixin u-mh0 ( $important: false ) {
 
   @if ( $important ) {
     margin-right: 0 !important;
@@ -1110,7 +1110,7 @@
 }
 
 
-@mixin mv0 ( $important: false ) {
+@mixin u-mv0 ( $important: false ) {
 
   @if ( $important ) {
     margin-top: 0 !important;
@@ -1132,7 +1132,7 @@
   Paddings: Regular
  */
 
-@mixin p ( $important: false ) {
+@mixin u-p ( $important: false ) {
 
   @if ( $important ) {
     padding: $base-spacing-unit !important;
@@ -1145,7 +1145,7 @@
 }
 
 
-@mixin pt ( $important: false ) {
+@mixin u-pt ( $important: false ) {
 
   @if ( $important ) {
     padding-top: $base-spacing-unit !important;
@@ -1158,7 +1158,7 @@
 }
 
 
-@mixin pr ( $important: false ) {
+@mixin u-pr ( $important: false ) {
 
   @if ( $important ) {
     padding-right: $base-spacing-unit !important;
@@ -1171,7 +1171,7 @@
 }
 
 
-@mixin pb ( $important: false ) {
+@mixin u-pb ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: $base-spacing-unit !important;
@@ -1184,7 +1184,7 @@
 }
 
 
-@mixin pl ( $important: false ) {
+@mixin u-pl ( $important: false ) {
 
   @if ( $important ) {
     padding-left: $base-spacing-unit !important;
@@ -1197,7 +1197,7 @@
 }
 
 
-@mixin ph ( $important: false ) {
+@mixin u-ph ( $important: false ) {
 
   @if ( $important ) {
     padding-right: $base-spacing-unit !important;
@@ -1212,7 +1212,7 @@
 }
 
 
-@mixin pv ( $important: false ) {
+@mixin u-pv ( $important: false ) {
 
   @if ( $important ) {
     padding-top: $base-spacing-unit !important;
@@ -1234,7 +1234,7 @@
   Paddings: Tiny
  */
 
-@mixin p-- ( $important: false ) {
+@mixin u-p-- ( $important: false ) {
 
   @if ( $important ) {
     padding: ($base-spacing-unit / 4) !important;
@@ -1247,7 +1247,7 @@
 }
 
 
-@mixin pt-- ( $important: false ) {
+@mixin u-pt-- ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit / 4) !important;
@@ -1260,7 +1260,7 @@
 }
 
 
-@mixin pr-- ( $important: false ) {
+@mixin u-pr-- ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit / 4) !important;
@@ -1273,7 +1273,7 @@
 }
 
 
-@mixin pb-- ( $important: false ) {
+@mixin u-pb-- ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: ($base-spacing-unit / 4) !important;
@@ -1286,7 +1286,7 @@
 }
 
 
-@mixin pl-- ( $important: false ) {
+@mixin u-pl-- ( $important: false ) {
 
   @if ( $important ) {
     padding-left: ($base-spacing-unit / 4) !important;
@@ -1299,7 +1299,7 @@
 }
 
 
-@mixin ph-- ( $important: false ) {
+@mixin u-ph-- ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit / 4) !important;
@@ -1314,7 +1314,7 @@
 }
 
 
-@mixin pv-- ( $important: false ) {
+@mixin u-pv-- ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit / 4) !important;
@@ -1336,7 +1336,7 @@
   Paddings: Small
  */
 
-@mixin p- ( $important: false ) {
+@mixin u-p- ( $important: false ) {
 
   @if ( $important ) {
     padding: ($base-spacing-unit / 2) !important;
@@ -1349,7 +1349,7 @@
 }
 
 
-@mixin pt- ( $important: false ) {
+@mixin u-pt- ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit / 2) !important;
@@ -1362,7 +1362,7 @@
 }
 
 
-@mixin pr- ( $important: false ) {
+@mixin u-pr- ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit / 2) !important;
@@ -1375,7 +1375,7 @@
 }
 
 
-@mixin pb- ( $important: false ) {
+@mixin u-pb- ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: ($base-spacing-unit / 2) !important;
@@ -1388,7 +1388,7 @@
 }
 
 
-@mixin pl- ( $important: false ) {
+@mixin u-pl- ( $important: false ) {
 
   @if ( $important ) {
     padding-left: ($base-spacing-unit / 2) !important;
@@ -1401,7 +1401,7 @@
 }
 
 
-@mixin ph- ( $important: false ) {
+@mixin u-ph- ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit / 2) !important;
@@ -1416,7 +1416,7 @@
 }
 
 
-@mixin pv- ( $important: false ) {
+@mixin u-pv- ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit / 2) !important;
@@ -1438,7 +1438,7 @@
   Paddings: Large
  */
 
-@mixin p\+ ( $important: false ) {
+@mixin u-p\+ ( $important: false ) {
 
   @if ( $important ) {
     padding: ($base-spacing-unit * 2) !important;
@@ -1451,7 +1451,7 @@
 }
 
 
-@mixin pt\+ ( $important: false ) {
+@mixin u-pt\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit * 2) !important;
@@ -1464,7 +1464,7 @@
 }
 
 
-@mixin pr\+ ( $important: false ) {
+@mixin u-pr\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit * 2) !important;
@@ -1477,7 +1477,7 @@
 }
 
 
-@mixin pb\+ ( $important: false ) {
+@mixin u-pb\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: ($base-spacing-unit * 2) !important;
@@ -1490,7 +1490,7 @@
 }
 
 
-@mixin pl\+ ( $important: false ) {
+@mixin u-pl\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-left: ($base-spacing-unit * 2) !important;
@@ -1503,7 +1503,7 @@
 }
 
 
-@mixin ph\+ ( $important: false ) {
+@mixin u-ph\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit * 2) !important;
@@ -1518,7 +1518,7 @@
 }
 
 
-@mixin pv\+ ( $important: false ) {
+@mixin u-pv\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit * 2) !important;
@@ -1540,7 +1540,7 @@
   Paddings: Huge
  */
 
-@mixin p\+\+ ( $important: false ) {
+@mixin u-p\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding: ($base-spacing-unit * 4) !important;
@@ -1553,7 +1553,7 @@
 }
 
 
-@mixin pt\+\+ ( $important: false ) {
+@mixin u-pt\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit * 4) !important;
@@ -1566,7 +1566,7 @@
 }
 
 
-@mixin pr\+\+ ( $important: false ) {
+@mixin u-pr\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit * 4) !important;
@@ -1579,7 +1579,7 @@
 }
 
 
-@mixin pb\+\+ ( $important: false ) {
+@mixin u-pb\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: ($base-spacing-unit * 4) !important;
@@ -1592,7 +1592,7 @@
 }
 
 
-@mixin pl\+\+ ( $important: false ) {
+@mixin u-pl\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-left: ($base-spacing-unit * 4) !important;
@@ -1605,7 +1605,7 @@
 }
 
 
-@mixin ph\+\+ ( $important: false ) {
+@mixin u-ph\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-right: ($base-spacing-unit * 4) !important;
@@ -1620,7 +1620,7 @@
 }
 
 
-@mixin pv\+\+ ( $important: false ) {
+@mixin u-pv\+\+ ( $important: false ) {
 
   @if ( $important ) {
     padding-top: ($base-spacing-unit * 4) !important;
@@ -1642,7 +1642,7 @@
   Paddings: None
  */
 
-@mixin p0 ( $important: false ) {
+@mixin u-p0 ( $important: false ) {
 
   @if ( $important ) {
     padding: 0 !important;
@@ -1655,7 +1655,7 @@
 }
 
 
-@mixin pt0 ( $important: false ) {
+@mixin u-pt0 ( $important: false ) {
 
   @if ( $important ) {
     padding-top: 0 !important;
@@ -1668,7 +1668,7 @@
 }
 
 
-@mixin pr0 ( $important: false ) {
+@mixin u-pr0 ( $important: false ) {
 
   @if ( $important ) {
     padding-right: 0 !important;
@@ -1681,7 +1681,7 @@
 }
 
 
-@mixin pb0 ( $important: false ) {
+@mixin u-pb0 ( $important: false ) {
 
   @if ( $important ) {
     padding-bottom: 0 !important;
@@ -1694,7 +1694,7 @@
 }
 
 
-@mixin pl0 ( $important: false ) {
+@mixin u-pl0 ( $important: false ) {
 
   @if ( $important ) {
     padding-left: 0 !important;
@@ -1707,7 +1707,7 @@
 }
 
 
-@mixin ph0 ( $important: false ) {
+@mixin u-ph0 ( $important: false ) {
 
   @if ( $important ) {
     padding-right: 0 !important;
@@ -1722,7 +1722,7 @@
 }
 
 
-@mixin pv0 ( $important: false ) {
+@mixin u-pv0 ( $important: false ) {
 
   @if ( $important ) {
     padding-top: 0 !important;

@@ -18,7 +18,7 @@
   CONFIGURATION
  **********************************************************************************/
 
-@import "../config";
+@import "config";
 
 
 
@@ -88,16 +88,17 @@
 @import "objects/flag";
 @import "objects/flyout";
 @import "objects/sprite";
+@import "objects/wrapper";
 
 
 
 
 
 /***********************************************************************************
-  PROJECT
+  COMPONENTS
  **********************************************************************************/
 
-@import "../style";
+//@import "components/thing";
 
 
 

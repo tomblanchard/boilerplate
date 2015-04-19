@@ -3,7 +3,6 @@
  **********************************************************************************/
 
 q {
-
   quotes: '\2018' '\2019' '\201C' '\201D';
 
   &:before {
@@ -25,12 +24,9 @@ q {
     content: '\201D';
     content: close-quote;
   }
-
 }
 
-
 blockquote {
-
   quotes: '\201C' '\201D';
 
   p:before {
@@ -58,25 +54,7 @@ blockquote {
     content: close-quote;
   }
 
-}
-
-
-blockquote {
-
-  p:last-of-type {
+  > :last-child {
     margin: 0;
   }
-
-}
-
-
-.source {
-
-  display: block;
-  text-indent: 0;
-
-  &:before {
-    content: '\2014';
-  }
-
 }

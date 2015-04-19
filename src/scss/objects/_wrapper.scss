@@ -1,0 +1,17 @@
+/***********************************************************************************
+  OBJECT: WRAPPER
+ **********************************************************************************/
+
+@mixin o-wrapper {
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@if ( map-get( $objects, wrapper ) ) {
+
+  .o-wrapper { @include o-wrapper; }
+
+}

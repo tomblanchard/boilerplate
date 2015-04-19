@@ -1,0 +1,239 @@
+/***********************************************************************************
+  TRUMP CLASSES: SPACING UTILITIES
+ ***********************************************************************************
+
+  Margin and padding utility classes, usage:
+
+  <div class="u-m"></div>
+
+  .element {
+
+    @extend .u-m;
+
+    @media ( max-width:500px ) {
+      @include u-m-;
+    }
+
+  }
+
+ **********************************************************************************/
+
+@if ( map-deep-get( $spacing, margins positive regular ) ) {
+
+  .u-m { @include u-m( important ) };
+  .u-mt { @include u-mt( important ) };
+  .u-mr { @include u-mr( important ) };
+  .u-mb { @include u-mb( important ) };
+  .u-ml { @include u-ml( important ) };
+  .u-mh { @include u-mh( important ) };
+  .u-mv { @include u-mv( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins positive tiny ) ) {
+
+  .u-m-- { @include u-m--( important ) };
+  .u-mt-- { @include u-mt--( important ) };
+  .u-mr-- { @include u-mr--( important ) };
+  .u-mb-- { @include u-mb--( important ) };
+  .u-ml-- { @include u-ml--( important ) };
+  .u-mh-- { @include u-mh--( important ) };
+  .u-mv-- { @include u-mv--( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins positive small ) ) {
+
+  .u-m- { @include u-m-( important ) };
+  .u-mt- { @include u-mt-( important ) };
+  .u-mr- { @include u-mr-( important ) };
+  .u-mb- { @include u-mb-( important ) };
+  .u-ml- { @include u-ml-( important ) };
+  .u-mh- { @include u-mh-( important ) };
+  .u-mv- { @include u-mv-( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins positive large ) ) {
+
+  .u-m\+ { @include u-m\+( important ) };
+  .u-mt\+ { @include u-mt\+( important ) };
+  .u-mr\+ { @include u-mr\+( important ) };
+  .u-mb\+ { @include u-mb\+( important ) };
+  .u-ml\+ { @include u-ml\+( important ) };
+  .u-mh\+ { @include u-mh\+( important ) };
+  .u-mv\+ { @include u-mv\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins positive huge ) ) {
+
+  .u-m\+\+ { @include u-m\+\+( important ) };
+  .u-mt\+\+ { @include u-mt\+\+( important ) };
+  .u-mr\+\+ { @include u-mr\+\+( important ) };
+  .u-mb\+\+ { @include u-mb\+\+( important ) };
+  .u-ml\+\+ { @include u-ml\+\+( important ) };
+  .u-mh\+\+ { @include u-mh\+\+( important ) };
+  .u-mv\+\+ { @include u-mv\+\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins negative regular ) ) {
+
+  .u--m { @include u--m( important ) };
+  .u--mt { @include u--mt( important ) };
+  .u--mr { @include u--mr( important ) };
+  .u--mb { @include u--mb( important ) };
+  .u--ml { @include u--ml( important ) };
+  .u--mh { @include u--mh( important ) };
+  .u--mv { @include u--mv( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins negative tiny ) ) {
+
+  .u--m-- { @include u--m--( important ) };
+  .u--mt-- { @include u--mt--( important ) };
+  .u--mr-- { @include u--mr--( important ) };
+  .u--mb-- { @include u--mb--( important ) };
+  .u--ml-- { @include u--ml--( important ) };
+  .u--mh-- { @include u--mh--( important ) };
+  .u--mv-- { @include u--mv--( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins negative small ) ) {
+
+  .u--m- { @include u--m-( important ) };
+  .u--mt- { @include u--mt-( important ) };
+  .u--mr- { @include u--mr-( important ) };
+  .u--mb- { @include u--mb-( important ) };
+  .u--ml- { @include u--ml-( important ) };
+  .u--mh- { @include u--mh-( important ) };
+  .u--mv- { @include u--mv-( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins negative large ) ) {
+
+  .u--m\+ { @include u--m\+( important ) };
+  .u--mt\+ { @include u--mt\+( important ) };
+  .u--mr\+ { @include u--mr\+( important ) };
+  .u--mb\+ { @include u--mb\+( important ) };
+  .u--ml\+ { @include u--ml\+( important ) };
+  .u--mh\+ { @include u--mh\+( important ) };
+  .u--mv\+ { @include u--mv\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins negative huge ) ) {
+
+  .u--m\+\+ { @include u--m\+\+( important ) };
+  .u--mt\+\+ { @include u--mt\+\+( important ) };
+  .u--mr\+\+ { @include u--mr\+\+( important ) };
+  .u--mb\+\+ { @include u--mb\+\+( important ) };
+  .u--ml\+\+ { @include u--ml\+\+( important ) };
+  .u--mh\+\+ { @include u--mh\+\+( important ) };
+  .u--mv\+\+ { @include u--mv\+\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, margins none ) ) {
+
+  .u-m0 { @include u-m0( important ) };
+  .u-mt0 { @include u-mt0( important ) };
+  .u-mr0 { @include u-mr0( important ) };
+  .u-mb0 { @include u-mb0( important ) };
+  .u-ml0 { @include u-ml0( important ) };
+  .u-mh0 { @include u-mh0( important ) };
+  .u-mv0 { @include u-mv0( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings regular ) ) {
+
+  .u-p { @include u-p( important ) };
+  .u-pt { @include u-pt( important ) };
+  .u-pr { @include u-pr( important ) };
+  .u-pb { @include u-pb( important ) };
+  .u-pl { @include u-pl( important ) };
+  .u-ph { @include u-ph( important ) };
+  .u-pv { @include u-pv( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings tiny ) ) {
+
+  .u-p-- { @include u-p--( important ) };
+  .u-pt-- { @include u-pt--( important ) };
+  .u-pr-- { @include u-pr--( important ) };
+  .u-pb-- { @include u-pb--( important ) };
+  .u-pl-- { @include u-pl--( important ) };
+  .u-ph-- { @include u-ph--( important ) };
+  .u-pv-- { @include u-pv--( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings small ) ) {
+
+  .u-p- { @include u-p-( important ) };
+  .u-pt- { @include u-pt-( important ) };
+  .u-pr- { @include u-pr-( important ) };
+  .u-pb- { @include u-pb-( important ) };
+  .u-pl- { @include u-pl-( important ) };
+  .u-ph- { @include u-ph-( important ) };
+  .u-pv- { @include u-pv-( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings large ) ) {
+
+  .u-p\+ { @include u-p\+( important ) };
+  .u-pt\+ { @include u-pt\+( important ) };
+  .u-pr\+ { @include u-pr\+( important ) };
+  .u-pb\+ { @include u-pb\+( important ) };
+  .u-pl\+ { @include u-pl\+( important ) };
+  .u-ph\+ { @include u-ph\+( important ) };
+  .u-pv\+ { @include u-pv\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings huge ) ) {
+
+  .u-p\+\+ { @include u-p\+\+( important ) };
+  .u-pt\+\+ { @include u-pt\+\+( important ) };
+  .u-pr\+\+ { @include u-pr\+\+( important ) };
+  .u-pb\+\+ { @include u-pb\+\+( important ) };
+  .u-pl\+\+ { @include u-pl\+\+( important ) };
+  .u-ph\+\+ { @include u-ph\+\+( important ) };
+  .u-pv\+\+ { @include u-pv\+\+( important ) };
+
+}
+
+
+@if ( map-deep-get( $spacing, paddings none ) ) {
+
+  .u-p0 { @include u-p0( important ) };
+  .u-pt0 { @include u-pt0( important ) };
+  .u-pr0 { @include u-pr0( important ) };
+  .u-pb0 { @include u-pb0( important ) };
+  .u-pl0 { @include u-pl0( important ) };
+  .u-ph0 { @include u-ph0( important ) };
+  .u-pv0 { @include u-pv0( important ) };
+
+}

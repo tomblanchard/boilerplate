@@ -1,17 +1,17 @@
 /***********************************************************************************
-  TRUMP CLASSES: HELPERS
+  TRUMP CLASSES: UTILITIES
  ***********************************************************************************
 
-  Helper classes, usage:
+  Utility classes, usage:
 
-  <div class="helper"></div>
+  <div class="u-helper"></div>
 
   .element {
 
-    @extend .helper;
+    @extend .u-helper;
 
     @media ( max-width: 500px ) {
-      @include helper;
+      @include u-helper;
     }
 
   }
@@ -22,45 +22,46 @@
   Hide element (affects SEO and accessibility.)
  */
 
-.remove { @include remove( important ); }
+.u-remove { @include u-remove( important ); }
+
 
 /**
   Accessible alternative to `display:none`.
  */
 
-.hide { @include hide( important ); }
+.u-hide { @include u-hide( important ); }
 
 
 /**
   Disable pointer events.
  */
 
-.inaccessible { @include inaccessible( important ); }
+.u-inaccessible { @include u-inaccessible( important ); }
 
 
 /**
   Clearfix.
  */
 
-.cf { @include cf( important ); }
+.u-cf { @include u-cf( important ); }
 
 
 /**
   Image replacement.
  */
 
-.ir { @include ir( important ); }
+.u-ir { @include u-ir( important ); }
 
 
 /**
   Removes indents and bullet points from lists.
  */
 
-.bare-list { @include bare-list( important ); }
+.u-bare-list { @include u-bare-list( important ); }
 
 
 /**
   Makes element block level and full-width.
  */
 
-.full { @include full( important ); }
+.u-full { @include u-full( important ); }

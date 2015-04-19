@@ -1,8 +1,8 @@
 /***********************************************************************************
-  MIXINS: HELPERS
+  MIXINS: UTILITIES
  ***********************************************************************************
 
-  Helper mixins.
+  Utility mixins.
 
  **********************************************************************************/
 
@@ -10,7 +10,7 @@
   Hide element (affects SEO and accessibility.)
  */
 
-@mixin remove ( $important: false ) {
+@mixin u-remove ( $important: false ) {
 
   @if ( $important ) {
     display: none !important;
@@ -27,7 +27,7 @@
   Accessible alternative to `display: none`.
  */
 
-@mixin hide ( $important: false ) {
+@mixin u-hide ( $important: false ) {
 
   @if ( $important ) {
     border: 0 !important;
@@ -58,7 +58,7 @@
   Disable pointer events.
  */
 
-@mixin inaccessible ( $important: false ) {
+@mixin u-inaccessible ( $important: false ) {
 
   @if ( $important ) {
     pointer-events: none !important;
@@ -75,7 +75,7 @@
   Clearfix.
  */
 
-@mixin cf ( $important: false ) {
+@mixin u-cf ( $important: false ) {
 
   @if ( $important ) {
     &:after {
@@ -100,7 +100,7 @@
   Image replacement.
  */
 
-@mixin ir ( $important: false ) {
+@mixin u-ir ( $important: false ) {
 
   @if ( $important ) {
     text-indent: 100% !important;
@@ -121,7 +121,7 @@
   Removes indents and bullet points from lists.
  */
 
-@mixin bare-list ( $important: false ) {
+@mixin u-bare-list ( $important: false ) {
 
   @if ( $important ) {
     margin: 0 !important;
@@ -142,7 +142,7 @@
   Makes element block level and full-width.
  */
 
-@mixin full ( $important: false ) {
+@mixin u-full ( $important: false ) {
 
   @if ( $important ) {
     display: block !important;

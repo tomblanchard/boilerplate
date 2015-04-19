@@ -9,12 +9,10 @@ pre {
 
 
 code {
-
   overflow: auto;
   font-family: monospace, monospace;
 
   :not(pre) > & {
     white-space: nowrap;
   }
-
 }
