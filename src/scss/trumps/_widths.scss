@@ -2,185 +2,43 @@
   TRUMP CLASSES: WIDTHS
  ***********************************************************************************
 
-  Generate width classes (mostly used with the `grid` object).
+  Width utility classes. Usage:
+
+  @include widths( 1 2 3 4 ); // Output wholes, halves, thirds and quarters.
+
+  Breakpoint specific usage:
+
+  @include mq(M-up) {
+    @include widths( 1 5, '--M-up' ); // Output wholes and fifths.
+  }
+
+  Author: Harry Roberts
 
  **********************************************************************************/
 
-/**
-  Define all placeholder width classes which can be prefixed with a dynamic
-  string.
- */
+@mixin widths($widths-columns, $widths-breakpoint: null) {
 
-@mixin width-gen ( $namespace: "" ) {
-
-  /**
-    Whole
-   */
-  %u-1\/1#{$namespace} { width: 100% !important; }
-
-  /**
-    Halves
-   */
-  %u-1\/2#{$namespace} { width: 50% !important; }
-
-  /**
-    Thirds
-   */
-  %u-1\/3#{$namespace} { width: 33.333% !important; }
-  %u-2\/3#{$namespace} { width: 66.666% !important; }
-
-  /**
-    Quarters
-   */
-  %u-1\/4#{$namespace} { width: 25% !important; }
-  %u-2\/4#{$namespace} { width: 50% !important; }
-  %u-3\/4#{$namespace} { width: 75% !important; }
-
-  /**
-    Fifths
-   */
-  %u-1\/5#{$namespace} { width: 20% !important; }
-  %u-2\/5#{$namespace} { width: 40% !important; }
-  %u-3\/5#{$namespace} { width: 60% !important; }
-  %u-4\/5#{$namespace} { width: 80% !important; }
-
-  /**
-    Sixths
-   */
-  %u-1\/6#{$namespace} { width: 16.666% !important; }
-  %u-2\/6#{$namespace} { width: 33.333% !important; }
-  %u-3\/6#{$namespace} { width: 50% !important; }
-  %u-4\/6#{$namespace} { width: 66.666% !important; }
-  %u-5\/6#{$namespace} { width: 83.333% !important; }
-
-  /**
-    Sevenths
-   */
-  %u-1\/7#{$namespace} { width: 14.285% !important; }
-  %u-2\/7#{$namespace} { width: 28.57% !important; }
-  %u-3\/7#{$namespace} { width: 42.855% !important; }
-  %u-4\/7#{$namespace} { width: 57.14% !important; }
-  %u-5\/7#{$namespace} { width: 71.425% !important; }
-  %u-6\/7#{$namespace} { width: 85.71% !important; }
-
-  /**
-    Eighths
-   */
-  %u-1\/8#{$namespace} { width: 12.5% !important; }
-  %u-2\/8#{$namespace} { width: 25% !important; }
-  %u-3\/8#{$namespace} { width: 37.5% !important; }
-  %u-4\/8#{$namespace} { width: 50% !important; }
-  %u-5\/8#{$namespace} { width: 62.5% !important; }
-  %u-6\/8#{$namespace} { width: 75% !important; }
-  %u-7\/8#{$namespace} { width: 87.5% !important; }
-
-  /**
-    Ninths
-   */
-  %u-1\/9#{$namespace} { width: 11.111% !important; }
-  %u-2\/9#{$namespace} { width: 22.222% !important; }
-  %u-3\/9#{$namespace} { width: 33.333% !important; }
-  %u-4\/9#{$namespace} { width: 44.444% !important; }
-  %u-5\/9#{$namespace} { width: 55.555% !important; }
-  %u-6\/9#{$namespace} { width: 66.666% !important; }
-  %u-7\/9#{$namespace} { width: 77.777% !important; }
-  %u-8\/9#{$namespace} { width: 88.888% !important; }
-
-  /**
-    Tenths
-   */
-  %u-1\/10#{$namespace} { width: 10% !important; }
-  %u-2\/10#{$namespace} { width: 20% !important; }
-  %u-3\/10#{$namespace} { width: 30% !important; }
-  %u-4\/10#{$namespace} { width: 40% !important; }
-  %u-5\/10#{$namespace} { width: 50% !important; }
-  %u-6\/10#{$namespace} { width: 60% !important; }
-  %u-7\/10#{$namespace} { width: 70% !important; }
-  %u-8\/10#{$namespace} { width: 80% !important; }
-  %u-9\/10#{$namespace} { width: 90% !important; }
-
-  /**
-    Elevenths
-   */
-  %u-1\/11 #{$namespace} { width: 9.090% !important; }
-  %u-2\/11 #{$namespace} { width: 18.18% !important; }
-  %u-3\/11 #{$namespace} { width: 27.27% !important; }
-  %u-4\/11 #{$namespace} { width: 36.36% !important; }
-  %u-5\/11 #{$namespace} { width: 45.45% !important; }
-  %u-6\/11 #{$namespace} { width: 54.54% !important; }
-  %u-7\/11 #{$namespace} { width: 63.63% !important; }
-  %u-8\/11 #{$namespace} { width: 72.72% !important; }
-  %u-9\/11 #{$namespace} { width: 81.81% !important; }
-  %u-10\/11#{$namespace} { width: 90.9% !important; }
-
-  /**
-    Twelfths
-   */
-  %u-1\/12 #{$namespace} { width: 8.333% !important; }
-  %u-2\/12 #{$namespace} { width: 16.666% !important; }
-  %u-3\/12 #{$namespace} { width: 25% !important; }
-  %u-4\/12 #{$namespace} { width: 33.333% !important; }
-  %u-5\/12 #{$namespace} { width: 41.666% }
-  %u-6\/12 #{$namespace} { width: 50% !important; }
-  %u-7\/12 #{$namespace} { width: 58.333% !important; }
-  %u-8\/12 #{$namespace} { width: 66.666% !important; }
-  %u-9\/12 #{$namespace} { width: 75% !important; }
-  %u-10\/12#{$namespace} { width: 83.333% !important; }
-  %u-11\/12#{$namespace} { width: 91.666% !important; }
-
-}
-
-
-/**
-  Make all regular non-prefixed placeholder width classes available to use.
- */
-
-@include width-gen();
-
-
-/**
-  Grab each name of every breakpoint and generate all placeholder width classes
-  again, but prefix each set of classes with their corresponding breakpoint name
-  then wrap each set of classes in their correct media query.
- */
-
-@each $name, $declaration in $breakpoints {
-
-  @include media-query( $name, true ) {
-    @include width-gen( '--#{$name}' );
+  // Always output wholes.
+  .u-1\/1#{$widths-breakpoint} {
+    width: 100% !important;
   }
 
-}
+  // Loop through the number of columns for each denominator of our fractions.
+  @each $widths-denominator in $widths-columns {
 
+    // Begin creating a numberator for our fraction up until we hit the denominator.
+    @for $widths-numerator from 1 to $widths-denominator {
 
-/**
-  We don't want to output every width class (and the breakpoint specific ones)
-  in the CSS because we'd never need to use them all so we only generate an actual
-  CSS class for every placeholder class defined in the `$widths`
-  (located in `_config.scss`) list.
- */
+      // Build a class in the format `.u-3/4`.
+      .u-#{$widths-numerator}\/#{$widths-denominator}#{$widths-breakpoint} {
+        width: ($widths-numerator / $widths-denominator) * 100% !important;
+      }
 
-// For each width class we want to output (defined in `$widths`)
-@each $class in $widths {
-
-  // If not the `lt-ie-9` stylesheet then output every width class defined, no matter
-  // what. But if we are on the `lt-ie-9` stylesheet then output every width class
-  // defined except ones that contain the string `-down--`. The reason not to output
-  // those certain width classes is because they're powered by `max-width` media
-  // queries which are useless to `lt-ie-9` browsers
-  @if not $is-lt-ie-9-stylesheet or $is-lt-ie-9-stylesheet and not str-index( $class, '-down--' ) {
-
-    $new-class: $class;
-
-    // Fraction classes (e.g. `.u-1/5`) aren't valid CSS, this manipulates the class to
-    // be valid by escaping the forward slash, this would transform `.u-1/5` into
-    // `.u-1\/5`, then to use the class in HTML it's as simple as `class="u-1/5"`.
-    $new-class: unquote( str-replace( $class, '/', '\\/'  ) );
-
-    .#{$new-class} {
-      @extend %#{$new-class};
     }
 
   }
 
 }
+
+
+//@include widths( 1 2 3 4 );

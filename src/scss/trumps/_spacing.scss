@@ -2,19 +2,7 @@
   TRUMP CLASSES: SPACING UTILITIES
  ***********************************************************************************
 
-  Margin and padding utility classes, usage:
-
-  <div class="u-m"></div>
-
-  .element {
-
-    @extend .u-m;
-
-    @media ( max-width:500px ) {
-      @include u-m-;
-    }
-
-  }
+  Margin and padding utility classes.
 
  **********************************************************************************/
 

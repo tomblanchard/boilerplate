@@ -518,7 +518,43 @@ Outputs the spacing mixins defined in `tools/mixins/_spacing.scss` to actual cla
 
 #### `trumps/_widths.scss`
 
-Outputs width classes (mostly used with the `grid` object). I explain this in much more details later on, when I talk about the `$widths` config variable.
+Outputs width utility classes (mostly used with the `grid` object). This file actually contains a mixin which does all the heavy lifting for us, let's say we want to output wholes, halves, thirds and quarters, we do it like so (in the same file under the mixin):
+
+```scss
+@include widths( 1 2 3 4 );
+```
+
+This outputs the following CSS;
+
+```css
+.u-1\/1 { width: 100% !important; }
+.u-1\/2 { width: 50% !important; }
+.u-1\/3 { width: 33.33333% !important; }
+.u-2\/3 { width: 66.66667% !important; }
+.u-1\/4 { width: 25% !important; }
+.u-2\/4 { width: 50% !important; }
+.u-3\/4 { width: 75% !important; }
+```
+
+The `\/` part in the classes looks like a bug at first glance, but this is just escaping the forward slash, usage in HTML is still like:
+
+```html
+<div class="u-1/2"></div>
+```
+
+If you want breakpoint specific widths, this is as easy as:
+
+```scss
+@include mq(M-up) {
+  @include widths( 1 2 3 4, '--M-up'  );
+}
+```
+
+You'll now have all those width classes specific to the `M-up` media query, usage in HTML would be like:
+
+```html
+<div class="u-1/2--M-up"></div>
+```
 
 #### `_all.scss`
 
@@ -555,37 +591,6 @@ $objects: (
     center:  false
   ),
 ...
-```
-
-Next up is the `$widths` variable which where you select which width utility classes to output (on responsive grid-heavy sites there will be a lot of grid widths at specific media queries, this allows for much better organisation). You use it like so. Without the use of this variable no grid item widths would be outputted into the compiled CSS at all. This is a very powerful variable as it even controls breakpoint specific grid item widths, it uses the names of the breakpoints defined in the `$breakpoints` map, so I use it like so (note, you'll have to contain fraction classes in quotes):
-
-```scss
-$widths: (
-  'u-1/5',
-  'u-1/2--M-down'
-);
-```
-
-This outputs:
-
-```css
-/**
-  This class looks strange but all it's doing is escaping non-valid characters.
-  Usage in HTML is still `class="u-1/5"`
- */
-.u-1\/5 {
-  width: 20%;
-}
-
-@media ( max-width: 767px ) {
-  /**
-    Another weird looking class, it's just escaping stuff, usage in HTML is still
-    `class="u-1/2--M-down"`.
-   */
-  .u-1\/2--M-down {
-    width: 50%;
-  }
-}
 ```
 
 The last default variable in the settings file is `$spacing` which is a map very similar to the `$objects` map. The `$spacing` map controls which spacing utility classes (located at `trumps/_spacing.scss`) get outputted into the compiled CSS.

@@ -2,19 +2,7 @@
   TRUMP CLASSES: UTILITIES
  ***********************************************************************************
 
-  Utility classes, usage:
-
-  <div class="u-helper"></div>
-
-  .element {
-
-    @extend .u-helper;
-
-    @media ( max-width: 500px ) {
-      @include u-helper;
-    }
-
-  }
+  Utility classes.
 
  **********************************************************************************/
 
